@@ -1,0 +1,637 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style=" z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>RÉSERVATION</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/slide5.jpg')}}) no-repeat; background-position: 100% 75%; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+	
+	<div class="row">
+		<div class="container">
+
+		  	<div>
+					<form action="{{path('reservation_infos_transport')}}" method="POST">
+						<div class="card-panel col s12 l12">
+						 	<h4>Transport sur-mesure</h4>
+							<div class="row">
+						    	<div class="input-field col s12 l3">
+									<i class="material-icons prefix">local_taxi</i>
+									<select id="forfait" name="forfait" required="true">
+								      <option value="" disabled selected>Choisissez votre forfait</option>
+								      	<option value="1">1 H - 40 Km</option>
+								      	<option value="2">2 H - 75 Km</option>
+								      	<option value="4">4 H - 140 Km</option>
+								      	<option value="8">8 H - 250 Km</option>
+								      	<option value="12">12 H - 400 Km</option>
+								      	<option value="24">24 H - 700 Km</option>
+								    </select>
+								    <label for="forfait">Forfait</label>								    
+								</div>						
+							</div>
+						</div>
+
+						<div class="input-field col s12 l3">
+							<i class="material-icons prefix">today</i>
+					      	<input id="date_prise_en_charge" name="date_prise_en_charge" type="text" class="datepicker verifDisabled picker" readonly="true" required="true">
+					      	<label id="label_date_prise_en_charge" for="date_prise_en_charge">Date de prise en charge</label>
+					    </div>
+
+					    <div class="input-field col s12 l3">
+							<i class="material-icons prefix">access_time</i>
+					      	<input id="heure_prise_en_charge" name="heure_prise_en_charge" type="text" class="timepicker verifDisabled picker" readonly="true"required="true">
+					      	<label id="label_heure_prise_en_charge" for="heure_prise_en_charge">Heure de prise en charge</label>
+					    </div>
+
+						<div class="input-field col s12 l3">
+							<i class="material-icons prefix">airline_seat_recline_extra</i>
+							<input id="nb_passagers" name="nb_passagers" type="number" min="1" max="4" class="verifDisabled inputKeyup" required="true">
+							<label for="nb_passagers">Nombre de passagers</label>
+						</div>
+
+						<div class="input-field col s12 l3">
+							<i class="material-icons prefix">work</i>
+							<input id="nb_bagages" name="nb_bagages" type="number" min="1" max="4" class="verifDisabled inputKeyup" required="true">
+							<label for="nb_bagages">Nombre de bagages</label>
+						</div>
+
+						<div class="card-panel col s12 l12">
+						 	<h4>Adresses</h4>
+							<div class="row">
+
+							    <div id="adresseDepart" class="col s12 l12">						    							    					
+									<div class="input-field col s12 l6">
+										<i style="display:none;" id="iconDepartKO" class="material-icons prefix orange-text">warning</i>
+										<i id="iconDepartOK" class="material-icons prefix">room</i>
+							          	<input id="reservation_adresse_depart" name="adresse_depart" type="text" class="verifDisabled" placeholder="" required="true">
+							          	<label for="reservation_adresse_depart">Départ</label>
+							          	<p id="alertText" style="color: red; margin-left:40px; display: none;">* Veuillez sélectionner une des propositions dans la liste.</p>
+							        </div>
+
+							        <div class="input-field col s12 l6">
+										<i style="display:none;" id="iconArriveeKO" class="material-icons prefix orange-text">warning</i>
+										<i id="iconArriveeOK" class="material-icons prefix">room</i>
+							          	<input id="reservation_adresse_arrivee" name="adresse_arrivee" type="text" class="verifDisabled" placeholder="" required="true">
+							          	<label for="reservation_adresse_arrivee">Retour</label>
+							        </div>							
+							    </div>
+
+							</div>
+						</div>
+
+					<div class="card-panel col l12">
+					 	<h4>Coordonnées</h4>
+						<div class="row">
+							<div id="" class="col s12">	
+
+								<div class="input-field col l6 offset-l6 pull-l6">
+									<i class="material-icons prefix">person</i>
+									<select id="civilite" name="civilite" required="true">
+								      <option value="" disabled selected>Choisissez votre civilité</option>
+
+								      {% if app.user.civilite == "Madame" %}
+								      	<option value="Madame" selected>Madame</option>
+								      	<option value="Monsieur">Monsieur</option>
+								      {% else %}
+								      	<option value="Madame">Madame</option>
+								      	<option value="Monsieur" selected>Monsieur</option>
+								      {% endif %}
+
+								    </select>
+								    <label for="civilite">Civilité</label>								    
+								</div>
+
+								<div class="input-field col l6">
+									<i class="material-icons prefix">person</i>
+						          	<input id="nom" name="nom" type="text" value="{{app.user.nom}}" class="inputKeyup" required="true">
+						          	<label for="nom">Nom</label>
+						        </div>
+
+						        <div class="input-field col l6">
+									<i class="material-icons prefix">person</i>
+						          	<input id="prenom" name="prenom" type="text" value="{{app.user.prenom}}" class="inputKeyup" required="true">
+						          	<label for="prenom">Prénom</label>
+						        </div>
+
+						        <div class="input-field col l6">
+									<i class="material-icons prefix">email</i>
+						          	<input id="email" name="email" type="email" value="{{app.user.email}}" class="inputKeyup" required="true">
+						          	<label for="email">Email</label>
+						        </div>
+
+						        <div class="input-field col l6">
+									<i class="material-icons prefix">phone</i>
+						          	<input id="tel" name="tel" type="tel" pattern="[0][0-9]{9}" title="Le numéro doit comporter dix chiffres en commencant par 0" class="inputKeyup" required="true">
+						          	<label for="tel">Téléphone</label>
+						          	<div style="margin-left:45px" class="">
+			            				<span class="">
+								        	<span class="form-error-message red-text">* Ce numéro de téléphone sera utilisé pour vous joindre</span>
+								    	</span>
+							    	</div>						          	
+						        </div>
+							</div>
+						</div>
+					</div>
+
+					<button id="reserver" type="submit" class="bouton btn btn-primary right" disabled="true">Réserver</button>
+				</form>
+				
+
+				{# <div id="loader" style="display: none;position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.1);">
+				  	<div  class="preloader-wrapper big active" style="position: absolute; left: 50%; top: 40%; z-index: 9999;">
+						<div class="spinner-layer spinner-blue-only">
+						  <div class="circle-clipper left">
+						    <div class="circle"></div>
+						  </div><div class="gap-patch">
+						    <div class="circle"></div>
+						  </div><div class="circle-clipper right">
+						    <div class="circle"></div>
+						  </div>
+						</div>
+					</div>
+				</div> #}
+
+				<div id="modalResaImmediate" class="modal">
+				    <div class="modal-content">
+				      <h4>Réservation immédiate</h4>
+				      <p>Pour une réservation dans les 4 heures, veuillez contacter votre chauffeur directement par téléphone.</p>
+				    </div>
+				    <div class="modal-footer">
+				      <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+				    </div>
+				  </div>
+
+		  	</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('select').formSelect();
+			$('#modalResaImmediate').modal({
+    			dismissible: false
+    		});
+
+			var reservationsGlobal;
+			var heureReservations = [];
+			var derniereReservation;
+			/*$('#reservation_adresse_depart').blur(function(){
+				$('#alertText').css('display', 'block');
+			});*/
+
+			var inputDepart = document.getElementById('reservation_adresse_depart');
+			var searchDepart = new google.maps.places.SearchBox(inputDepart);
+
+			var inputArrivee = document.getElementById('reservation_adresse_arrivee');
+			var searchArrivee = new google.maps.places.SearchBox(inputArrivee);
+
+			inputGetPlaces(searchDepart, inputDepart);
+			inputGetPlaces(searchArrivee, inputArrivee);
+			
+			function inputGetPlaces(searchDestination, input){
+				searchDestination.addListener('places_changed', function() {
+				  	var placesDestination = searchDestination.getPlaces();
+				  	var destination = "";
+				  	var adresse_depart = $('#reservation_adresse_depart').val();
+					var adresse_arrivee = $('#reservation_adresse_arrivee').val();
+
+				  console.log(placesDestination[0].geometry.location.lat());
+				  console.log(placesDestination[0].geometry.location.lng());
+
+				  console.log(placesDestination[0]);
+
+				  if (placesDestination.length > 0) {
+				  	if(input.id == "reservation_adresse_depart"){
+				  		destination = "depart";
+
+				  		// Si date saisie
+				  		if($('#date_prise_en_charge').val() != ""){
+
+				  		}
+
+				  		if($('#reservation_adresse_arrivee').val() != ""){
+				  			var service = new google.maps.DistanceMatrixService();
+							service.getDistanceMatrix(
+							  {
+							    origins: [adresse_depart],
+							    destinations: [adresse_arrivee],
+							    travelMode: 'DRIVING',
+							    avoidHighways: true,
+							    avoidTolls: true
+
+							  }, callback);
+
+							function callback(response, status) {console.log(response.rows[0].elements[0]);
+								// See Parsing the Results for
+								// the basics of a callback function.
+								console.log(response.rows[0].elements[0].distance.text);
+								console.log(response.rows[0].elements[0].duration.text);
+
+							  	$('#distanceParRoute').val(response.rows[0].elements[0].distance.text);
+						  		$('#distanceParRoute').trigger("change");
+
+						  		$('#duree').val(response.rows[0].elements[0].duration.value);
+						  		$('#duree').trigger("change");
+
+						  		
+							}
+				  		}	
+				  	}else{
+				  		destination = "arrivee";
+
+				  		if($('#reservation_adresse_depart').val() != ""){
+				  			var service = new google.maps.DistanceMatrixService();
+							service.getDistanceMatrix(
+							  {
+							    origins: [adresse_depart],
+							    destinations: [adresse_arrivee],
+							    travelMode: 'DRIVING',
+							    avoidHighways: true,
+							    avoidTolls: true
+							    /*
+							    transitOptions: TransitOptions,
+							    drivingOptions: DrivingOptions,
+							    unitSystem: UnitSystem,
+							    avoidHighways: Boolean,
+							    avoidTolls: Boolean,*/
+							  }, callback);
+
+							function callback(response, status) {console.log(response.rows[0].elements[0]);
+								// See Parsing the Results for
+								// the basics of a callback function.
+								console.log(response.rows[0].elements[0].distance.text);
+								console.log(response.rows[0].elements[0].duration.text);
+
+							  	$('#distanceParRoute').val(response.rows[0].elements[0].distance.text);
+						  		$('#distanceParRoute').trigger("change");
+
+						  		$('#duree').val(response.rows[0].elements[0].duration.value);
+						  		$('#duree').trigger("change");
+							}
+				  		}
+				  	}
+
+				  	$('#latitude_'+destination).val(placesDestination[0].geometry.location.lat());
+				  	$('#latitude_'+destination).trigger("change");
+
+				  	$('#longitude_'+destination).val(placesDestination[0].geometry.location.lng());
+				  	$('#longitude_'+destination).trigger("change");
+					
+					$('#icon'+destination.charAt(0).toUpperCase()+destination.slice(1)+'KO').css('display', 'none');
+				  	$('#icon'+destination.charAt(0).toUpperCase()+destination.slice(1)+'OK').css('display', 'block');
+
+				  	
+
+				  }
+				});
+			}			
+
+			$('.picker').blur(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#nb_bagages').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val().length == 10 &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}
+			});
+
+			$('.inputKeyup').keyup(function(){
+				if($('#'+this.id).val().length > 0){
+					if(
+						$('#date_prise_en_charge').val() != "" &&
+						$('#heure_prise_en_charge').val() != "" &&
+						$('#nb_passagers').val() != "" &&
+						$('#nb_bagages').val() != "" &&
+						$('#reservation_adresse_depart').val() != "" &&
+						$('#reservation_adresse_arrivee').val() != "" &&
+						$('#latitude_depart').val() != "" &&
+						$('#longitude_depart').val() != "" &&
+						$('#latitude_arrivee').val() != "" &&
+						$('#longitude_arrivee').val() != "" &&
+						$('#nom').val() != "" &&
+						$('#prenom').val() != "" &&
+						$('#email').val() != "" &&
+						$('#tel').val().length == 10 &&
+						$('#distanceParRoute').val() != "" &&
+						$('#duree').val() != ""
+					){
+						$('#reserver').prop('disabled',false);
+					}else{
+						$('#reserver').prop('disabled',true);
+					}
+				}else{
+					$('#reserver').prop('disabled',true);
+				}
+			});
+
+			$('#reservation_adresse_depart').focus(function(){
+				$('#reserver').prop('disabled',true);
+
+				$('#latitude_depart').val("");
+				$("#latitude_arrivee").trigger("change");
+
+				$('#longitude_depart').val("");
+				$("#longitude_depart").trigger("change");
+
+				$('#reservation_adresse_depart').val("");
+				$("#reservation_adresse_depart").trigger("change");
+
+				$('#distanceParRoute').val("");
+				$("#distanceParRoute").trigger("change");
+
+				$('#duree').val("");
+				$("#duree").trigger("change");
+
+			});
+
+			$('#reservation_adresse_arrivee').focus(function(){
+				$('#reserver').prop('disabled',true);
+				
+				$('#latitude_arrivee').val("");
+				$("#latitude_arrivee").trigger("change");
+				
+				$('#longitude_arrivee').val("");
+				$("#longitude_arrivee").trigger("change");
+
+				$('#reservation_adresse_arrivee').val("");
+				$("#reservation_adresse_arrivee").trigger("change");
+
+				$('#distanceParRoute').val("");
+				$("#distanceParRoute").trigger("change");
+
+				$('#duree').val("");
+				$("#duree").trigger("change");
+			});
+
+			$('#reservation_adresse_depart').change(function(){
+				if($('#reservation_adresse_depart').val().length > 0){
+					setTimeout(function(){
+						if($('#latitude_depart').val() == "" && $('#longitude_depart').val() == ""){
+							$('#iconDepartOK').css('display', 'none');
+							$('#iconDepartKO').css('display', 'block');
+						}
+					}, 400);
+				}else{
+					$('#iconDepartKO').css('display', 'none');
+					$('#iconDepartOK').css('display', 'block');
+				}
+			});
+
+			$('#reservation_adresse_arrivee').change(function(){
+				if($('#reservation_adresse_arrivee').val().length > 0){
+					setTimeout(function(){
+						if($('#latitude_arrivee').val() == "" && $('#longitude_arrivee').val() == ""){
+							$('#iconArriveeOK').css('display', 'none');
+							$('#iconArriveeKO').css('display', 'block');
+						}
+					}, 400);
+				}else{
+					$('#iconArriveeKO').css('display', 'none');
+					$('#iconArriveeOK').css('display', 'block');
+				}
+			});
+
+			$('.coordonnees').change(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#nb_bagages').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val().length == 10 &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}
+			});
+
+			function disabledMinutes(time, tempsTrajet, totheuresDisabled, heureMinute, heure, minute, tempsRetour){
+			    if(parseInt(time) == heure){
+			    	$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+			            function()
+			            {
+			            	if(parseInt($(this).text()) <= (minute+tempsTrajet+tempsRetour) && parseInt($(this).text()) >= minute){
+			            		
+			                	$(this).addClass('grey-text');
+			            	}
+			            }
+			        );
+			    }else{		    	
+			        if(parseInt(time) > heure){
+
+				    	/*var heureArrivee = (heure+(minute/60)+(tempsTrajet/60));*/
+
+						if(parseInt(time) < (heure + (minute/60) + (totheuresDisabled+tempsRetour))){	
+
+							var minuteDisabled = (tempsTrajet+tempsRetour) - (60 - minute) - ((time - (heure+1)) * 60);
+							
+							if(minuteDisabled <= 60){
+				    			$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+						            function()
+						            {
+						            	if(parseInt($(this).text()) <= minuteDisabled){
+						            		
+						                	$(this).addClass('grey-text');
+						            	}
+						            }
+						        );	
+						        
+				    		}else{
+					    		$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+						            function()
+						            {
+						            	/*if(parseInt($(this).text()) <= (minute+tempsTrajet) && parseInt($(this).text()) >= minute)*/
+						            		
+						                	$(this).addClass('grey-text');
+						            }
+						        );
+				    		}
+						}
+			        }
+			    }	
+
+
+
+			}
+
+			$('#date_prise_en_charge').change(function(){
+				$('#label_date_prise_en_charge').addClass("active");
+			});
+
+			var disabledHours = [];
+
+			$('.timepicker').timepicker({
+				i18n: {
+		            cancel: 'Annuler',
+		            clear: 'Effacer',
+		            done: 'Ok'
+	        	},
+	        	twelveHour : false,
+	        	showClearBtn : true,
+	        	defaultTime: 'now',
+
+	        	onSelect: function(time) {	        		
+
+	        		var instance = M.Timepicker.getInstance($('.timepicker'));
+	        		var instanceModal = M.Modal.getInstance($('#modalResaImmediate'));
+
+				    if($.inArray(parseInt(time),disabledHours)!==-1){
+				    	instance.showView('hours');
+				    }
+
+				    $(".timepicker-dial.timepicker-hours .timepicker-tick").click(function(){
+						if($(this).hasClass('grey-text')){
+							instance.showView('hours');					
+						}
+						$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+					});
+
+
+					$(".timepicker-dial.timepicker-minutes .timepicker-tick").on('click mousedown touchstart',function(){
+						if($(this).hasClass('grey-text')){
+							$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+						}else{
+							$(".timepicker-close:contains('Ok')").removeAttr('disabled');
+						}
+					});
+
+				    $(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+			            function()
+			            {	
+			            	$(this).removeClass('grey-text');  
+			            }
+			        );
+
+				    
+
+				    
+				},
+
+				onOpenEnd: function()
+			    {
+			    	// REMISE A ZERO DE LA CLASSE GREY-TEXT, ANNULE TOUTES LES HEURES GRISEES
+			    	$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+			    	$(".timepicker-dial.timepicker-hours .timepicker-tick").each(
+			            function()
+			            {	
+			            	$(this).removeClass('grey-text');  
+			            }
+			        );
+
+			    	// HEURES DE SOMMEIL
+			    	$(".timepicker-dial.timepicker-hours .timepicker-tick").each(
+			            function()
+			            {
+			                if($.inArray(parseInt($(this).text()),disabledHours)!==-1)
+			                	$(this).addClass('grey-text');
+			                return;
+			            }
+			        );
+					
+					// BOUTON OK DISPO SI CLICK SUR HEURES PAS SOMMEIL
+					$(".timepicker-dial.timepicker-hours .timepicker-tick").click(function(){
+						if($.inArray(parseInt($(this).text()),disabledHours)!==-1){
+							$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+						}else{
+							$(".timepicker-close:contains('Ok')").removeAttr('disabled');
+						}
+					});
+
+					
+
+				    // RECUPERER DATE ET HEURE ACTUEL POUR RENDRE INDISPO HEURES PASSEES
+				    var dt = new Date();
+					var t = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+					var heureNow = dt.getHours();
+					var minuteNow = dt.getMinutes();
+					var secondeNow = dt.getSeconds();
+
+					var jourNow = dt.getDate();
+					var moisNow = dt.getMonth()+1;
+					var anneeNow = dt.getFullYear();
+
+					if(jourNow+"/"+moisNow+"/"+anneeNow == $('#date_prise_en_charge').val()){console.log("aujourdhui")
+						$(".timepicker-dial.timepicker-hours .timepicker-tick").each(
+							function(){
+								if(parseInt($(this).text()) < heureNow){
+									$(this).addClass('grey-text');
+								}							
+							}
+						);
+					}
+
+					
+
+
+			        return;
+			    }
+			});
+
+			
+
+			$('.datepicker').datepicker({
+				i18n: {
+		            cancel: 'Annuler',
+		            clear: 'Effacer',
+		            done: 'Ok',
+
+		            months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+	                monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Aou", "Sep", "Oct", "Nov", "Déc"],
+	                weekdays: ["Dimanche","Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+	                weekdaysShort: ["Dim","Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+	                weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"]
+	        	},
+	        	format: 'dd/mm/yyyy',
+
+	        	minDate: new Date(),
+	        	showClearBtn: true
+
+	        	
+			});
+
+			
+
+		});
+	</script>
+{% endblock %}

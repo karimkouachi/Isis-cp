@@ -1,0 +1,225 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>ÉVÈNEMENT</b></h3>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  ">PROFITEZ PLEINEMENT</h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/evenement.jpg')}}) no-repeat; background-position: 100% 65%; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					VOUS SOUHAITEZ VOUS RENDRE À UNE RENCONTRE SPORTIVE, UN CONCERT, UN FORUM, OU TOUT AUTRE ÉVÈNEMENT ? ÉCONOMISEZ DU TEMPS ET DE L’ÉNERGIE GRÂCE À NOS CHAUFFEURS. FINI LES EMBOUTEILLAGES DE SORTIE, LES RECHERCHES DE PLACES DE PARKING, LA MARCHE JUSQU’À L’ENTREE.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container hide-on-small-only">
+				<div class="col l12 s12 divider"></div>
+
+				<ul id="tabs-swipe-demo" class="tabs" style="height:140px;">
+					<li id="li1" class="tab col s3 l4">
+				    	<a href="#test-swipe-1" style="height:140px;">
+				    		<h5><b>SERVICE</b></h5>
+							<p style="font-size:1em; line-height: normal;">DÉPOSE DEVANT<br>LES PORTES</p>
+				    	</a>
+				    </li>
+					<li id="li2" class="tab col s3 l4">
+						<a href="#test-swipe-2" style="height:140px;">
+							<h5><b>PONCTUALITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">NOUS ASSURONS<br>NOS ENGAGEMENTS</p>
+						</a>
+					</li>
+				    <li id="li3" class="tab col s3 l4">
+				    	<a href="#test-swipe-3" style="height:140px;">
+				    		<h5><b>VIP</b></h5>
+							<p style="font-size:1em; line-height: normal;">PRIVILÈGE</p>
+				    	</a>
+				    </li>			    
+				</ul>
+
+				<div style="margin-bottom:25px;" class="col l12 s12 divider"></div>
+
+				<div id="test-swipe-1" class="col s12 swipe">
+					<h4 class=" center  "><b>DÉPOSE AU PLUS PRÈS DES PORTES</b></h4>
+					<p class=" center  ">
+						SOYEZ RASSURÉ ET TRANQUILLE, NOS CHAUFFEURS VOUS DÉPOSENT ET VOUS ATTENDENT AU PLUS PRÈS DES PORTES LORS DES ÉVÈNEMENTS.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICE D'EXCELLENCE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="test-swipe-2" class="col s12 swipe">
+					<h4 class=" center  "><b>NOUS ASSURONS NOS ENGAGEMENTS</b></h4>
+					<p class=" center  ">
+						AFIN DE VOUS GARANTIR UNE ARRIVÉE DANS LES TEMPS À L’ÉVÈNEMENT CHOISI, NOUS VOUS PROPOSONS UNE HEURE IDÉALE DE PRISE EN CHARGE. AINSI, PROFITEZ D’UN MOMENT DE DÉTENTE EN TOUTE SÉCURITÉ DANS NOTRE VÉHICULE.
+					</p>
+				</div>
+
+				<div id="test-swipe-3" class="col s12 swipe">
+					<h4 class=" center  "><b>VIP PRIVILÈGE</b></h4>
+					<p class=" center  ">
+						NOS CHAUFFEURS SONT TRÈS PROFESSIONNELS ET DISCRETS, NOUS PRENONS EN CHARGES LES PERSONNALITÉS PARTICIPANT AUX ÉVÈNEMENTS.
+					</p>
+				</div>
+			</div>
+
+			<div class="container hide-on-med-and-up">
+				<div style="margin-bottom:25px" class="col l12 s12 divider"></div>
+				
+				<a id="tab1" class="col l4 s12 center tabsTransfert" href="#service">
+					<h5><b>SERVICE</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">DÉPOSE DEVANT<br>LES PORTES</p>					
+				</a>
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab2" class="col l4 s12 center tabsTransfert" href="#ponctualite">
+					<h5><b>PONCTUALITÉ</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">NOUS ASSURONS<br>NOS ENGAGEMENTS</p>
+				</a>	
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab3" class="col l4 s12 center tabsTransfert" href="#vip">					
+					<h5><b>VIP</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">PRIVILÈGE</p>					
+				</a>
+
+				{# <ul id="tabs-swipe-demo" style="height:100px;" class="tabs">
+					<li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="active black-text" href="#test-swipe-3"><p><b>CONFORT</b></p>DETENTE ET RELAXATION</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-2"><p><b>DISPONIBILITE</b></p>DE JOUR COMME DE NUIT,<br> A TOUT MOMENT</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-1"><p><b>DISCRETION ET SECURITE</b></p>ACCOMPAGNEMENT<br> POUR LES FEMMES</a></li>
+				</ul> #}
+				
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<div id="service" class="container col s12 swipe" style="display:block;">
+					<h4 class=" center  "><b>DÉPOSE AU PLUS PRÈS DES PORTES</b></h4>
+					<p class=" center  ">
+						SOYEZ RASSURÉ ET TRANQUILLE, NOS CHAUFFEURS VOUS DEPOSENT ET VOUS ATTENDENT AU PLUS PRÈS DES PORTES LORS DES ÉVÈNEMENTS.
+					</p>
+				</div>
+
+				<div id="ponctualite" class="container col s12 swipe" style="display:none;">
+					<h4 class=" center  "><b>NOUS ASSURONS NOS ENGAGEMENTS</b></h4>
+					<p class=" center  ">
+						AFIN DE VOUS GARANTIR UNE ARRIVÉE DANS LES TEMPS À L’ÉVÈNEMENT CHOISI, NOUS VOUS PROPOSONS UNE HEURE IDÉALE DE PRISE EN CHARGE. AINSI, PROFITEZ D’UN MOMENT DE DÉTENTE EN TOUTE SÉCURITÉ DANS NOTRE VÉHICULE.
+					</p>
+				</div>
+
+				<div id="vip" class="container col s12 swipe" style="display:none;">
+					<h4 class=" center  "><b>VIP PRIVILÈGE</b></h4>
+					<p class=" center  ">
+						NOS CHAUFFEURS SONT TRÈS PROFESSIONNELS ET DISCRETS, NOUS PRENONS EN CHARGES LES PERSONNALITÉS PARTICIPANT AUX ÉVÈNEMENTS.
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row" style="margin-top:80px;">
+			{% for evenement in evenements %}
+				<div class="grid col s12 l4">
+					<figure class="effect-marley">
+			            <img height="220px" src="{{asset('img/evenement/'~evenement.image)}}" alt="img11"/>
+			            <figcaption>
+			                <h5>{{evenement.nom}}</h5>
+			                <p>{{evenement.genre}}</p>
+			                <span>{{evenement.dateDebut|date("d/m/Y")}}</span>
+			                <a href="{{path('evenement_show', {id: evenement.id})}}">View more</a>
+			            </figcaption>           
+			        </figure>
+				</div>
+			{% endfor %}
+
+			<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+				<a class="btn col l12 s12 btnAffichage" href="{{path('evenement_all')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+					<span>TOUTES LES ACTUALITES</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+				</a>
+			</div>	
+
+			<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+				<a class="btn col l12 s12 btnAffichage" href="{{path('evenement_all')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+					<span>TOUTES LES ACTUALITES</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+				</a>
+			</div>	
+		</div>
+
+
+
+	</div>
+
+	
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('#li1').click(function(e){
+				$('#test-swipe-1').hide().fadeIn(1000);
+			});
+			$('#li2').click(function(e){
+				$('#test-swipe-2').hide().fadeIn(1000);
+			});
+			$('#li3').click(function(e){
+				$('#test-swipe-3').hide().fadeIn(1000);
+			});
+
+			$('#tab1').click(function(){
+				$('#ponctualite').css('display', 'none');
+				$('#vip').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab1').addClass('active');
+				$('#tab1 p').addClass('active');
+				$('#service').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab2').click(function(){
+				$('#service').css('display', 'none');
+				$('#vip').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab2').addClass('active');
+				$('#tab2 p').addClass('active');
+				$('#ponctualite').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab3').click(function(){
+				$('#service').css('display', 'none');
+				$('#ponctualite').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab3').addClass('active');
+				$('#tab3 p').addClass('active');
+				$('#vip').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('.tabs').tabs({
+				/*swipeable : true,
+      responsiveThreshold : Infinity*/
+            });
+
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,127 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>{{evenement.nom | upper}}</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/evenement/'~evenement.image)}}) no-repeat center center; background-size: cover; height:300px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div id="modal" class="modal">
+	    <div class="modal-content">
+	    	<div class="row">
+	      		<h4 class="center">DEMANDE DE RÉSERVATION</h4>
+	  		</div>
+	  		<div class="row">
+	      		<p class="center">Pour cet évènement, la réservation se fait par téléphone, vous pouvez contacter nos chauffeurs au</p>
+	  		</div>
+	  		<h4 class="center"><b>07.07.07.07.07.</b></h4>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+	    </div>
+  	</div>
+
+	<div class="row" style="margin-top:100px;">
+		<div class="container">
+
+			<div class="row">
+				<div class="container">
+					<p class="center">
+						<i style="font-size:2rem;vertical-align:bottom;" class="material-icons prefix">grade</i>
+						<span>{{evenement.genre}}</span>
+					</p>
+					<p class="center">
+						<i style="font-size:2rem;vertical-align:bottom;" class="material-icons prefix">room</i>
+						<span>{{evenement.adresse}}</span>
+					</p>
+					<div class="center">
+						<p>
+							<i style="font-size:2rem;vertical-align:bottom;" class="material-icons prefix">today</i>
+							<span>{{evenement.dateDebut|date("d/m/Y")}}</span>
+						</p>
+					</div>
+					<p class="center">
+						<i style="font-size:2rem;vertical-align:bottom;" class="material-icons prefix">access_time</i>
+						<span>{{evenement.dateDebut|date("H:i")}}</span>
+					</p>
+
+					{% if app.user %}
+			            {% if 
+			            	(
+			            		date("now")|date("d/m/Y") == evenement.dateDebut|date("d/m/Y")
+			            		and evenement.dateDebut|date("H") >= (date("now")|date("H") + 4)
+			            	) 
+			            	or date("now")|date("d/m/Y") != evenement.dateDebut|date("d/m/Y") 
+			            %}
+							<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+								<a href="{{path('reservation_evenement', {'id':evenement.id})}}" class="btn col l12 s12 btnAffichage" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+									Réserver
+								</a>
+							</div>
+
+							<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+								<a href="{{path('reservation_evenement', {'id':evenement.id})}}" class="btn col l12 s12 btnAffichage" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+									Réserver
+								</a>
+							</div>	
+						{% else %}
+							<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+								<a data-target="modal" class="btn col l12 s12 btnAffichage modal-trigger" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+									Réserver
+								</a>
+							</div>
+
+							<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+								<a data-target="modal" class="btn col l12 s12 btnAffichage modal-trigger" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+									Réserver
+								</a>
+							</div>
+						{% endif %}
+			        {% else %}
+			            <div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+							<a href="{{path('security_login')}}" class="btn col l12 s12 btnAffichage" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+								Réserver
+							</a>
+						</div>
+
+						<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+							<a href="{{path('security_login')}}" class="btn col l12 s12 btnAffichage" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+								Réserver
+							</a>
+						</div>	
+			        {% endif %}
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('.modal').modal(
+				{
+					dismissible: false,
+					onCloseEnd: function(){
+						$('body').css({
+				    		overflow: 'visible'
+						});
+					}
+				}
+			);
+		});
+	</script>
+{% endblock %}

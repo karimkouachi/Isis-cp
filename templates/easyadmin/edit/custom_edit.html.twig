@@ -1,0 +1,46 @@
+{% extends '@EasyAdmin/default/edit.html.twig' %}
+
+{# {% set path = path('easyadmin', {
+       'entity': app.request.query.get('entity'),
+       'action': app.request.query.get('action'),
+       'menuIndex': app.request.query.get('menuIndex'),
+       'submenuIndex': app.request.query.get('submenuIndex'),
+       'sortField': app.request.query.get('sortField'),
+       'sortDirection': app.request.query.get('sortDirection'),
+       'page': app.request.query.get('page'),
+   }) %} #}
+
+{% set action_href = '#' %}
+{% set action = {
+       'target': '#',
+       'icon' : '#' 
+   }
+%}
+
+{% block entity_form %}
+
+  {% if prestation_form == "evenement_form" %}
+    {% include 'easyadmin/edit/form/evenement_edit_form.html.twig' %}
+  {% elseif prestation_form == "decouverte_form" %}
+    {% include 'easyadmin/edit/form/decouverte_edit_form.html.twig' %}
+  {% elseif prestation_form == "mission_form" %}
+    {% include 'easyadmin/edit/form/mission_edit_form.html.twig' %}
+  {% endif %}
+
+  {% block body_javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+
+    {% if prestation_edit_js == "evenement_edit_js" %}
+      {% include 'easyadmin/edit/js/evenement_edit_js.html.twig' %}
+    {% elseif prestation_edit_js == "decouverte_edit_js" %}
+      {% include 'easyadmin/edit/js/decouverte_edit_js.html.twig' %}
+    {% elseif prestation_edit_js == "mission_edit_js" %}
+      {% include 'easyadmin/edit/js/mission_edit_js.html.twig' %}
+    {% endif %}
+
+    {{ include('@EasyAdmin/default/includes/_select2_widget.html.twig') }}
+  {% endblock %}
+
+{% endblock entity_form %}
+	

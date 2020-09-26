@@ -1,0 +1,110 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>ÉVÈNEMENTS À VENIR</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/slide2.png')}}) no-repeat; background-position: 100% 75%; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					ISIS CHAUFFEUR PRIVÉ PROPOSE DE VOUS ACCOMPAGNER DANS LES GRANDS ÉVÈNEMENTS RÉGIONNAUX. CHOISISSEZ CE QUI VOUS PLAIRAIT DANS LES ÉVÈNEMENTS SUIVANT.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					<b>LES LIEUX</b>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="container">
+			
+				<div class="grid col l4">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/evenement/zenith.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Le Zénith de Nantes</h5>
+		                    <a href="https://www.zenith-nantesmetropole.com/" target="_blank">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/evenement/citedescongres.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>La Cité des congrès de Nantes</h5>
+		                    <a href="https://lacite-nantes.fr/" target="_blank">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+				<div class="grid col l4">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/evenement/theatre.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Les théatres</h5>
+		                    <a href="https://www.angers-nantes-opera.com/" target="_blank">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					<b>LES ÉVÈNEMENTS</b>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+			<div class="container">
+				{% for evenement in evenements %}
+					<div class="grid col l4 s12">
+						<figure class="effect-marley">
+			                <img height="220px" src="{{asset('img/evenement/'~evenement.image)}}" alt="img11"/>
+			                <figcaption>
+			                    <h5>{{evenement.nom}}</h5>
+			                    <p>{{evenement.genre}}</p>
+			                    <span>{{evenement.dateDebut|date("d/m/Y")}}</span>
+			                    <a href="{{path('evenement_show', {id : evenement.id} )}}">View more</a>
+			                </figcaption>           
+			            </figure>
+		        	</div>
+				{% endfor %}
+			</div>
+		</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

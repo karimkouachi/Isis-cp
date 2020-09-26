@@ -1,0 +1,1733 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>RÉSERVATION</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/transfert.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="row">
+		<div class="container">
+		  	<div>
+				
+
+
+
+					
+						<div class="card-panel col s12 l12">
+						 	<h4>Transfert programmé</h4>
+						</div>
+				
+
+					<form action="{{path('reservation_infos_transfert')}}" method="POST">
+						<div class="input-field col s12 l3">
+							<i class="material-icons prefix">today</i>
+					      	<input id="date_prise_en_charge" name="date_prise_en_charge" type="text" class="datepicker verifDisabled picker" readonly="true" required="true">
+					      	<label id="label_date_prise_en_charge" for="date_prise_en_charge">Date de prise en charge</label>
+					    </div>
+
+					    <div class="input-field col s12 l3">
+							<i class="material-icons prefix">access_time</i>
+					      	<input id="heure_prise_en_charge" name="heure_prise_en_charge" type="text" class="timepicker verifDisabled picker" readonly="true" required="true">
+					      	<label id="label_heure_prise_en_charge" for="heure_prise_en_charge">Heure de prise en charge</label>
+					    </div>
+
+						<div class="input-field col s12 l3">
+							<i class="material-icons prefix">airline_seat_recline_extra</i>
+							<input id="nb_passagers" name="nb_passagers" type="number" min="1" max="4" class="verifDisabled inputKeyup" required="true">
+							<label for="nb_passagers">Nombre de passagers</label>
+						</div>
+
+						<div class="input-field col s12 l3">
+							<i class="material-icons prefix">work</i>
+				          	<input id="nb_bagages" name="nb_bagages" type="number" min="0" max="4" class="verifDisabled inputKeyup" required="true">
+				          	<label for="nb_bagages">Nombre de bagages</label>
+				        </div>
+
+					 <div class="card-panel col s12 l12">
+					 	<h4>Adresses</h4>
+						<div class="row">
+						    {# <div class="col s12">
+						      <ul class="tabs">
+						        <li class="tab col s3"><a href="#adresseDepart" class="active">Adresse</a></li>
+						        <li class="tab col s3"><a href="#aeroportDepart">Aéroport</a></li>
+						      </ul>
+						    </div> #}
+
+						    <div id="adresseDepart" class="col s12 l12">						    							    					
+								<div class="input-field col s12 l6">
+									<i style="display:none;" id="iconDepartKO" class="material-icons prefix orange-text">warning</i>
+									<i id="iconDepartOK" class="material-icons prefix">room</i>
+						          	<input id="reservation_adresse_depart" name="adresse_depart" type="text" class="verifDisabled" placeholder="" required="true">
+						          	<label for="reservation_adresse_depart">Départ</label>
+						          	<p id="alertText" style="color: red; margin-left:40px; display: none;">* Veuillez sélectionner une des propositions dans la liste.</p>
+						        </div>
+
+						        <div class="input-field col s12 l6">
+									<i style="display:none;" id="iconArriveeKO" class="material-icons prefix orange-text">warning</i>
+									<i id="iconArriveeOK" class="material-icons prefix">room</i>
+						          	<input id="reservation_adresse_arrivee" name="adresse_arrivee" type="text" class="verifDisabled" placeholder="" required="true">
+						          	<label for="reservation_adresse_arrivee">Arrivée</label>
+						        </div>
+
+						        {# <div class="input-field">
+						        	<i class="material-icons prefix">domain</i>
+						          	<input id="reservation_cp_depart" name="cp_depart" type="text" class="geolocDepart" required="true">
+						          	<label id="label_cp_depart" for="reservation_cp_depart">Code postal</label>
+						        </div>
+
+						        <div class="input-field">
+						        	<i class="material-icons prefix">location_city</i>
+						          	<input id="reservation_ville_depart" name="ville_depart" type="text" class="geolocDepart" required="true">
+						          	<label id="label_ville_depart" for="reservation_ville_depart">Ville</label>
+						        </div> #}								
+						    </div>
+
+						    {# <div id="aeroportDepart" class="col s12">						    	
+						    	<div class="input-field">
+						    		<i class="material-icons prefix">location_city</i>
+						    		<input style="margin-left:45px; width: 92%;" id="ville_depart_aeroport" name="ville_depart_aeroport" type="text" class="inp" required="true">
+						    		<label id="label_ville_depart_aeroport" for="ville_depart_aeroport">Ville</label>
+						    	</div>
+						    	<div class="input-field">
+						    		<i class="material-icons prefix"></i>
+						    		<input style="visibility:hidden; margin-left:45px; width: 92%;" disabled="true">
+						    		<label></label>
+						    	</div>
+						    	<div class="input-field">
+						    		<i class="material-icons prefix"></i>
+						    		<input style="visibility:hidden; margin-left:45px; width: 92%;" disabled="true">
+						    		<label></label>
+						    	</div>							    
+						    </div> #}
+						</div>
+					</div>
+
+					<div class="card-panel col l12">
+					 	<h4>Coordonnées</h4>
+						<div class="row">
+							<div id="" class="col s12">	
+
+								<div class="input-field col l6 offset-l6 pull-l6">
+									<i class="material-icons prefix">person</i>
+									<select id="civilite" name="civilite" required="true">
+								      <option value="" disabled selected>Choisissez votre civilité</option>
+
+								      {% if app.user.civilite == "Madame" %}
+								      	<option value="Madame" selected>Madame</option>
+								      	<option value="Monsieur">Monsieur</option>
+								      {% else %}
+								      	<option value="Madame">Madame</option>
+								      	<option value="Monsieur" selected>Monsieur</option>
+								      {% endif %}
+
+								    </select>
+								    <label for="civilite">Civilité</label>								    
+								</div>
+
+								<div class="input-field col l6">
+									<i class="material-icons prefix">person</i>
+						          	<input id="nom" name="nom" type="text" value="{{app.user.nom}}" class="inputKeyup" required="true">
+						          	<label for="nom">Nom</label>
+						        </div>
+
+						        <div class="input-field col l6">
+									<i class="material-icons prefix">person</i>
+						          	<input id="prenom" name="prenom" type="text" value="{{app.user.prenom}}" class="inputKeyup" required="true">
+						          	<label for="prenom">Prénom</label>
+						        </div>
+
+						        <div class="input-field col l6">
+									<i class="material-icons prefix">email</i>
+						          	<input id="email" name="email" type="email" value="{{app.user.email}}" class="inputKeyup" required="true">
+						          	<label for="email">Email</label>
+						        </div>
+
+						        <div class="input-field col l6">
+									<i class="material-icons prefix">phone</i>
+						          	<input id="tel" name="tel" type="tel" pattern="[0][0-9]{9}" title="Le numéro doit comporter dix chiffres en commencant par 0" class="inputKeyup" required="true">
+						          	<label for="tel">Téléphone</label>
+						          	<div style="margin-left:45px" class="">
+			            				<span class="">
+								        	<span class="form-error-message red-text">* Ce numéro de téléphone sera utilisé pour vous joindre</span>
+								    	</span>
+							    	</div>						          	
+						        </div>
+							</div>
+						</div>
+					</div>
+
+					<input id="latitude_depart" class="coordonnees" name="latitude_depart" type="hidden" readonly="true">
+					<input id="longitude_depart" class="coordonnees" name="longitude_depart" type="hidden" readonly="true">
+
+					<input id="latitude_arrivee" class="coordonnees" name="latitude_arrivee" type="hidden" readonly="true">
+					<input id="longitude_arrivee" class="coordonnees" name="longitude_arrivee" type="hidden" readonly="true">
+
+					<input id="distanceParRoute" class="" name="distanceParRoute" type="hidden">
+					<input id="duree" class="" name="duree" type="hidden">
+
+					<button id="reserver" type="submit" class="bouton btn btn-primary right" disabled="true">Réserver</button>
+				</form>
+				
+
+		
+
+				{# <div id="loader" style="display: none;position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 9999; background-color: rgba(0,0,0,0.1);">
+				  	<div  class="preloader-wrapper big active" style="position: absolute; left: 50%; top: 40%; z-index: 9999;">
+						<div class="spinner-layer spinner-blue-only">
+						  <div class="circle-clipper left">
+						    <div class="circle"></div>
+						  </div><div class="gap-patch">
+						    <div class="circle"></div>
+						  </div><div class="circle-clipper right">
+						    <div class="circle"></div>
+						  </div>
+						</div>
+					</div>
+				</div> #}
+
+				<div id="modalResaImmediate" class="modal">
+				    <div class="modal-content">
+				      	<div class="row">
+			                <h4 class="center">RÉSERVATION IMMÉDIATE</h4>
+			            </div>
+			            <div class="row">
+			                <p class="center">Pour une réservation immédiate dans les 4 heures, veuillez contacter votre chauffeur directement par téléphone au</p>
+			            </div>
+			            <h4 class="center"><b>07.49.01.69.96</b></h4>
+				    </div>
+				    <div class="modal-footer">
+				      <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+				    </div>
+				  </div>
+
+		  	</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('select').formSelect();
+			$('#modalResaImmediate').modal({
+    			dismissible: false
+    		});
+
+			var reservationsGlobal;
+			var heureReservations = [];
+			var derniereReservation;
+			/*$('#reservation_adresse_depart').blur(function(){
+				$('#alertText').css('display', 'block');
+			});*/
+
+			var inputDepart = document.getElementById('reservation_adresse_depart');
+			var searchDepart = new google.maps.places.SearchBox(inputDepart);
+
+			var inputArrivee = document.getElementById('reservation_adresse_arrivee');
+			var searchArrivee = new google.maps.places.SearchBox(inputArrivee);
+
+			inputGetPlaces(searchDepart, inputDepart);
+			inputGetPlaces(searchArrivee, inputArrivee);
+			
+			function inputGetPlaces(searchDestination, input){
+				searchDestination.addListener('places_changed', function() {
+				  	var placesDestination = searchDestination.getPlaces();
+				  	var destination = "";
+				  	var adresse_depart = $('#reservation_adresse_depart').val();
+					var adresse_arrivee = $('#reservation_adresse_arrivee').val();
+
+				  console.log(placesDestination[0].geometry.location.lat());
+				  console.log(placesDestination[0].geometry.location.lng());
+
+				  console.log(placesDestination[0]);
+
+				  if (placesDestination.length > 0) {
+				  	if(input.id == "reservation_adresse_depart"){
+				  		destination = "depart";
+
+				  		// Si date saisie
+				  		if($('#date_prise_en_charge').val() != ""){
+					  		// - Récuperer la derniere reservation
+					  		// - Comparer la date de la derniere reservation avec date saisie
+					  		// Si date saisie == date reservation
+						  		// - Calcul trajet entre depart saisie et depart derniere reservation
+						  		// - Griser horaire temps de trajet
+
+						  	/*$('#heure_prise_en_charge').removeAttr("disabled");*/
+
+				  		}
+
+				  		if($('#reservation_adresse_arrivee').val() != ""){
+				  			var service = new google.maps.DistanceMatrixService();
+							service.getDistanceMatrix(
+							  {
+							    origins: [adresse_depart],
+							    destinations: [adresse_arrivee],
+							    travelMode: 'DRIVING',
+							    avoidHighways: true,
+							    avoidTolls: true
+							    /*
+							    transitOptions: TransitOptions,
+							    drivingOptions: DrivingOptions,
+							    unitSystem: UnitSystem,
+							    avoidHighways: Boolean,
+							    avoidTolls: Boolean,*/
+							  }, callback);
+
+							function callback(response, status) {console.log(response.rows[0].elements[0]);
+								// See Parsing the Results for
+								// the basics of a callback function.
+								console.log(response.rows[0].elements[0].distance.text);
+								console.log(response.rows[0].elements[0].duration.text);
+
+							  	$('#distanceParRoute').val(response.rows[0].elements[0].distance.text);
+						  		$('#distanceParRoute').trigger("change");
+
+						  		$('#duree').val(response.rows[0].elements[0].duration.value);
+						  		$('#duree').trigger("change");
+
+						  		if(
+									$('#date_prise_en_charge').val() != "" &&
+									$('#heure_prise_en_charge').val() != "" &&
+									$('#nb_passagers').val() != "" &&
+									$('#reservation_adresse_depart').val() != "" &&
+									$('#reservation_adresse_arrivee').val() != "" &&
+									$('#latitude_depart').val() != "" &&
+									$('#longitude_depart').val() != "" &&
+									$('#latitude_arrivee').val() != "" &&
+									$('#longitude_arrivee').val() != "" &&
+									$('#nom').val() != "" &&
+									$('#prenom').val() != "" &&
+									$('#email').val() != "" &&
+									$('#tel').val().length == 10 &&
+									$('#distanceParRoute').val() != "" &&
+									$('#duree').val() != ""
+								){
+									$('#reserver').prop('disabled',false);
+								}else{
+									$('#reserver').prop('disabled',true);
+								}
+							}
+				  		}	
+				  	}else{
+				  		destination = "arrivee";
+
+				  		if($('#reservation_adresse_depart').val() != ""){
+				  			var service = new google.maps.DistanceMatrixService();
+							service.getDistanceMatrix(
+							  {
+							    origins: [adresse_depart],
+							    destinations: [adresse_arrivee],
+							    travelMode: 'DRIVING',
+							    avoidHighways: true,
+							    avoidTolls: true
+							    /*
+							    transitOptions: TransitOptions,
+							    drivingOptions: DrivingOptions,
+							    unitSystem: UnitSystem,
+							    avoidHighways: Boolean,
+							    avoidTolls: Boolean,*/
+							  }, callback);
+
+							function callback(response, status) {console.log(response.rows[0].elements[0]);
+								// See Parsing the Results for
+								// the basics of a callback function.
+								console.log(response.rows[0].elements[0].distance.text);
+								console.log(response.rows[0].elements[0].duration.text);
+
+							  	$('#distanceParRoute').val(response.rows[0].elements[0].distance.text);
+						  		$('#distanceParRoute').trigger("change");
+
+						  		$('#duree').val(response.rows[0].elements[0].duration.value);
+						  		$('#duree').trigger("change");
+
+						  		if(
+									$('#date_prise_en_charge').val() != "" &&
+									$('#heure_prise_en_charge').val() != "" &&
+									$('#nb_passagers').val() != "" &&
+									$('#reservation_adresse_depart').val() != "" &&
+									$('#reservation_adresse_arrivee').val() != "" &&
+									$('#latitude_depart').val() != "" &&
+									$('#longitude_depart').val() != "" &&
+									$('#latitude_arrivee').val() != "" &&
+									$('#longitude_arrivee').val() != "" &&
+									$('#nom').val() != "" &&
+									$('#prenom').val() != "" &&
+									$('#email').val() != "" &&
+									$('#tel').val().length == 10 &&
+									$('#distanceParRoute').val() != "" &&
+									$('#duree').val() != ""
+								){
+									$('#reserver').prop('disabled',false);
+								}else{
+									$('#reserver').prop('disabled',true);
+								}
+							}
+				  		}
+				  	}
+
+				  	$('#latitude_'+destination).val(placesDestination[0].geometry.location.lat());
+				  	$('#latitude_'+destination).trigger("change");
+
+				  	$('#longitude_'+destination).val(placesDestination[0].geometry.location.lng());
+				  	$('#longitude_'+destination).trigger("change");
+					
+					$('#icon'+destination.charAt(0).toUpperCase()+destination.slice(1)+'KO').css('display', 'none');
+				  	$('#icon'+destination.charAt(0).toUpperCase()+destination.slice(1)+'OK').css('display', 'block');
+
+				  	
+				  	
+				  }
+				});
+			}		
+
+			$('#reservation_adresse_arrivee').blur(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val().length == 10 &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}else{
+					$('#reserver').prop('disabled',true);
+				}
+			});		
+
+			$('.picker').change(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val().length == 10 &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}else{
+					$('#reserver').prop('disabled',true);
+				}
+			});
+
+			$('.picker').blur(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val().length == 10 &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}else{
+					$('#reserver').prop('disabled',true);
+				}
+			});
+
+			$('.inputKeyup').blur(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val().length == 10 &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}else{
+					$('#reserver').prop('disabled',true);
+				}
+			});
+
+			$('.inputKeyup').keyup(function(){
+				if($('#'+this.id).val().length > 0){
+					if(
+						$('#date_prise_en_charge').val() != "" &&
+						$('#heure_prise_en_charge').val() != "" &&
+						$('#nb_passagers').val() != "" &&
+						$('#reservation_adresse_depart').val() != "" &&
+						$('#reservation_adresse_arrivee').val() != "" &&
+						$('#latitude_depart').val() != "" &&
+						$('#longitude_depart').val() != "" &&
+						$('#latitude_arrivee').val() != "" &&
+						$('#longitude_arrivee').val() != "" &&
+						$('#nom').val() != "" &&
+						$('#prenom').val() != "" &&
+						$('#email').val() != "" &&
+						$('#tel').val().length == 10 &&
+						$('#distanceParRoute').val() != "" &&
+						$('#duree').val() != ""
+					){
+						$('#reserver').prop('disabled',false);
+					}else{
+						$('#reserver').prop('disabled',true);
+					}
+				}else{
+					$('#reserver').prop('disabled',true);
+				}
+			});			
+
+			$('#reservation_adresse_depart').focus(function(){
+				$('#reserver').prop('disabled',true);
+
+				$('#latitude_depart').val("");
+				$("#latitude_arrivee").trigger("change");
+
+				$('#longitude_depart').val("");
+				$("#longitude_depart").trigger("change");
+
+				$('#reservation_adresse_depart').val("");
+				$("#reservation_adresse_depart").trigger("change");
+
+				$('#distanceParRoute').val("");
+				$("#distanceParRoute").trigger("change");
+
+				$('#duree').val("");
+				$("#duree").trigger("change");
+
+				$('#heure_prise_en_charge').val("");
+				/*$('#heure_prise_en_charge').attr("disabled", "true");*/
+			});
+
+			$('#reservation_adresse_arrivee').focus(function(){
+				$('#reserver').prop('disabled',true);
+				
+				$('#latitude_arrivee').val("");
+				$("#latitude_arrivee").trigger("change");
+				
+				$('#longitude_arrivee').val("");
+				$("#longitude_arrivee").trigger("change");
+
+				$('#reservation_adresse_arrivee').val("");
+				$("#reservation_adresse_arrivee").trigger("change");
+
+				$('#distanceParRoute').val("");
+				$("#distanceParRoute").trigger("change");
+
+				$('#duree').val("");
+				$("#duree").trigger("change");
+			});
+
+			$('#reservation_adresse_depart').change(function(){
+				if($('#reservation_adresse_depart').val().length > 0){
+					setTimeout(function(){
+						if($('#latitude_depart').val() == "" && $('#longitude_depart').val() == ""){
+							$('#iconDepartOK').css('display', 'none');
+							$('#iconDepartKO').css('display', 'block');
+						}
+					}, 400);
+				}else{
+					$('#iconDepartKO').css('display', 'none');
+					$('#iconDepartOK').css('display', 'block');
+				}
+			});
+
+			$('#reservation_adresse_arrivee').change(function(){
+				if($('#reservation_adresse_arrivee').val().length > 0){
+					setTimeout(function(){
+						if($('#latitude_arrivee').val() == "" && $('#longitude_arrivee').val() == ""){
+							$('#iconArriveeOK').css('display', 'none');
+							$('#iconArriveeKO').css('display', 'block');
+						}
+					}, 400);
+				}else{
+					$('#iconArriveeKO').css('display', 'none');
+					$('#iconArriveeOK').css('display', 'block');
+				}
+			});
+
+			$('.coordonnees').change(function(){
+				if(
+					$('#date_prise_en_charge').val() != "" &&
+					$('#heure_prise_en_charge').val() != "" &&
+					$('#nb_passagers').val() != "" &&
+					$('#reservation_adresse_depart').val() != "" &&
+					$('#reservation_adresse_arrivee').val() != "" &&
+					$('#latitude_depart').val() != "" &&
+					$('#longitude_depart').val() != "" &&
+					$('#latitude_arrivee').val() != "" &&
+					$('#longitude_arrivee').val() != "" &&
+					$('#nom').val() != "" &&
+					$('#prenom').val() != "" &&
+					$('#email').val() != "" &&
+					$('#tel').val() != "" &&
+					$('#distanceParRoute').val() != "" &&
+					$('#duree').val() != ""
+				){
+					$('#reserver').prop('disabled',false);
+				}
+			});
+
+			function disabledMinutes(time, tempsTrajet, totheuresDisabled, heureMinute, heure, minute, tempsRetour){
+			    if(parseInt(time) == heure){console.log("TROIS");
+			    	$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+			            function()
+			            {
+			            	if(parseInt($(this).text()) <= (minute+tempsTrajet+tempsRetour) && parseInt($(this).text()) >= minute){
+			            		
+			                	$(this).addClass('grey-text');
+			            	}
+			            }
+			        );
+			    }else{		console.log("QUATRE");			    	
+			        if(parseInt(time) > heure){console.log("CINQ");	
+
+				    	/*var heureArrivee = (heure+(minute/60)+(tempsTrajet/60));*/
+
+						if(parseInt(time) < (heure + (minute/60) + (totheuresDisabled+tempsRetour))){console.log("SIX");	
+
+							var minuteDisabled = (tempsTrajet+tempsRetour) - (60 - minute) - ((time - (heure+1)) * 60);
+							
+							if(minuteDisabled <= 60){console.log("SEPT");
+				    			$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+						            function()
+						            {
+						            	if(parseInt($(this).text()) <= minuteDisabled){
+						            		
+						                	$(this).addClass('grey-text');
+						            	}
+						            }
+						        );	
+						        
+				    		}else{console.log("HUIT");
+					    		$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+						            function()
+						            {
+						            	/*if(parseInt($(this).text()) <= (minute+tempsTrajet) && parseInt($(this).text()) >= minute)*/
+						            		
+						                	$(this).addClass('grey-text');
+						            }
+						        );
+				    		}
+						}
+			        }
+			    }	
+
+
+			    
+				
+
+
+
+
+			}
+
+			$('#date_prise_en_charge').change(function(){
+				$('#label_date_prise_en_charge').addClass("active");
+				$('#heure_prise_en_charge').val("");
+
+				/*if($('#date_prise_en_charge').val() != ""){
+
+
+					// Appeller AJAX pour recuperer dans la bdd, les reservations (date, heure, minutes, temps trajet estime) du jour selectionne
+					$.ajax({
+			            url: "{{path('reservation_getReservationsToday')}}",
+			            dataType: "json",
+			            data: {date_prise_en_charge : $('#date_prise_en_charge').val()},
+			            success: function (reservations) {
+			            	
+			            	// toutes les reservations de la date saisie
+			            	reservationsGlobal = reservations;
+
+			            	if(reservationsGlobal.length > 0){
+								// recuperer derniere reservation
+				            	$.each(reservationsGlobal, function(i, item) {
+								    heureReservations[i] = reservationsGlobal[i].heure.replace(":", ".");
+								    
+									if(i == 0) {
+									    derniereReservation = reservationsGlobal[i];
+									}else if(heureReservations[i] > heureReservations[i-1]) {
+									    derniereReservation = reservationsGlobal[i];
+									}
+
+								});
+			            	}else{
+			            		derniereReservation = reservationsGlobal;
+			            	}
+			            			            	
+
+
+			            	console.log(reservationsGlobal);
+
+			            	if($('#reservation_adresse_depart').val() != ""){
+			            		//$('#heure_prise_en_charge').removeAttr("disabled");
+			            	}
+
+			            	
+			            }
+			        });
+
+
+
+					
+				}else{
+					//$('#heure_prise_en_charge').attr("disabled", "true");
+				}*/
+			});
+
+			var disabledHours = [];
+
+			$('.timepicker').timepicker({
+				i18n: {
+		            cancel: 'Annuler',
+		            clear: 'Effacer',
+		            done: 'Ok'
+	        	},
+	        	twelveHour : false,
+	        	showClearBtn : true,
+	        	defaultTime: 'now',
+
+	        	onSelect: function(time) {	        		
+console.log("UN");
+	        		var instance = M.Timepicker.getInstance($('.timepicker'));
+	        		var instanceModal = M.Modal.getInstance($('#modalResaImmediate'));
+
+				    if($.inArray(parseInt(time),disabledHours)!==-1){
+				    	instance.showView('hours');
+				    }
+
+				    $(".timepicker-dial.timepicker-hours .timepicker-tick").click(function(){
+				    	console.log("heure");
+						if($(this).hasClass('grey-text')){
+							instance.showView('hours');					
+						}
+						$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+					});
+console.log("DEUX");
+					
+					$(".timepicker-dial.timepicker-minutes .timepicker-tick").on('click mousedown touchstart',function(){
+						if($(this).hasClass('grey-text')){console.log("GREY");
+							$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+						}else{
+							console.log("NOIR");
+							$(".timepicker-close:contains('Ok')").removeAttr('disabled');
+						}
+					});
+
+				    $(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+			            function()
+			            {	console.log("chaque");
+			            	$(this).removeClass('grey-text');  
+			            }
+			        );
+
+				    // DIFINITION DE RESERVATIONS IMMEDIATES (reservations par telephone)
+				    var dt = new Date();
+					var t = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+					var heureNow = dt.getHours();
+					var minuteNow = dt.getMinutes();
+					var secondeNow = dt.getSeconds();
+
+					var jourNow =  ("0"+dt.getDate()).slice(-2);
+					var moisNow = ("0"+(dt.getMonth()+1)).slice(-2);
+					var anneeNow = dt.getFullYear();
+
+					if(jourNow+"/"+moisNow+"/"+anneeNow == $('#date_prise_en_charge').val()){console.log("aujourdhui")
+						var heureLimiteResaImmediate = 4;
+
+				        if(time <= heureNow + heureLimiteResaImmediate){
+				        	instance.close();
+				        	instanceModal.open();
+				        	
+				        }
+					}
+			        
+
+
+
+
+				    /*for(var i=0; i<reservationsGlobal.length; i++){console.log("nouvelle reservation")
+				    	
+				    	var dateSlash = reservationsGlobal[i].date_prise_en_charge.date.split(" ")[0].replace(/-/g, "/").split('/');
+						var dateOK = dateSlash[2] + '/' + dateSlash[1] + '/' + dateSlash[0];
+
+				    	// 30min temps trajet
+				    	var tempsTrajet = parseInt(reservationsGlobal[i].duree);
+				    	// (1)30min => 0.5 h; (2)10min => 0.1 h
+				    	var totheuresDisabled = parseInt(reservationsGlobal[i].duree)/60;
+				    	
+				    	var heureMinute = reservationsGlobal[i].heure_prise_en_charge.split(":");
+					    var heure = parseInt(heureMinute[0]);
+					    var minute = parseInt(heureMinute[1]);*/
+
+					    /*const getDistanceMatrix = (service, data) => new Promise((resolve, reject) => {console.log("hello2");
+						  service.getDistanceMatrix(data, (response, status) => {
+						    if(status === 'OK') {console.log("hello3");
+						      resolve(response)
+						      tempsRetour = parseInt(response.rows[0].elements[0].duration.value)/60;
+					  			console.log("temps de retour " + tempsRetour);
+					  			disabledMinutes(time, tempsTrajet, totheuresDisabled, heureMinute, heure, minute, tempsRetour);
+						    } else {console.log("hello4");
+						      reject(response);
+						    }
+						  })
+						});
+
+						getDistance = async (start, end) => {console.log("hello");
+						  const service = new google.maps.DistanceMatrixService();
+						  const result = await getDistanceMatrix(
+						    service,
+						    {
+						      origins: [reservationsGlobal[i].adresseArrivee],
+						      destinations: [$('#reservation_adresse_depart').val()],
+						      travelMode: 'DRIVING'
+						    }
+						  )*/
+						  /*return {
+						    distance: result.rows[0].elements[0].status
+						  };*/
+						/*};*/
+
+				    	/*getDistanceMatrix = (service, data) => new Promise((resolve, reject) => {
+						  service.getDistanceMatrix(data, (response, status) => {
+						    console.log("trajet retour derniere resa a depart: " + response.rows[0].elements[0].duration.text);
+							console.log("trajet retour derniere resa a depart: " + response.rows[0].elements[0].duration.value);					  
+
+					  		tempsRetour = parseInt(response.rows[0].elements[0].duration.value)/60;
+					  		console.log("temps de retour " + tempsRetour);
+					  		disabledMinutes(time, tempsTrajet, totheuresDisabled, heureMinute, heure, minute, tempsRetour);
+						  })
+						});*/
+
+						/*getDistance = async (start, end) => {
+						  const result = await getDistanceMatrix(
+						    new google.maps.DistanceMatrixService(),
+						    {
+						      origins: [reservationsGlobal[i].adresseArrivee],
+						      destinations: [$('#reservation_adresse_depart').val()],
+						      travelMode: 'DRIVING'
+						    }
+						  )
+
+						  return {
+						    distance: result.rows[0].elements[0].status
+						  };
+						};*/
+
+						/*getDistanceMatrix(
+							new google.maps.DistanceMatrixService(),
+							{
+						      origins: [reservationsGlobal[i].adresseArrivee],
+						      destinations: [$('#reservation_adresse_depart').val()],
+						      travelMode: 'DRIVING'
+						    }
+						);*/
+
+					    // estimer le temps de retour dun trajet entre adresse de depart et adresse darrivee de la derniere reservation
+						/*var service = new google.maps.DistanceMatrixService();
+						service.getDistanceMatrix(
+						  {
+						    origins: [reservationsGlobal[i].adresseArrivee],
+						    destinations: [$('#reservation_adresse_depart').val()],
+						    travelMode: 'DRIVING'
+						  }, callback);
+
+						function callback(response, status) {
+							
+							console.log("trajet retour derniere resa a depart: " + response.rows[0].elements[0].duration.text);
+							console.log("trajet retour derniere resa a depart: " + response.rows[0].elements[0].duration.value);					  
+
+					  		tempsRetour = parseInt(response.rows[0].elements[0].duration.value)/60;
+
+						}*/
+
+						/*disabledMinutes(time, tempsTrajet, totheuresDisabled, heureMinute, heure, minute);*/
+					    						    	
+						
+						
+				    /*}*/
+
+				    
+				},
+
+				onOpenEnd: function()
+			    {
+			    	// REMISE A ZERO DE LA CLASSE GREY-TEXT, ANNULE TOUTES LES HEURES GRISEES
+			    	$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+			    	$(".timepicker-dial.timepicker-hours .timepicker-tick").each(
+			            function()
+			            {	
+			            	$(this).removeClass('grey-text');  
+			            }
+			        );
+
+			    	// HEURES DE SOMMEIL
+			    	$(".timepicker-dial.timepicker-hours .timepicker-tick").each(
+			            function()
+			            {
+			                if($.inArray(parseInt($(this).text()),disabledHours)!==-1)
+			                	$(this).addClass('grey-text');
+			                return;
+			            }
+			        );
+					
+					// BOUTON OK DISPO SI CLICK SUR HEURES PAS SOMMEIL
+					$(".timepicker-dial.timepicker-hours .timepicker-tick").click(function(){
+						if($.inArray(parseInt($(this).text()),disabledHours)!==-1){
+							$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+						}else{
+							$(".timepicker-close:contains('Ok')").removeAttr('disabled');
+						}
+					});
+
+					// Rendre indisponible toutes les heures des jours de repos (mercredi)
+				    /*if($('#date').val() == 4){
+
+				    }*/
+
+				    // RECUPERER DATE ET HEURE ACTUEL POUR RENDRE INDISPO HEURES PASSEES
+				    var dt = new Date();
+					var t = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+
+					var heureNow = dt.getHours();
+					var minuteNow = dt.getMinutes();
+					var secondeNow = dt.getSeconds();
+
+					var jourNow = ("0"+dt.getDate()).slice(-2);
+					var moisNow = ("0"+(dt.getMonth()+1)).slice(-2);
+					var anneeNow = dt.getFullYear();
+
+					if(jourNow+"/"+moisNow+"/"+anneeNow == $('#date_prise_en_charge').val()){console.log("aujourdhui")
+						$(".timepicker-dial.timepicker-hours .timepicker-tick").each(
+							function(){
+								if(parseInt($(this).text()) < heureNow){
+									$(this).addClass('grey-text');
+								}							
+							}
+						);
+					}
+
+					
+
+					// Bloquer le timepicker jusqua que adresse depart soit renseignées pour estimer le temps de retour dun trajet entre adresse de depart et adresse darrivee de la derniere reservation
+
+					/*if(derniereReservation.length > 0){
+						var service = new google.maps.DistanceMatrixService();
+						service.getDistanceMatrix(
+						  {
+						    origins: [derniereReservation.adresseArrivee],
+						    destinations: [$('#reservation_adresse_depart').val()],
+						    travelMode: 'DRIVING'
+						  }, callback);
+
+						function callback(response, status) {
+							
+							console.log("trajet retour derniere resa a depart: " + response.rows[0].elements[0].duration.text);
+							console.log("trajet retour derniere resa a depart: " + response.rows[0].elements[0].duration.value);					  
+
+					  		//Griser horaire selon le temps de trajet de retour
+
+						}
+					}*/
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+			        /*$(".timepicker-dial.timepicker-minutes .timepicker-tick").each(
+			            function()
+			            {
+			                if($.inArray(parseInt($(this).text()),disabledMinutes)!==-1)
+			                	$(this).addClass('grey-text');
+			                return;
+			            }
+			        );
+					
+					$(".timepicker-dial.timepicker-minutes .timepicker-tick").click(function(){
+						if($.inArray(parseInt($(this).text()),disabledMinutes)!==-1){
+							$(".timepicker-close:contains('Ok')").attr('disabled', 'true');
+
+							
+				    		instance.showView('minutes');
+						}else{
+							$(".timepicker-close:contains('Ok')").removeAttr('disabled');
+						}
+					});*/
+
+			        return;
+			    }
+			});
+
+			
+			
+				$('.datepicker').datepicker({
+					i18n: {
+			            cancel: 'Annuler',
+			            clear: 'Effacer',
+			            done: 'Ok',
+
+			            months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre"],
+		                monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Aou", "Sep", "Oct", "Nov", "Déc"],
+		                weekdays: ["Dimanche","Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+		                weekdaysShort: ["Dim","Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+		                weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"]
+		        	},
+		        	format: 'dd/mm/yyyy',
+
+		        	minDate: new Date(),
+		        	showClearBtn: true
+
+		        	/*disableDayFn: function(date) {
+					    let disableListDate = [new Date('2019,10,18').toDateString(),new Date('2019,10,20').toDateString()];
+
+		                if(disableListDate.includes(date.toDateString())) {
+		                    return true
+		                }else{
+		                    return false
+		                }
+					}*/
+				});
+			
+			
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			/*$('.timepicker').timepicker({
+				default: 'now', // Set default time: 'now', '1:30AM', '16:30'
+			    fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+			    twelvehour: false, // Use AM/PM or 24-hour format
+			    donetext: 'OK', // text for done-button
+			    cleartext: 'Effacer', // text for clear-button
+			    canceltext: 'Annuler', // Text for cancel-button
+			    autoclose: false, // automatic close timepicker
+			    ampmclickable: true, // make AM PM clickable
+			    aftershow: function(){} //Function for after opening timepicker
+			});*/
+
+			/*$('.tabs').tabs();*/
+
+			/*$("#reservation_adresse_depart").keydown(function(){
+				if($("#reservation_adresse_depart").val().length > 3){
+					$.ajax({
+			            url: "https://api-adresse.data.gouv.fr/search/?q="+$("input[name='reservation[adresse_depart]']").val(),
+			            dataType: "json",
+			            success: function (data) {
+			            	options = {}
+			                $.map(data.features, function (item) {
+ 	
+			                	var numero = item.properties.housenumber;
+			                	var adresse = item.properties.street;
+			                	var ville = item.properties.city;
+			                	var cp = item.properties.postcode;
+			                	var context = item.properties.context.split(',');
+			                	var region = context[1];
+
+			                	var proposition = numero +" "+ adresse +" "+ cp +" "+ ville + " (" + region + " )";
+			                	options[proposition] = null;
+
+			                });
+							console.log(options);
+							$("#reservation_adresse_depart").autocomplete({
+							    data: options,
+							    onAutocomplete: function(val) {
+							      // Callback function when value is autcompleted.
+							      $("#reservation_adresse_depart").val(val)
+							      
+							      //Here you then can do whatever you want, val tells you what got clicked so you can push to another page etc...
+							    }
+							});
+			                
+			                M.Autocomplete.init(document.querySelector('#reservation_adresse_depart')).updateData(options)
+			                var elem = M.Autocomplete.getInstance(document.querySelector('#reservation_adresse_depart'));
+			                elem.open();
+			            }
+			        });
+				}
+		});*/
+			/*const options = {
+				fuse_options : {
+				  shouldSort: true,
+				  threshold: 0.4,
+				  maxPatternLength: 32,
+				  keys: [{
+				      name: "IATA",
+				      weight: 0.6
+				    },
+				    {
+				      name: "name",
+				      weight: 0.4
+				    },
+				    {
+				      name: "city",
+				      weight: 0.2
+				    }
+				  ]
+				}
+			};*/
+
+			/*var options = {
+        fuse_options : {
+          shouldSort: true,
+          threshold: 0.4,
+          maxPatternLength: 32,
+          keys: [{
+              name: "IATA",
+              weight: 0.6
+            },
+            {
+              name: "name",
+              weight: 0.4
+            },
+            {
+              name: "city",
+              weight: 0.2
+            }
+          ]
+        },
+        formatting: `<div class="$(unique-result)"
+                     single-result" 
+                     data-index="$(i)"> 
+                   $(IATA) </div>`
+    };*/
+			/*return ([document.getElementById(realId).getAttribute("data-lat"), document.getElementById(realId).getAttribute(
+            "data-lon")])*/
+
+			/*AirportInput("ville_depart_aeroport", options);
+			AirportInput("ville_arrivee_aeroport");
+
+			function setInputLatDepart(){
+				var lat = document.getElementById("ville_depart_aeroport").getAttribute("data-lat");
+				$("#latitude_depart_aeroport").val(lat);
+			}
+
+			function setInputLngDepart(){
+				var lng = document.getElementById("ville_depart_aeroport").getAttribute("data-lon");
+				$("#longitude_depart_aeroport").val(lng);
+			}
+
+			function setInputLatArrivee(){
+				var lat = document.getElementById("ville_arrivee_aeroport").getAttribute("data-lat");
+				$("#latitude_arrivee_aeroport").val(lat);
+			}
+
+			function setInputLngArrivee(){
+				var lng = document.getElementById("ville_arrivee_aeroport").getAttribute("data-lon");
+				$("#longitude_arrivee_aeroport").val(lng);
+			}
+
+			function checkInputData() {
+	        	return ([document.getElementById("ville_depart_aeroport").getAttribute("data-lat"), document.getElementById("ville_depart_aeroport").getAttribute(
+	            "data-lon")])
+		    }
+
+		    $('#ville_depart_aeroport').change(function(){
+		    	setTimeout(function () {
+		    		console.log(checkInputData());
+		    		setInputLatDepart();
+		    		setInputLngDepart();
+				}, 500)
+		    });
+
+		    $('#ville_depart_aeroport').focus(function(){
+		    	$('#label_ville_depart_aeroport').addClass('active');
+		    });
+
+		    $('#ville_depart_aeroport').focusout(function(){
+		    	if($('#ville_depart_aeroport').val() == ""){
+		    		$('#label_ville_depart_aeroport').removeClass('active');
+		    	}
+		    });
+
+		    $('#ville_arrivee_aeroport').change(function(){
+		    	setTimeout(function () {
+		    		console.log(checkInputData());
+		    		setInputLatArrivee();
+		    		setInputLngArrivee();
+				}, 500)
+		    });
+
+		    $('#ville_arrivee_aeroport').focus(function(){
+		    	$('#label_ville_arrivee_aeroport').addClass('active');
+		    });
+
+		    $('#ville_arrivee_aeroport').focusout(function(){
+		    	if($('#ville_arrivee_aeroport').val() == ""){
+		    		$('#label_ville_arrivee_aeroport').removeClass('active');
+		    	}
+		    });*/
+
+			/*$('#adresse_ville_aeroport').autocomplete({
+				data:
+					{ "properties": { "Coordonnées géographiques des principaux aéroports français accueillant du trafic commercial ": "AGEN-LA-GARENNE", "Field2": "LFBA", "Field3": "AGF", "Field4": "44° 10' 12", "Field5": "0° 35' 23", "Field6": "47", "Field7": "Lot-et-Garonne", "Field8": "Aquitaine", "Field9": "Agen", "Field10": "LE PASSAGE 47520" }
+
+						
+					}
+
+			});*/
+
+			/*$('#adresse_ville_aeroport').autocomplete({
+				source: function (request, response) {
+			        $.ajax({
+			            url: "https://api-adresse.data.gouv.fr/search/?q="+$("input[name='reservation[adresse_depart]']").val(),
+			            data: { q: request.term },
+			            dataType: "json",
+			            success: function (data) {
+			            	
+			                response($.map(data.features, function (item) {
+			                    // Ici on est obligé d'ajouter les CP dans un array pour ne pas avoir plusieurs fois le même
+			                    	var numero = item.properties.housenumber;
+				                	var adresse = item.properties.street;
+				                	var ville = item.properties.city;
+				                	var cp = item.properties.postcode;
+				                	var context = item.properties.context.split(',');
+				                	var region = context[1];
+			                        
+				                	console.log(data.features);
+
+			                        return { 
+			                        		label: numero +" "+ adresse +" "+ cp +" "+ ville + " (" + region + " )",
+			                        		adresse: numero + " " + adresse,
+			                        		cp: cp,
+			                        		ville: ville,
+			                                value: numero + " " + adresse
+			                        };
+			                    
+			                }));
+			            }
+			        });
+				}
+			});*/
+
+			/*$("#reservation_adresse_depart").autocomplete({
+			    source: function (request, response) {
+			        $.ajax({
+			            url: "https://api-adresse.data.gouv.fr/search/?q="+$("input[name='reservation[adresse_depart]']").val(),
+			            data: { q: request.term },
+			            dataType: "json",
+			            success: function (data) {
+			            	
+			                response($.map(data.features, function (item) {
+			                    				                    			                	
+				                	var ville = item.properties.city;
+				                	var cp = item.properties.postcode;
+				                	var context = item.properties.context.split(',');
+				                	var region = item.properties.context[1];
+				                	
+				                	if(typeof(adresse) == "undefined"){
+				                		var label = item.properties.label;
+				                		var adresse = item.properties.label;
+				                		var adresseComplete = adresse;
+				                		var value = adresse;
+				                		var verif = "ko";
+				                		console.log(data.features);
+			                    	}else{
+			                    		var label = numero +" "+ adresse +" "+ cp +" "+ ville + " (" + region + " )";
+			                    		var adresse = item.properties.street;
+			                    		var numero = item.properties.housenumber;		
+			                    		var adresseComplete = numero + " " + adresse;
+			                    		var value = numero + " " + adresse;
+			                    		var verif = "ok";
+			                    		console.log(data.features);			                    		
+			                    	}	
+
+			                    	return { 
+		                        		label: label,
+		                        		adresse: adresseComplete,
+		                        		cp: cp,
+		                        		ville: ville,
+		                        		verif: verif,
+		                                value: value
+		                        	};		                          
+			                }));
+			            }
+			        });
+			    },
+			    
+			    select: function(event, ui) {
+			        $('#reservation_cp_depart').val(ui.item.cp);
+			        $('#label_cp_depart').addClass("active");
+
+			        $('#reservation_ville_depart').val(ui.item.ville);
+			    	$('#label_ville_depart').addClass("active");
+
+			    	$('#reservation_adresse_depart').val(ui.item.adresse);
+
+			    	getCoordonnees($('#reservation_adresse_depart').val(), $('#reservation_cp_depart').val(), $('#reservation_ville_depart').val(), "depart", ui.item.verif);
+			    }
+			});*/
+
+			/*$("#reservation_adresse_arrivee").autocomplete({
+			    source: function (request, response) {
+			        $.ajax({
+			            url: "https://api-adresse.data.gouv.fr/search/?q="+$("input[name='adresse_arrivee']").val(),
+			            data: { q: request.term },
+			            dataType: "json",
+			            success: function (data) {
+
+			                response($.map(data.features, function (item) {
+			                    	var ville = item.properties.city;
+				                	var cp = item.properties.postcode;
+				                	var context = item.properties.context.split(',');
+				                	var region = item.properties.context[1];
+				                	
+				                	if(typeof(adresse) == "undefined"){
+				                		var label = item.properties.label;
+				                		var adresse = item.properties.label;
+				                		var adresseComplete = adresse;
+				                		var value = adresse;
+				                		var verif = "ko";
+				                		console.log(data.features);
+			                    	}else{
+			                    		var label = numero +" "+ adresse +" "+ cp +" "+ ville + " (" + region + " )";
+			                    		var adresse = item.properties.street;
+			                    		var numero = item.properties.housenumber;		
+			                    		var adresseComplete = numero + " " + adresse;
+			                    		var value = numero + " " + adresse;
+			                    		var verif = "ok";
+			                    		console.log(data.features);			                    		
+			                    	}	
+
+			                    	return { 
+		                        		label: label,
+		                        		adresse: adresseComplete,
+		                        		cp: cp,
+		                        		ville: ville,
+		                        		verif: verif,
+		                                value: value
+		                        	};					                    
+			                }));
+			            }
+			        });
+			    },
+			    
+			    select: function(event, ui) {
+			        $('#reservation_cp_arrivee').val(ui.item.cp);
+			        $('#label_cp_arrivee').addClass("active");
+
+			        $('#reservation_ville_arrivee').val(ui.item.ville);
+			        $('#label_ville_arrivee').addClass("active");
+
+			        $('#reservation_adresse_arrivee').val(ui.item.adresse);
+
+			        getCoordonnees($('#reservation_adresse_arrivee').val(), $('#reservation_cp_arrivee').val(), $('#reservation_ville_arrivee').val(), "arrivee", ui.item.verif);
+			    }
+			});*/
+
+							/*$("#reservation_adresse_depart").autocomplete({
+
+							    data: options,
+							    onAutocomplete: function(val) {
+							      // Callback function when value is autcompleted.
+							      alert(val)
+							      
+							      //Here you then can do whatever you want, val tells you what got clicked so you can push to another page etc...
+							    }
+							});*/
+			
+
+			/*$('#reservation_adresse_depart').autocomplete({
+		      source: function (request, response) {
+		      	 $.ajax({
+		            url: "https://api-adresse.data.gouv.fr/search/?q="+$("input[name='reservation[adresse_depart]']").val(),
+		            data: { q: request.term },
+		            dataType: "json",
+		            success: function (data) {
+		            	var options = {}
+		                response($.map(data.features, function (item) {
+		                			                	
+		                	var adresse = item.properties.street;
+		                	
+		                	options[adresse] = null;
+
+		            	}));
+console.log(options);
+		                M.Autocomplete.init(document.querySelector('#reservation_adresse_depart')).updateData(options)
+		                var elem = M.Autocomplete.getInstance(document.querySelector('#reservation_adresse_depart'));
+		                elem.open()
+
+		            }
+		        });
+		      }
+    });*/
+
+
+
+    	/*$('#reserver').click(function(){
+    		if($('#date').val().length == 10){
+    			if($('#nb_passagers').val() != ""){
+    				if($('#reservation_adresse_depart').val().length > 3){
+    					if($('#reservation_cp_depart').val().length == 5 ){
+    						if($('#reservation_ville_depart').val() != ""){
+    							if($('#reservation_adresse_arrivee').val().length > 3){
+    								if($('#reservation_cp_arrivee').val().length == 5){
+    									if($('#reservation_ville_arrivee').val() != ""){
+    										getCoordonneesDepart();
+								    		getCoordonneesArrivee();
+								    		$('form').submit();
+    									}else{
+    										//ville d'arrivee obligatoire
+    										alert('ville arrivee obli');
+    									}
+    								}else{
+    									//code postale invalide
+    									alert('cp invalide');
+    								}
+    							}else{
+    								//adresse d'arrivee invalide
+    								alert('adress arrivee invalide');
+    							}
+    						}else{
+    							//ville de depart obligatoire
+    							alert('ville depart obli');
+    						}
+    					}else{
+    						//code postal invalide
+    						alert('cp invalide');
+    					}
+    				}else{
+    					// adresse de depart invalide
+    					alert('adress depart invalide');
+    				}
+    			}else{
+    				//Nombre de passagers obligatoire
+    				alert('nombre pass obli');
+    			}
+    		}else{
+    			//Date invalide
+    			alert('date invalide '+$('#date').val().length);
+    		}
+		});*/
+	    		
+
+	    		
+		/*$('#reservation_adresse_depart').blur(function(){
+			if($('#reservation_cp_depart').val().length == 5 && $('#reservation_ville_depart').val() != ""){
+				getCoordonnees($('#reservation_adresse_depart').val(), $('#reservation_cp_depart').val(), $('#reservation_ville_depart').val(), "depart");	
+			}
+		});*/
+
+    	/*$('#reservation_adresse_arrivee').blur(function(){
+			if($('#reservation_cp_arrivee').val().length == 5 && $('#reservation_ville_arrivee').val() != ""){
+				getCoordonnees($('#reservation_adresse_arrivee').val(), $('#reservation_cp_arrivee').val(), $('#reservation_ville_arrivee').val(), "arrivee");	
+			}
+		});*/
+
+		/*$('.geolocDepart, .geolocArrivee').focus(function(){
+			$('#reserver').prop('disabled',true);
+		});
+
+
+    	$('.geolocDepart').blur(function(){
+			if($('#reservation_adresse_depart').val() != "" && $('#reservation_cp_depart').val().length == 5 && $('#reservation_ville_depart').val() != ""){
+				console.log('geoloc depart');
+				getCoordonnees($('#reservation_adresse_depart').val(), $('#reservation_cp_depart').val(), $('#reservation_ville_depart').val(), "depart", "ok");	
+			}
+		});
+
+		$('.geolocArrivee').blur(function(){
+			if($('#reservation_adresse_arrivee').val() != "" && $('#reservation_cp_arrivee').val().length == 5 && $('#reservation_ville_arrivee').val() != ""){
+				console.log('geoloc arrivee');
+				getCoordonnees($('#reservation_adresse_arrivee').val(), $('#reservation_cp_arrivee').val(), $('#reservation_ville_arrivee').val(), "arrivee", "ok");	
+			}
+		});*/
+
+	    
+		  /*function getCoordonnees($adresse, $cp, $ville, $direction, $verif) {
+
+			var apikey = '94eda2f31d2f465ca0f46e40f73326af';
+
+			var adresse_depart = $adresse; 
+			var cp_depart = $cp;
+			var ville_depart = $ville; 
+
+			if($verif == "ok"){
+				var adresse_depart_complete = adresse_depart + " " + cp_depart + " " + ville_depart;
+			}else{
+				var adresse_depart_complete = adresse_depart;
+			}
+
+			console.log(cp_depart);
+			console.log(ville_depart);
+			console.log(adresse_depart_complete);
+
+			var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+			var request_url_depart = api_url
+			    + '?'
+			    + 'key=' + apikey
+			    + '&q=' + encodeURIComponent(adresse_depart_complete)
+			    + '&pretty=1'
+			    + '&no_annotations=1';
+
+			
+			var request = new XMLHttpRequest();
+			request.open('GET', request_url_depart, true);
+
+			request.onload = function() {
+			  
+			    if (request.status == 200){ 
+			      
+			      var data = JSON.parse(request.responseText);
+			      
+			      console.log(data.results[0].geometry.lat);
+			      console.log(data.results[0].geometry.lng);
+			      
+			      if($direction == "depart"){
+			      	$('#latitude_depart').val(data.results[0].geometry.lat);
+			      	$('#longitude_depart').val(data.results[0].geometry.lng);
+
+			      	if(
+				      	$('#reservation_adresse_arrivee').val() != "" &&
+				      	$('#reservation_cp_arrivee').val().length == 5 &&
+				      	$('#reservation_ville_arrivee').val() != ""
+				    ){
+				      	$('#reserver').prop('disabled',false);
+				    }
+
+			      }else{
+			      	$('#latitude_arrivee').val(data.results[0].geometry.lat);
+			      	$('#longitude_arrivee').val(data.results[0].geometry.lng);
+
+			      	if(
+				      	$('#reservation_adresse_depart').val() != "" &&
+				      	$('#reservation_cp_depart').val().length == 5 &&
+				      	$('#reservation_ville_depart').val() != ""
+				    ){
+				      	$('#reserver').prop('disabled',false);
+				    }
+			      }
+
+			      
+
+			    } else if (request.status <= 500){ 
+			      
+			                           
+			      console.log("unable to geocode! Response code: " + request.status);
+			      var data = JSON.parse(request.responseText);
+			      console.log(data.status.message);
+			    } else {
+			      console.log("server error");
+			    }
+			};
+
+			request.onerror = function() {
+			    
+			    console.log("unable to connect to server");        
+			};
+
+			request.send();  
+
+		};*/
+
+		  	/*function getCoordonneesArrivee() {
+
+				var apikey = '94eda2f31d2f465ca0f46e40f73326af';
+
+				var adresse_arrivee = $('#reservation_adresse_arrivee').val();
+				var cp_arrivee = $('#reservation_cp_arrivee').val();
+				var ville_arrivee = $('#reservation_ville_arrivee').val();
+				var adresse_arrivee_complete = adresse_arrivee + " " + cp_arrivee + " " + ville_arrivee;
+
+			  	console.log(adresse_arrivee_complete);
+
+			  	var api_url = 'https://api.opencagedata.com/geocode/v1/json'
+
+			  	var request_url_arrivee = api_url
+			    + '?'
+			    + 'key=' + apikey
+			    + '&q=' + encodeURIComponent(adresse_arrivee_complete)
+			    + '&pretty=1'
+			    + '&no_annotations=1';
+
+			  	// see full list of required and optional parameters:
+			  	// https://opencagedata.com/api#forward
+
+			  	var request = new XMLHttpRequest();
+			  	request.open('GET', request_url_arrivee, true);
+
+			  	request.onload = function() {
+			    	// see full list of possible response codes:
+			    	// https://opencagedata.com/api#codes
+
+			    	if (request.status == 200){ 
+			      		// Success!
+			    		var data = JSON.parse(request.responseText);
+			      		alert(data.results[0].formatted);
+
+			      		console.log(data.results[0].geometry.lat);
+			      		console.log(data.results[0].geometry.lng);
+			      
+			      		$('#latitude_arrivee').val(data.results[0].geometry.lat);
+			      		$('#longitude_arrivee').val(data.results[0].geometry.lng);
+
+			      		if(
+					      	$('#reservation_adresse_depart').val() != "" &&
+					      	$('#reservation_cp_depart').val().length == 5 &&
+					      	$('#reservation_ville_depart').val() != ""
+					      ){
+					      	$('#reserver').prop('disabled',false);
+					      }
+
+			    	} else if (request.status <= 500){ 
+				      	// We reached our target server, but it returned an error
+				                           
+				      	console.log("unable to geocode! Response code: " + request.status);
+				      	var data = JSON.parse(request.responseText);
+				      	console.log(data.status.message);
+			    	} else {
+			      		console.log("server error");
+			    	}
+				};
+
+			  	request.onerror = function() {
+				    // There was a connection error of some sort
+				    console.log("unable to connect to server");        
+			  	};
+
+			  	request.send();  // make the request
+
+			};*/
+
+            /*var dataPlace;
+            var input_adresse_depart = document.getElementById('adresse_depart');
+            var input_adresse_arrivee = document.getElementById('adresse_depart');
+            var autocomplete_adresse_depart = new google.maps.places.SearchBox(input_adresse_depart);
+            var autocomplete_adresse_arrivee = new google.maps.places.SearchBox(input_adresse_arrivee);
+
+            autocomplete_adresse_depart.addListener('places_changed', function() {
+                var places = autocomplete_adresse_depart.getPlaces();
+                if (places.length == 0) {
+                    return;
+                }
+                places.forEach(function(place){
+                    dataPlace = place.address_components;
+                });
+            });
+
+            autocomplete_adresse_arrivee.addListener('places_changed', function() {
+                var places = autocomplete_adresse_arrivee.getPlaces();
+                if (places.length == 0) {
+                    return;
+                }
+                places.forEach(function(place){
+                    dataPlace = place.address_components;
+                });
+            });
+
+            var geocoder = new google.maps.Geocoder();
+
+            function getCoordonnees() {
+                var adresse_depart = document.getElementById('adresse_depart').value;
+                var adresse_arrivee = document.getElementById('adresse_arrivee').value;
+                var cp = document.getElementById('cp').value;
+
+                var adresse_departComplete = adresse_depart + " " + cp;
+                var adresse_arriveeComplete = adresse_arrivee + " " + cp;
+
+                console.log(adresse_departComplete);
+                geocoder.geocode
+                (
+                    {	
+                    	'address': adresse_departComplete
+                    },
+                    geocode_callback
+                );
+
+                console.log(adresse_arriveeComplete);
+                geocoder.geocode
+                (
+                    {	
+                    	'address': adresse_arriveeComplete
+                    },
+                    geocode_callback
+                );
+            }
+
+            function geocode_callback(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var lat = results[0].geometry.location.lat();
+                    var lng = results[0].geometry.location.lng();                    
+
+                    $('#latitude_depart').val(lat);
+                    $('#longitude_depart').val(lng);
+
+                    $('form').submit();
+                }else{
+                    alert("Erreur d'adresse");
+                }
+            }
+
+			$('#reserver').click(function(){
+                getCoordonnees();
+			});*/
+		});
+	</script>
+{% endblock %}

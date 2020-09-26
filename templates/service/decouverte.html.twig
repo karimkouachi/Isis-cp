@@ -1,0 +1,205 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>PACK AVENTURE</b></h3>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  ">TENTEZ L'AVENTURE</h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/decouverte/montgolfiere.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					ISIS CHAUFFEUR PRIVÉ PROPOSE DES FORMULES TOUT COMPRIS (ACTIVITÉS + TRANSPORT). NE VOUS SOUCIEZ PLUS DES FILES D’ATTENTE, OU D’UNE RÉSERVATION TARDIVE, NOS CHAUFFEURS SE CHARGENT DE TOUT. ILS VIENNENT VOUS CHERCHER, VOUS FONT ENTRER SUR LE SITE CHOISI, ET VOUS ATTENDENT POUR LE RETOUR. VOUS GAGNEZ AINSI UN TEMPS PRÉCIEUX.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container hide-on-small-only">
+				<div class="col l12 s12 divider"></div>
+
+				<ul id="tabs-swipe-demo" class="tabs" style="height:140px;">
+					<li id="li1" class="tab col s3 l4">
+				    	<a href="#test-swipe-1" style="height:140px;">
+				    		<h5><b>SIMPLICITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">NOUS NOUS CHARGEONS<br>DE TOUT</p>
+				    	</a>
+				    </li>
+					<li id="li2" class="tab col s3 l4">
+						<a href="#test-swipe-2" style="height:140px;">
+							<h5><b>DISPONIBILITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">À VOTRE SERVICE</p>
+						</a>
+					</li>
+				    <li id="li3" class="tab col s3 l4">
+				    	<a href="#test-swipe-3" style="height:140px;">
+				    		<h5><b>CONFORT</b></h5>
+							<p style="font-size:1em; line-height: normal;">DÉTENTE ET RELAXATION</p>
+				    	</a>
+				    </li>			    
+				</ul>
+
+				<div style="margin-bottom:25px;" class="col l12 s12 divider"></div>
+
+				<div id="test-swipe-1" class="col s12 swipe">
+					<h4 class=" center  "><b>NOUS NOUS CHARGEONS DE TOUT</b></h4>
+					<p class=" center  ">
+						NE VOUS FATIGUEZ PLUS NOUS NOUS CHARGEONS DES RÉSERVATIONS DU PACK AVENTURE CHOISI, NOUS VENONS VOUS CHERCHER ET ATTENDONS QUE VOUS AYEZ TERMINÉ VOTRE AVENTURE, VOUS POUVEZ AINSI PROFITER PLEINEMENT DE CE MOMENT.
+					</p>
+				</div>
+
+				<div id="test-swipe-2" class="col s12 swipe">
+					<h4 class=" center  "><b>À VOTRE SERVICE</b></h4>
+					<p class=" center  ">
+						NOS CHAUFFEURS PROFESSIONNELS SONT LÀ POUR RÉPONDRE À VOS BESOINS. ILS VOUS ACCOMPAGNENT ET VOUS FONT ENTRER SUR LE SITE D'AVENTURE, VOUS FAISANT AINSI GAGNER DU TEMPS.
+					</p>
+				</div>
+
+				<div id="test-swipe-3" class="col s12 swipe">
+					<h4 class=" center  "><b>DÉTENTE ET RELAXATION</b></h4>
+					<p class=" center  ">
+						VÉHICULES FINITION HAUT-DE-GAMME, INTÉRIEUR CUIR, CLIMATISATION MULTIZONE, INTERNET À BORD, TABLETTE, CAFÉ, PRESSE DU JOUR… INSTALLEZ-VOUS ET PROFITEZ PLEINEMENT DE NOS SERVICES PENDANT LE VOYAGE.
+					</p>
+				</div>
+			</div>
+
+			<div class="container hide-on-med-and-up">
+				<div style="margin-bottom:25px" class="col l12 s12 divider"></div>
+				
+				<a id="tab1" class="col l4 s12 center tabsTransfert" href="#service">
+					<h5><b>SIMPLICITÉ</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">NOUS NOUS CHARGEONS<br>DE TOUT</p>					
+				</a>
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab2" class="col l4 s12 center tabsTransfert" href="#ponctualite">
+					<h5><b>DISPONIBILITÉ</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">À VOTRE SERVICE</p>
+				</a>	
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab3" class="col l4 s12 center tabsTransfert" href="#vip">					
+					<h5><b>CONFORT</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">DÉTENTE ET RELAXATION</p>					
+				</a>
+
+				{# <ul id="tabs-swipe-demo" style="height:100px;" class="tabs">
+					<li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="active black-text" href="#test-swipe-3"><p><b>CONFORT</b></p>DETENTE ET RELAXATION</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-2"><p><b>DISPONIBILITE</b></p>DE JOUR COMME DE NUIT,<br> A TOUT MOMENT</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-1"><p><b>DISCRETION ET SECURITE</b></p>ACCOMPAGNEMENT<br> POUR LES FEMMES</a></li>
+				</ul> #}
+				
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<div id="service" class="container col s12 swipe" style="display:block;">
+					<h4 class=" center  "><b>NOUS NOUS CHARGEONS DE TOUT</b></h4>
+					<p class=" center  ">
+						NE VOUS FATIGUEZ PLUS NOUS NOUS CHARGEONS DES RÉSERVATIONS DU PACK AVENTURE CHOISI, NOUS VENONS VOUS CHERCHER ET ATTENDONS QUE VOUS AYEZ TERMINÉ VOTRE AVENTURE, VOUS POUVEZ AINSI PROFITER PLEINEMENT DE CE MOMENT.
+					</p>
+				</div>
+
+				<div id="ponctualite" class="container col s12 swipe" style="display:none;">
+					<h4 class=" center  "><b>À VOTRE SERVICE</b></h4>
+					<p class=" center  ">
+						NOS CHAUFFEURS PROFESSIONNELS SONT LÀ POUR RÉPONDRE À VOS BESOINS. ILS VOUS ACCOMPAGNENT ET VOUS FONT ENTRER SUR LE SITE D'AVENTURE, VOUS FAISANT AINSI GAGNER DU TEMPS.
+					</p>
+				</div>
+
+				<div id="vip" class="container col s12 swipe" style="display:none;">
+					<h4 class=" center  "><b>DÉTENTE ET RELAXATION</b></h4>
+					<p class=" center  ">
+						VÉHICULES FINITION HAUT-DE-GAMME, INTÉRIEUR CUIR, CLIMATISATION MULTIZONE, INTERNET À BORD, TABLETTE, CAFÉ, PRESSE DU JOUR… INSTALLEZ-VOUS ET PROFITEZ PLEINEMENT DE NOS SERVICES PENDANT LE VOYAGE.
+					</p>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row">
+
+			{% for aventure in aventures %}
+
+				<div class="grid col l4">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/decouverte/'~aventure.image)}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>{{aventure.nom}}</h5>
+		                    <p></p>
+		                    <a href="{{path('missions_show', {idAventure : aventure.id} )}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+			{% endfor %}
+
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('#li1').click(function(e){
+				$('#test-swipe-1').hide().fadeIn(1000);
+			});
+			$('#li2').click(function(e){
+				$('#test-swipe-2').hide().fadeIn(1000);
+			});
+			$('#li3').click(function(e){
+				$('#test-swipe-3').hide().fadeIn(1000);
+			});
+
+			$('#tab1').click(function(){
+				$('#ponctualite').css('display', 'none');
+				$('#vip').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab1').addClass('active');
+				$('#tab1 p').addClass('active');
+				$('#service').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab2').click(function(){
+				$('#service').css('display', 'none');
+				$('#vip').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab2').addClass('active');
+				$('#tab2 p').addClass('active');
+				$('#ponctualite').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab3').click(function(){
+				$('#service').css('display', 'none');
+				$('#ponctualite').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab3').addClass('active');
+				$('#tab3 p').addClass('active');
+				$('#vip').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('.tabs').tabs({
+				/*swipeable : true,
+      responsiveThreshold : Infinity*/
+            });
+		});
+	</script>
+{% endblock %}

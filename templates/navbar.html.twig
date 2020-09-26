@@ -1,0 +1,279 @@
+
+        {# petit #}
+        <ul id="slide-out" class="sidenav" style="background-color:#00002B">
+          <li class="no-padding">
+            <ul class="collapsible collapsible-accordion">
+              
+              <li class="col s12">
+                <a class="collapsible-header white-text">ISIS<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('vtc_apropos')}}" class="white-text">À propos</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('vtc_flotte')}}" class="white-text">La flotte</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="col s12">
+                <a class="collapsible-header white-text">SERVICES<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('service_transfert')}}" class="white-text">Transfert</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('service_transport')}}" class="white-text">Transport sur-mesure</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('service_excursion')}}" class="white-text">Excursion</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('service_mariage')}}" class="white-text">Mariage</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('service_evenement')}}" class="white-text">Évènement</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('service_decouverte')}}" class="white-text">Aventure</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="col s12">
+                <a class="collapsible-header white-text">TARIFS<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('tarif_metropole')}}" class="white-text">Transfert Nantes Métropole</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('tarif_departemental')}}" class="white-text">Transfert Nantes Département</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('tarif_regional')}}" class="white-text">Transfert Nantes Région</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('tarif_sud_loire')}}" class="white-text">Transfert secteur Montaigu</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('tarif_sur_mesure')}}" class="white-text">Transport sur-mesure</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="col s12">
+                <a class="collapsible-header white-text">ACTUALITÉS<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('evenement_all')}}" class="white-text">Évènements à venir</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="col s12">
+                <a class="collapsible-header white-text">RÉSERVATIONS<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    {% if app.user %}
+                      <li style="background-color:#00002B"><a class="white-text modal-trigger" href="#modalResaTransfert">Transfert immédiat</a></li>
+                    {% else %}
+                      <li style="background-color:#00002B"><a class="white-text" href="{{path('security_login')}}">Transfert immédiat</a></li>
+                    {% endif %}
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a class="white-text" href="{{path('reservation_transfert')}}">Transfert programmé</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('reservation_transport')}}" class="white-text">Transport sur-mesure</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+
+              {% if app.user %}
+                <li class="col s12">
+                <a class="collapsible-header white-text">{{ app.user.prenom | upper}}<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('vtc_profile')}}" class="white-text">Mon profil</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('security_logout')}}" class="white-text">Déconnexion</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+              {% else %}
+                <li class="col s12">
+                <a class="collapsible-header white-text">ACCÈS CLIENT<i class="material-icons white-text">arrow_drop_down</i></a>
+                <div class="collapsible-body">
+                  <ul>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('security_login')}}" class="white-text">Connexion</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                    <li style="background-color:#00002B"><a href="{{path('security_registration')}}" class="white-text">Inscription</a></li>
+                    <li class="divider white" style="margin:0;"></li>
+                  </ul>
+                </div>
+              </li>
+              {% endif %}
+
+            </ul>
+          </li>
+        </ul>
+
+
+        <div class="col l10 offset-l1 s12 m10 offset-m1 hide-on-med-and-down" style="padding:0;">
+
+        <!-- Dropdown Structure -->
+        <ul id="isis" class="dropdown-content">
+          <li><a href="{{path('vtc_apropos')}}">À propos</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('vtc_flotte')}}">La flotte</a></li>
+        </ul>
+        <!-- Dropdown Structure -->
+        <ul id="services" class="dropdown-content">
+          <li><a href="{{path('service_transfert')}}">Transfert</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('service_transport')}}">Transport sur-mesure</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('service_excursion')}}">Excursion</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('service_mariage')}}">Mariage</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('service_evenement')}}">Évènement</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('service_decouverte')}}">Aventure</a></li>
+        </ul>
+        <!-- Dropdown Structure -->
+        <ul id="tarifs" class="dropdown-content">
+          <li><a href="{{path('tarif_metropole')}}">Transfert Nantes Métropole</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('tarif_departemental')}}">Transfert Nantes Département</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('tarif_regional')}}">Transfert Nantes Région</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('tarif_sud_loire')}}">Transfert secteur Montaigu</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('tarif_sur_mesure')}}">Transport sur-mesure</a></li>
+        </ul>
+
+        <!-- Dropdown Structure -->
+        <ul id="actualites" class="dropdown-content">
+          <li><a href="{{path('evenement_all')}}">Évènements à venir</a></li>
+        </ul>
+
+        <!-- Dropdown Structure -->
+        <ul id="reservations" class="dropdown-content">
+          {% if app.user %}
+            <li><a class="modal-trigger" href="#modalResaTransfert">Transfert immédiat</a></li>
+          {% else %}
+            <li><a href="{{path('security_login')}}">Transfert immédiat</a></li>
+          {% endif %}
+          <li class="divider"></li>
+          <li><a href="{{path('reservation_transfert')}}">Transfert programmé</a></li>
+          <li class="divider"></li>
+          <li><a href="{{path('reservation_transport')}}">Transport sur-mesure</a></li>
+        </ul>
+
+        {% if app.user %}
+          <!-- Dropdown Structure -->
+          <ul id="espace_perso" class="dropdown-content">
+            <li><a href="{{path('vtc_profile')}}">Mon profil</a></li>
+            <li class="divider"></li>
+            <li><a href="{{path('security_logout')}}">Déconnexion</a></li>
+          </ul>
+        {% else %}
+          <!-- Dropdown Structure -->
+          <ul id="espace_perso" class="dropdown-content">
+            <li><a href="{{path('security_login')}}">Connexion</a></li>
+            <li class="divider"></li>
+            <li><a href="{{path('security_registration')}}">Inscription</a></li>
+          </ul>
+        {% endif %}
+        
+
+        <nav class="z-depth-0" style="background-color:#00002B">
+          <div class="nav-wrapper">
+            <ul class="hide-on-med-and-down col l7 offset-l3" style="padding:0;">
+              <!-- Dropdown Trigger -->
+              <li style="width:120px;"><a style="font-size:1em;" class="dropdown-trigger white-text center" href="{{path('vtc_accueil')}}" data-target="isis">ISIS</a></li>
+              <!-- Dropdown Trigger -->
+              <li style="width:130px;"><a style="font-size:1em;" class="dropdown-trigger white-text center" href="{{path('service_services')}}" data-target="services">SERVICES</a></li>
+              <!-- Dropdown Trigger -->
+              <li style="width:150px;"><a style="font-size:1em;" class="dropdown-trigger white-text center" href="{{path('tarif_tarifs')}}" data-target="tarifs">TARIFS</a></li>
+              <!-- Dropdown Trigger -->
+              <li><a style="font-size:1em;" class="dropdown-trigger white-text" href="#" data-target="actualites">ACTUALITÉS</a></li>
+              <!-- Dropdown Trigger -->
+              <li><a style="font-size:1em;" class="dropdown-trigger white-text" href="#" data-target="reservations">RÉSERVATIONS</a></li>
+            </ul>
+            <ul class="hide-on-med-and-down col l2" style="padding:0;">
+              <!-- Dropdown Trigger -->
+              {% if app.user %}
+                <li style="min-width:140px;" class="right"><a style="font-size:1em;" class="dropdown-trigger white-text" href="#" data-target="espace_perso">{{ app.user.prenom | upper}}<i class="material-icons right">arrow_drop_down</i></a></li>
+              {% else %}
+                <li class="right"><a style="font-size:1em;" class="dropdown-trigger white-text" href="#" data-target="espace_perso">ACCÈS CLIENT<i class="material-icons right">arrow_drop_down</i></a></li>
+              {% endif %}
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+        {# <div class="col l10 offset-l1 s12 m10 offset-m1" style="padding:0;">
+          {% if app.user %}
+
+              <nav class="nav transparent z-depth-0">
+                <div class="nav-wrapper">
+                  <div class="row">
+                    <div class="col s12">
+                      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                      <ul class="hide-on-med-and-down right" style="text-align: center;">
+
+                        <li class="" style="display: inline; float: none;">
+                          <a style="padding:0; width:155px; display: inline-block;" class="dropdown-trigger  black-text" href="#!" data-target="espace_perso">{{ app.user.prenom | upper}}</a>
+                        </li>
+                        <ul id="espace_perso" class="dropdown-content">
+                          <li><a href="{{path('vtc_apropos')}}">Mon profil</a></li>
+                          <li><a href="{{path('security_logout')}}">Déconnexion</a></li>
+                        </ul>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+
+
+
+          {% else %}
+
+              <nav class="nav transparent z-depth-0 hide-on-med-and-down">
+                <div class="nav-wrapper">
+                  <div class="row">
+                    <div class="col s12">
+                      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                      <ul class="hide-on-med-and-down right" style="text-align: center;">
+
+                        <li class="" style="display: inline; float: none;">
+                          <a style="padding:0; width:155px; display: inline-block;" class="dropdown-trigger  black-text" href="#!" data-target="espace_perso">ACCES CLIENT</a>
+                        </li>
+                        <ul id="espace_perso" class="dropdown-content">
+                          <li><a href="{{path('security_login')}}">Connexion</a></li>
+                          <li><a href="{{path('security_registration')}}">Inscription</a></li>
+                        </ul>
+
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+
+              
+          {% endif %}
+        </div> #}
+
+      
+
+
+    <div class="row hide-on-large-only">
+      <div class="col s12 m12">
+        <a href="#" data-target="slide-out" style="color:#00002B;" class="sidenav-trigger"><i class="medium material-icons">menu</i></a>
+      </div>
+    </div>

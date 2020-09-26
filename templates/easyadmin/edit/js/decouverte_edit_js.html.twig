@@ -1,0 +1,95 @@
+<script type="text/javascript">
+  $(function() {
+
+    var inputAdresse = document.getElementById('decouverte_adresse');
+    var searchAdresse = new google.maps.places.SearchBox(inputAdresse);
+
+    inputGetPlaces(searchAdresse, inputAdresse);
+    
+    function inputGetPlaces(searchDestination, input){
+      searchDestination.addListener('places_changed', function() {
+        var placesDestination = searchDestination.getPlaces();
+        var adresse_depart = $('#decouverte_adresse').val();
+
+        console.log(placesDestination[0].geometry.location.lat());
+        console.log(placesDestination[0].geometry.location.lng());
+
+        console.log(placesDestination[0]);
+
+        $('#decouverte_latitude').val(placesDestination[0].geometry.location.lat());
+        $('#decouverte_longitude').val(placesDestination[0].geometry.location.lng());
+
+      });
+    }
+
+
+    $('.new-form').areYouSure({ 'message': '{{ 'form.are_you_sure'|trans({}, 'EasyAdminBundle')|e('js') }}' });
+    const entityForm = document.querySelector('form.new-form');
+    const formSubmitButton = entityForm.querySelector('button[type="submit"]');
+    const inputFieldsSelector = 'input,select,textarea';
+    // Adding visual feedback for invalid fields: any ".form-group" with invalid fields
+    // receives "has-error" class. The class is removed on click on the ".form-group"
+    // itself to support custom/complex fields.
+    formSubmitButton.addEventListener('click', function() {
+        entityForm.querySelectorAll(inputFieldsSelector).forEach(function (input) {
+            if (!input.validity.valid) {
+                const formGroup = input.closest('div.form-group');
+                formGroup.classList.add('has-error');
+                formGroup.addEventListener('click', function onFormGroupClick() {
+                    formGroup.classList.remove('has-error');
+                    formGroup.removeEventListener('click', onFormGroupClick);
+                });
+            }
+        });
+    });
+    // forms with tabs require some special treatment for errors. The problem
+    // is when the field with errors is included in a tab not currently visible.
+    // Browser shows this error "An invalid form control with name='...' is not focusable."
+    // So, the user clicks on Submit button, the form is not submitted and the error
+    // is not displayed. This JavaScript code ensures that each tab shows a badge with
+    // the number of errors in it.
+    formSubmitButton.addEventListener('click', function() {
+        const formTabPanes = entityForm.querySelectorAll('.tab-pane');
+        if (0 === formTabPanes.length) {
+            return;
+        }
+        let firstNavTabItemWithError = null;
+        formTabPanes.forEach(function (tabPane) {
+            let tabPaneNumErrors = 0;
+            tabPane.querySelectorAll(inputFieldsSelector).forEach(function (input) {
+                if (!input.validity.valid) {
+                    tabPaneNumErrors++;
+                }
+            });
+            let navTabItem = entityForm.querySelector('.nav-item a[href="#' + tabPane.id + '"]');
+            let existingErrorBadge = navTabItem.querySelector('span.badge.badge-danger');
+            if (null !== existingErrorBadge) {
+                navTabItem.removeChild(existingErrorBadge);
+            }
+            if (tabPaneNumErrors > 0) {
+                let newErrorBadge = document.createElement('span');
+                newErrorBadge.classList.add('badge', 'badge-danger');
+                newErrorBadge.title = 'form.tab.error_badge_title';
+                newErrorBadge.textContent = tabPaneNumErrors;
+                navTabItem.appendChild(newErrorBadge);
+                if (null === firstNavTabItemWithError) {
+                    firstNavTabItemWithError = navTabItem;
+                }
+            }
+        });
+        if (firstNavTabItemWithError) {
+            firstNavTabItemWithError.click();
+        }
+    });
+    // prevent multiple form submissions to avoid creating duplicated entities
+    entityForm.addEventListener('submit', function() {
+        // this timeout is needed to include the disabled button into the submitted form
+        setTimeout(function() {
+            const submitButtons = entityForm.querySelectorAll('[type="submit"]');
+            submitButtons.forEach(function(button) {
+                button.setAttribute('disabled', 'disabled');
+            });
+        }, 1);
+    }, false);
+});
+</script>

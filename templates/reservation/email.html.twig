@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Bonjour Djamel</h1>
+	<p>Tu a une demande de réservation de la part de {{infosMail.civilite}} {{infosMail.nom}} {{infosMail.prenom}}</p>
+	<p>Adresse du client: {{infosMail.adresse}}</p>
+	<p>Téléphone du client: {{infosMail.tel}}</p>
+
+	<h3>Infos prestation</h3>
+
+	{% if infosMail.prestation is defined %}
+		{% if infosMail.prestation == "evenement" %}
+			<p>Prestation: Évènement</p>
+			<p>Nom de l'évènement: {{infosMail.evenement}}</p>
+			<p>Genre: {{infosMail.genre}}</p>
+			<p>Prix: {{infosMail.prix}} €</p>
+
+			<p>
+				prix_base : {{infosMail.prix_base}}
+			</p>
+			<p>
+	        	distanceParRoute : {{infosMail.distanceParRoute}}
+	        </p>
+	        <p>
+	        	nb_minutes : {{infosMail.nb_minutes}}
+	        </p>
+	        <p>
+	        	majoration : {{infosMail.majoration}}	
+			</p>
+			
+
+		{% elseif infosMail.prestation == "aventure" %}
+			<p>Prestation: Aventure</p>
+			<p>Nom de l'aventure: {{infosMail.aventure}}</p>
+			<p>Nom de la mission: {{infosMail.mission}}</p>
+			<p>Prix: {{infosMail.prix}} €</p>
+		{% elseif infosMail.prestation == "excursion" %}
+			<p>Prestation: Excursion</p>
+			<p>Nom de l'excursion: {{infosMail.excursion}}</p>
+			<p>Prix: {{infosMail.prix}} €</p>
+		{% elseif infosMail.prestation == "transport" %}
+			<p>Prestation: Transport sur mesure</p>
+			<p>Forfait: {{infosMail.forfait}}</p>
+			<p>Prix: {{infosMail.prix}} €</p>
+		{% elseif infosMail.prestation == "transfert" %}
+			<p>Prestation: Transfert programmé</p>
+			<p>Prix: {{infosMail.prix}} €</p>
+
+			<p>
+				prix_base : {{infosMail.prix_base}}
+			</p>
+			<p>
+	        	distanceParRoute : {{infosMail.distanceParRoute}}
+	        </p>
+	        <p>
+	        	nb_minutes : {{infosMail.nb_minutes}}
+	        </p>
+	        <p>
+	        	majoration : {{infosMail.majoration}}
+			</p>
+			<p>
+	        	calcul : (4 + ({{infosMail.prix_base}} * {{infosMail.distanceParRoute}}) + (0.35 * {{infosMail.nb_minutes}})) * {{infosMail.majoration}};
+	        </p>
+		{% endif %}
+	{% endif %}
+
+	<h3>Infos prise en charge</h3>
+
+	<p>Date de prise en charge: {{infosMail.date_prise_en_charge}}</p>
+	<p>Heure de prise en charge: {{infosMail.heure_prise_en_charge}}</p>
+
+	<p>Adresse de départ: {{infosMail.adresse_depart}}</p>
+	{% if infosMail.prestation is defined %}
+		{% if infosMail.prestation == "evenement" %}
+			<p>Adresse d'arrivée: {{infosMail.adresse_arrivee}}</p>
+		{% elseif infosMail.prestation == "aventure" %}
+			<p>Adresse de retour: {{infosMail.adresse_arrivee}}</p>
+		{% elseif infosMail.prestation == "excursion" %}
+			<p>Adresse de retour: {{infosMail.adresse_arrivee}}</p>
+		{% elseif infosMail.prestation == "transport" %}
+			<p>Adresse d'arrivée: {{infosMail.adresse_arrivee}}</p>
+		{% elseif infosMail.prestation == "transfert" %}
+			<p>Adresse d'arrivée: {{infosMail.adresse_arrivee}}</p>
+		{% endif %}
+	{% endif %}	
+
+	<p>Nombre de passagers: {{infosMail.nb_passagers}}</p>
+	<p>Nombre de bagages: {{infosMail.nb_bagages}}</p>
+</body>
+</html>

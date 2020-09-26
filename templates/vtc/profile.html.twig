@@ -1,0 +1,140 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>MON PROFILE</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url('img/chauffeur.jpg') no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			{{ form_start(form) }}
+		        <div class="input-field col s12 m6 offset-m6 pull-m6 l4 offset-l8 pull-l8">
+		    		<i class="material-icons prefix">person</i>
+				    {{ form_widget(form.civilite) }}
+				    {{ form_label(form.civilite) }}
+				    {% if form.civilite.vars['errors']|length > 0 %}
+						{% for error in form.civilite.vars['errors'] %}
+            				<div style="margin-left:45px" class="invalid-feedback d-block">
+	            				<span class="d-block">
+						        	<span class="form-error-message red-text">{{ error.message }}</span>
+						    	</span>
+					    	</div>
+					    {% endfor %}	            
+				    {% endif %}
+		    	</div>
+		        <div class="input-field col s12 m6 l4">
+		    		<i class="material-icons prefix">person</i>
+		    		{{ form_label(form.nom) }}
+				    {{ form_errors(form.nom) }}
+				    {{ form_widget(form.nom) }}
+		    	</div>
+		    	<div class="input-field col s12 m6 l4 offset-l4 pull-l4">
+		    		<i class="material-icons prefix">person</i>
+		        	{{ form_label(form.prenom) }}
+				    {{ form_errors(form.prenom) }}
+				    {{ form_widget(form.prenom) }}
+		        </div>
+
+		        <div class="input-field col s12 m6 l8 offset-l4 pull-l4">
+		    		<i class="material-icons prefix">person</i>
+		        	{{ form_label(form.adresse) }}
+				    {{ form_errors(form.adresse) }}
+				    {{ form_widget(form.adresse) }}
+		        </div>
+		        
+		        <div class="input-field col s12 m6 l4">
+		        	<i class="material-icons prefix">phone</i>
+				    {{ form_widget(form.telephone) }}
+				    <label for="registration[telephone]">Téléphone</label>
+				    {% if form.telephone.vars['errors']|length > 0 %}
+						{% for error in form.telephone.vars['errors'] %}
+            				<div style="margin-left:45px" class="">
+	            				<span class="">
+						        	<span class="red-text">{{ error.message }}</span>
+						    	</span>
+					    	</div>
+					    {% endfor %}	            
+				    {% endif %}
+		        </div>
+
+		        <div class="input-field col s12 m6 l4 offset-l4 pull-l4">
+		        	<i class="material-icons prefix">email</i>
+				    {{ form_widget(form.email) }}
+					<label for="registration[email]">Email</label>
+					{% if form.email.vars['errors']|length > 0 %}
+						{% for error in form.email.vars['errors'] %}
+            				<div style="margin-left:45px" class="invalid-feedback d-block">
+	            				<span class="d-block">
+						        	<span class="form-error-message red-text">{{ error.message }}</span>
+						    	</span>
+					    	</div>
+					    {% endfor %}	            
+				    {% endif %}
+		        </div>
+
+		        <div class="input-field col s12 m6 l4">
+		        	<i class="material-icons prefix">lock</i>
+					{{ form_widget(form.password) }}
+					<label for="registration[password]">Mot de passe</label>
+					{% if form.password.vars['errors']|length > 0 %}    
+            			{% for error in form.password.vars['errors'] %}
+            				<div style="margin-left:45px" class="invalid-feedback d-block">
+	            				<span class="d-block">
+						        	<span class="form-error-message red-text">{{ error.message }}</span>
+						    	</span>
+					    	</div>
+					    {% endfor %}		            
+				    {% endif %}
+					{# <label for="registration[password]">Mot de passe</label>
+
+				    {% if form.password.vars['errors']|length > 0 %}
+			            {% for error in form.password.vars['errors'] %}
+			                <span class="helper-text" data-error="{{ error.message }}"></span>
+			            {% endfor %}
+				    {% endif %} #}
+		        </div>
+
+		        <div class="input-field col s12 m6 l4 offset-l4 pull-l4">
+		        	<i class="material-icons prefix">lock</i>
+				    {{ form_widget(form.confirm_password) }}
+					<label for="registration[confirm_password]">Confirmer mot de passe</label>
+					{% if form.confirm_password.vars['errors']|length > 0 %}
+						{% for error in form.confirm_password.vars['errors'] %}
+            				<div style="margin-left:45px" class="invalid-feedback d-block">
+	            				<span class="d-block">
+						        	<span class="form-error-message red-text">{{ error.message }}</span>
+						    	</span>
+					    	</div>
+					    {% endfor %}	            
+				    {% endif %}
+		        </div>
+
+		        <div class="input-field col s12 l4 right">
+					<button href="{{path('vtc_profile')}}" class="bouton btn right">Modifier</button>
+	        	</div>
+		        
+		    {{ form_end(form) }}
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('select').formSelect();
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,268 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style=" z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>TRANSPORT SUR-MESURE</b></h3>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  ">À L'ÉCOUTE DE VOS BESOINS</h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/transport.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					NOUS METTONS TOUT EN ŒUVRE POUR RÉPONDRE <b>À VOS BESOINS</b>, QU’IL S’AGISSE DE DÉPLACEMENTS <b>PROFESSIONNELS</b> OU D’UNE MISE À DISPOSITION POUR VISITER DES LIEUX <b>TOURISTIQUES</b>. PROFITEZ DU CONFORT ET DES SERVICES PREMIUM DE NOS VÉHICULES SANS VOUS SOUCIER DES KILOMÈTRES OU DU TEMPS.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container hide-on-small-only">
+
+				<div class="col l12 s12 divider"></div>
+
+				<ul id="tabs-swipe-demo" class="tabs" style="height:140px;">
+					<li id="li1" class="tab col s3 l4">
+				    	<a href="#test-swipe-1" style="height:140px;">
+				    		<h5><b>FLEXIBILITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">NOUS NOUS ADAPTONS À<br>VOS BESOINS</p>
+				    	</a>
+				    </li>
+					
+				    <li id="li2" class="tab col s3 l4">
+				    	<a href="#test-swipe-2" style="height:140px;">
+				    		<h5><b>TOURISME</b></h5>
+							<p style="font-size:1em; line-height: normal;">DES CHAUFFEURS<br>FORMÉS AU TOURISME</p>
+				    	</a>
+				    </li>
+				    
+				    <li id="li3" class="tab col s3 l4">
+						<a href="#test-swipe-3" style="height:140px;">
+							<h5 style=""><b>PROFESSIONNELS</b></h5>
+							<p style="font-size:1em; line-height: normal;">NOUS SOMMES<br>À VOTRE ÉCOUTE</p>
+						</a>
+					</li>
+				</ul>
+
+				<div style="margin-bottom:25px;" class="col l12 s12 divider"></div>
+				
+				<div id="test-swipe-1" class="col s12 swipe">
+					<h4 class=" center  "><b>NOUS NOUS ADAPTONS À VOS BESOINS</b></h4>
+					<p class=" center  ">
+						NOTRE MISSION PREMIÈRE EST D’ATTEINDRE UN NIVEAU DE SATISFACTION CLIENT D’EXCELLENCE. POUR CE FAIRE, NOUS NOUS ADAPTONS AUX BESOINS DE NOS CLIENTS. FINI LES INQUIÉTUDES, EXPRIMEZ VOS SOUHAITS ET NOUS NOUS OCCUPONS DE TOUT.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICE D'EXCELLENCE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="test-swipe-2" class="col s12 swipe">
+					<h4 class=" center  "><b>DES CHAUFFEURS FORMÉS AU TOURISME</b></h4>
+					<p class=" center  ">
+						VOUS SOUHAITEZ VISITER LE MONT SAINT MICHEL, LES SITES TOURISTIQUES DE LA RÉGION NANTAISE, OU AVOIR À DISPOSITION UN VÉHICULE AVEC CHAUFFEUR LE TEMPS D’UN<br>WEEKEND ? NOUS SOMMES LÀ POUR SATISFAIRE VOS ENVIES TOURISTIQUES.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>CHAUFFEUR AVEC COMPÉTENCES TOURISTIQUES</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICE À BORD ADAPTÉ</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>MISE À DISPOSITION LONGUE DURÉE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="test-swipe-3" class="col s12 swipe">
+					<h4 class=" center  "><b>NOUS SOMMES À VOTRE ÉCOUTE</b></h4>
+					<p class=" center  ">
+						VOUS RECEVEZ UN DIRECTEUR RÉGIONAL OU DES CLIENTS D’AFFAIRES, VOUS SOUHAITEZ UNE PRISE EN CHARGE PREMIUM POUR CES HÔTES DE MARQUE, NOUS SOMMES LÀ POUR RÉPONDRE À VOS BESOINS.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICES PREMIUM À BORD</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>CHAUFFEURS PROFESSIONNELS</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>DISPONIBILITÉ</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="container hide-on-med-and-up">
+				<div style="margin-bottom:25px" class="col l12 s12 divider"></div>
+
+				<a id="tab1" class="col l4 s12 center tabsTransfert" href="#flexibilite">					
+					<h5><b>FLEXIBILITÉ</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">NOUS NOUS ADAPTONS À<br>VOS BESOINS</p>					
+				</a>
+				
+				
+
+				<div style="margin-bottom:25px;margin-top: 25px;" class="col l12 s12 divider hide-on-med-and-up"></div>
+
+				<a id="tab2" class="col l4 s12 center tabsTransfert" href="#tourisme">					
+					<h5><b>TOURISME</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">DES CHAUFFEURS<br>FORMÉS AU TOURISME</p>					
+				</a>	
+
+				<div style="margin-bottom:25px;margin-top: 25px;" class="col l12 s12 divider hide-on-med-and-up"></div>
+
+				<a id="tab3" class="col l4 s12 center tabsTransfert" href="#professionnel">				
+					<h5><b>PROFESSIONNELS</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">NOUS SOMMES<br>À VOTRE ÉCOUTE</p>									
+				</a>
+
+				{# <ul id="tabs-swipe-demo" style="height:100px;" class="tabs">
+					<li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="active black-text" href="#test-swipe-3"><p><b>CONFORT</b></p>DETENTE ET RELAXATION</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-2"><p><b>DISPONIBILITE</b></p>DE JOUR COMME DE NUIT,<br> A TOUT MOMENT</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-1"><p><b>DISCRETION ET SECURITE</b></p>ACCOMPAGNEMENT<br> POUR LES FEMMES</a></li>
+				</ul> #}
+				
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<div id="flexibilite" class="container col s12 swipe" style="display:block;">
+					<h4 class="center ">NOUS NOUS ADAPTONS À VOS BESOINS</h4>
+					<p class="center ">
+						NOTRE MISSION PREMIÈRE EST D’ATTEINDRE UN NIVEAU DE SATISFACTION CLIENT D’EXCELLENCE. POUR CE FAIRE, NOUS NOUS ADAPTONS AUX BESOINS DE NOS CLIENTS. FINI LES INQUIÉTUDES, EXPRIMEZ VOS SOUHAITS ET NOUS NOUS OCCUPONS DE TOUT.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICE D'EXCELLENCE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="tourisme" class="container col s12 swipe" style="display:none;">
+					<h4 class="center ">DES CHAUFFEURS FORMÉS AU TOURISME</h4>
+					<p class="center ">
+						VOUS SOUHAITEZ VISITER LE MONT SAINT MICHEL, LES SITES TOURISTIQUES DE LA RÉGION NANTAISE, OU AVOIR À DISPOSITION UN VÉHICULE AVEC CHAUFFEUR LE TEMPS D’UN<br>WEEKEND ? NOUS SOMMES LÀ POUR SATISFAIRE VOS ENVIES TOURISTIQUES.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>CHAUFFEUR AVEC COMPÉTENCES TOURISTIQUES</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICE À BORD ADAPTÉ</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>MISE À DISPOSITION LONGUE DURÉE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="professionnel" class="container col s12 swipe" style="display:none;">
+					<h4 class="center ">NOUS SOMMES À VOTRE ÉCOUTE</h4>
+					<p class="center ">
+						VOUS RECEVEZ UN DIRECTEUR RÉGIONAL OU DES CLIENTS D’AFFAIRES, VOUS SOUHAITEZ UNE PRISE EN CHARGE PREMIUM POUR CES HÔTES DE MARQUE, NOUS SOMMES LÀ POUR RÉPONDRE À VOS BESOINS.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICES PREMIUM À BORD</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>CHAUFFEURS PROFESSIONNELS</li>
+							<li class=""><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>DISPONIBILITÉ</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="row" style="margin-top:80px;">		
+			<div class="grid col l6 s12">
+					
+	            <img class="responsive-img" width="500px" height="340px" src="{{asset('img/service/transport1.jpg')}}" alt="img11"/>
+	            
+	            {# <h5>Evènement</h5>
+	            <p></p>
+	            <a href="{{path('service_evenements')}}">View more</a> #}	            
+		    </div>
+	    	<div class="grid col l6 s12">	
+	            <img class="responsive-img" width="100%" height="340px" src="{{asset('img/service/transport2.jpg')}}" alt="img11"/>
+	            
+	            {# <h5>Evènement</h5>
+	            <p></p>
+	            <a href="{{path('service_evenements')}}">View more</a> #}                   
+		    </div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="container">
+					<div class="btn-service col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+						<a class="btn col l12 s12 btnAffichage" href="{{path('reservation_transport')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+							Réservez
+						</a>
+					</div>
+
+					<div class="btn-service col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+						<a class="btn col l12 s12 btnAffichage" href="{{path('reservation_transport')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+							Réservez
+						</a>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+
+			$('#li1').click(function(e){
+				$('#test-swipe-1').hide().fadeIn(1000);
+			});
+			$('#li2').click(function(e){
+				$('#test-swipe-2').hide().fadeIn(1000);
+			});
+			$('#li3').click(function(e){
+				$('#test-swipe-3').hide().fadeIn(1000);
+			});			
+
+			$('#tab1').click(function(){
+				$('#tourisme').css('display', 'none');
+				$('#professionnel').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab1').addClass('active');
+				$('#tab1 p').addClass('active');
+
+				$('#flexibilite').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab2').click(function(){
+				$('#flexibilite').css('display', 'none');
+				$('#professionnel').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab2').addClass('active');
+				$('#tab2 p').addClass('active');
+
+				$('#tourisme').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab3').click(function(){
+				$('#flexibilite').css('display', 'none');
+				$('#tourisme').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab3').addClass('active');
+				$('#tab3 p').addClass('active');
+
+				$('#professionnel').css('display', 'block').hide().fadeIn(1000);
+			});	
+
+			$('.tabs').tabs({
+				/*swipeable : true,
+      responsiveThreshold : Infinity*/
+            });
+		});
+	</script>
+{% endblock %}

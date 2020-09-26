@@ -1,0 +1,159 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>TRANSFERT NANTES RÉGION</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/tarif/region.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					VOICI LES TARIFS INDICATIFS AU DÉPART OU À DESTINATION DE NANTES CENTRE.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<h5 class="center">Au départ ou à destination de NANTES</h5>
+				<table class="striped centered responsive-table">
+			        <thead>
+			          <tr>
+			              <th>Vers</th>
+			              <th>Tarifs *</th>
+			          </tr>
+			        </thead>
+
+			        <tbody>
+			          <tr>
+			            <td>Angers</td>
+			            <td>179 €</td>
+			          </tr>
+			          <tr>
+			            <td>Bressuire</td>
+			            <td>199 €</td>
+			          </tr>
+			          <tr>
+			            <td>Brest</td>
+			            <td>569 €</td>
+			          </tr>
+			          <tr>
+			            <td>Challans</td>
+			            <td>119 €</td>
+			          </tr>
+			          <tr>
+			            <td>Cholet</td>
+			            <td>119 €</td>
+			          </tr>
+			          <tr>
+			            <td>Fontenay-le-Comte</td>
+			            <td>209 €</td>
+			          </tr>
+			          <tr>
+			            <td>Lannion</td>
+			            <td>519 €</td>
+			          </tr>
+			          <tr>
+			            <td>La Rochelle</td>
+			            <td>249 €</td>
+			          </tr>
+			          <tr>
+			            <td>La Roche-sur-Yon</td>
+			            <td>125 €</td>
+			          </tr>
+			          <tr>
+			            <td>La Tranche-sur-Mer</td>
+			            <td>229 €</td>
+			          </tr>
+			          <tr>
+			            <td>Laval</td>
+			            <td>325 €</td>
+			          </tr>
+			          <tr>
+			            <td>Les Sables d'Olonne</td>
+			            <td>209 €</td>
+			          </tr>
+			          <tr>
+			            <td>Lorient</td>
+			            <td>329 €</td>
+			          </tr>
+			          <tr>
+			            <td>Noirmoutier-en-Île</td>
+			            <td>169 €</td>
+			          </tr>
+			          <tr>
+			            <td>Poitiers</td>
+			            <td>369 €</td>
+			          </tr>
+			          <tr>
+			            <td>Quimper</td>
+			            <td>449 €</td>
+			          </tr>
+			          <tr>
+			            <td>Rennes</td>
+			            <td>199 €</td>
+			          </tr>
+			          <tr>
+			            <td>Rochefort</td>
+			            <td>369 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Brieuc</td>
+			            <td>399 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Gilles-Croix-de-Vie</td>
+			            <td>169 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Jean-de-Mont</td>
+			            <td>125 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Malo</td>
+			            <td>349 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saumur</td>
+			            <td>279 €</td>
+			          </tr>
+			          <tr>
+			            <td>Tours</td>
+			            <td>389 €</td>
+			          </tr>
+			          <tr>
+			            <td>Vannes</td>
+			            <td>199 €</td>
+			          </tr>
+			        </tbody>
+			    </table>
+			    <p style="margin-bottom:50px;"></p>
+			    <cite>* Tarifs valables dans les deux sens.</cite><br>
+			    <cite>* Majorations applicables pendant les périodes de nuit, jours fériés et weekend.</cite>
+			</div>	
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

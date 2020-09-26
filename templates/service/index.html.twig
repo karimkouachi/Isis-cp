@@ -1,0 +1,116 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>SERVICES</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/service/services.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					SELON VOS BESOINS, ISIS CHAUFFEUR PRIVÉ VOUS PROPOSE LES SERVICES SUIVANTS.
+				</p>
+			</div>
+		</div>
+
+		
+		
+	</div>
+
+	<div class="row">
+			<div class="container">
+
+				{# <div class="divider  "></div> #}
+
+				<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/transfert.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Transfert</h5>
+		                    <p></p>
+		                    <a href="{{path('service_transfert')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/transport.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Transport<br>Sur-mesure</h5>
+		                    <p></p>
+		                    <a href="{{path('service_transport')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/mariage_un.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Mariage</h5>
+		                    <p></p>
+		                    <a href="{{path('service_mariage')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/evenement.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Évènement</h5>
+		                    <p></p>
+		                    <a href="{{path('service_evenement')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/decouverte/montgolfiere.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Pack<br>Aventure</h5>
+		                    <p></p>
+		                    <a href="{{path('service_decouverte')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/excursion.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Excursion</h5>
+		                    <p></p>
+		                    <a href="{{path('service_excursion')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+	        	
+			</div>
+		</div>	
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('.materialboxed').materialbox();
+		});
+	</script>
+{% endblock %}

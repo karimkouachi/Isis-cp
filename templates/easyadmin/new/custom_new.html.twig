@@ -1,0 +1,112 @@
+{% extends '@EasyAdmin/default/new.html.twig' %}
+
+{# {% set path = path('easyadmin', {
+       'entity': app.request.query.get('entity'),
+       'action': app.request.query.get('action'),
+       'menuIndex': app.request.query.get('menuIndex'),
+       'submenuIndex': app.request.query.get('submenuIndex'),
+       'sortField': app.request.query.get('sortField'),
+       'sortDirection': app.request.query.get('sortDirection'),
+       'page': app.request.query.get('page'),
+   }) %} #}
+
+{% set action_href = '#' %}
+{% set action = {
+       'target': '#',
+       'icon' : '#' 
+   }
+%}
+
+{% block entity_form %}
+
+  {% if prestation_form == "evenement_form" %}
+    {% include 'easyadmin/new/form/evenement_new_form.html.twig' %}
+  {% elseif prestation_form == "decouverte_form" %}
+    {% include 'easyadmin/new/form/decouverte_new_form.html.twig' %}
+  {% elseif prestation_form == "mission_form" %}
+    {% include 'easyadmin/new/form/mission_new_form.html.twig' %}
+  {% endif %}
+
+  {% block body_javascript %}
+    {{ parent() }}
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+
+    {% if prestation_new_js == "evenement_new_js" %}
+      {% include 'easyadmin/new/js/evenement_new_js.html.twig' %}
+    {% elseif prestation_new_js == "decouverte_new_js" %}
+      {% include 'easyadmin/new/js/decouverte_new_js.html.twig' %}
+    {% elseif prestation_new_js == "mission_new_js" %}
+      {% include 'easyadmin/new/js/mission_new_js.html.twig' %}
+    {% endif %}
+
+    {{ include('@EasyAdmin/default/includes/_select2_widget.html.twig') }}
+{% endblock %}
+
+  {# <form name="evenement" method="post" id="new-evenement-form" class="new-form" data-view="new" data-entity="Evenement" data-entity-id="" enctype="multipart/form-data">
+    <input type="hidden" name="referer" value="%2Fvtc%2Fpublic%2Fadmin%2F%3Fentity%3DEvenement%26action%3Dlist%26menuIndex%3D2%26submenuIndex%3D-1%26sortField%3Did%26sortDirection%3DDESC%26page%3D1">        
+      <div class="row">
+
+        <div class="col-12 ">
+          <div class="form-group  field-text">
+            <label for="evenement_nom" class="form-control-label required">Nom</label>
+            <div class="form-widget">
+              <input type="text" id="evenement_nom" name="evenement[nom]" required="required" class="form-control">
+            </div>
+          </div>
+        </div>
+                    
+        <div class="col-12 ">
+          <div class="form-group  field-text">
+            <label for="evenement_adresse" class="form-control-label required">Adresse</label>
+            <div class="form-widget">
+              <input type="text" id="evenement_adresse" name="evenement[adresse]" required="required" class="form-control">
+            </div>
+          </div>
+        </div>
+                    
+        <div class="col-12 ">
+          <div class="form-group  field-text">
+            <label for="evenement_description" class="form-control-label required">Description</label>
+            <div class="form-widget">
+              <input type="text" id="evenement_description" name="evenement[description]" required="required" class="form-control">
+            </div>
+          </div>
+        </div>
+                   
+        <div class="col-12 ">
+          <div class="form-group  field-file">
+            <label for="evenement_imageFile" class="form-control-label">Image file</label>
+            <div class="form-widget">
+              <div class="custom-file">
+                <input type="file" id="evenement_imageFile" name="evenement[imageFile]" class="custom-file-input">
+                <label for="evenement_imageFile" class="custom-file-label"></label>
+              </div>
+
+              <script>
+                document.querySelector('#evenement_imageFile').addEventListener('change', function() {
+                    const fileName = this.value.replace('C:\\fakepath\\', '');
+                    const customInputFileLabel = document.querySelector('#evenement_imageFile ~ .custom-file-label');
+                    customInputFileLabel.classList.add('selected');
+                    customInputFileLabel.innerHTML = fileName;
+                });
+              </script>
+           </div>
+          </div>
+        </div>
+            
+      </div>
+
+      <input type="hidden" id="evenement__token" name="evenement[_token]" value="JS6uYnqQV9rAP9l7jDc7O2TDZNM8w_lPXyXEoill2G0">
+      <section class="content-footer">
+          <div class="form-actions">        
+            <button type="submit" class="btn btn-primary action-save">
+              <span class="btn-label">Sauvegarder les modifications</span>
+            </button>
+
+            <a class=" btn btn-link pr-0 action-list" title="" href="/vtc/public/admin/?entity=Evenement&amp;action=list&amp;menuIndex=2&amp;submenuIndex=-1&amp;sortField=id&amp;sortDirection=DESC&amp;page=1" target="_self">Retour à la liste</a>
+          </div>
+      </section>
+  </form> #}
+
+{% endblock entity_form %}
+	

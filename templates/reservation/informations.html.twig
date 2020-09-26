@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row">
+		<div class="container">
+			<h3 class="center">Récapitulatif de votre réservation</h3>
+
+			{% if prestation is defined %}
+				<div class="card-panel col s12 l12">
+				 	<h4>{{prestation.type}}</h4>
+					<div class="row">
+		
+
+					    <div id="adresseDepart" class="col s12 l12">
+					    	<div class="input-field col s12 l12">						    	
+					    		<p>Nom: {{prestation.nom}}</p>
+					    		{% if prestation.type == "evenement" %}
+					    			<p>Genre: {{prestation.genre}}</p>
+					    		{% endif %}
+					    		<p>Adresse: {{prestation.adresse}}</p>
+					    		{% if prestation.type == "evenement" %}
+					    			<p>Date: {{prestation.dateDebut|date("m/d/Y")}}</p>
+					    		{% endif %}
+					    		{% if prestation.type == "decouverte" %}
+					    			<p>Prix: {{prestation.prix}} € / Personne</p>
+					    		{% endif %}
+					    	</div>
+
+													
+					    </div>
+
+					</div>
+				</div>
+			{% endif %}
+
+	
+
+			<form name="form" action="{{path('vtc_accueil')}}" method="POST">
+				<div class="col s12 l12">
+					<div class="input-field col s12 l4">
+						<i class="material-icons prefix">today</i>
+			          	<input name="date_prise_en_charge" type="text" value="{{infosReservation.date_prise_en_charge}}" readonly="true">
+			          	<label for="date_prise_en_charge">Date</label>
+			        </div>
+					{# <h6 class="col l4">Date: {{infosReservation.date}}</h6> #}
+					<div class="input-field col s12 l4">
+						<i class="material-icons prefix">access_time</i>
+			          	<input name="heure_prise_en_charge" type="text" value="{{infosReservation.heure_prise_en_charge}}" readonly="true">
+			          	<label for="heure_prise_en_charge">Heure</label>
+			        </div>
+					{# <h6 class="col l4">Heure: {{infosReservation.heure}}</h6> #}
+					<div class="input-field col s12 l4">
+						<i class="material-icons prefix">airline_seat_recline_extra</i>
+			          	<input name="nb_passagers" type="text" value="{{infosReservation.nb_passagers}}" readonly="true">
+			          	<label for="nb_passagers">Nombre de passagers</label>
+			        </div>
+					{# <h6 class="col l4">Nombre de passagers: {{infosReservation.nb_passagers}}</h6> #}
+				</div>
+
+				<div class="card-panel col s12 l6">
+					<h4>Départ</h4>
+					<div class="row">
+						<div class="col s12 l12">
+							<div class="input-field">
+								<i class="material-icons prefix">room</i>
+					          	<input name="adresse_depart" type="text" value="{{infosReservation.adresse_depart}}" readonly="true">
+					          	<label for="adresse_depart">Adresse</label>
+					        </div>
+			    		</div>
+			    	</div>
+					{# <h6>Adresse: {{infosReservation.adresse_depart}}</h6> #}
+			    </div>
+
+			    <div class="card-panel col s12 l6">
+					<h4>Arrivée</h4>
+					<div class="row">
+						<div class="col s12 l12">
+							<div class="input-field">
+								<i class="material-icons prefix">room</i>
+					          	<input name="adresse_arrivee" type="text" value="{{infosReservation.adresse_arrivee}}" readonly="true">
+					          	<label for="adresse_arrivee">Adresse</label>
+					        </div>
+					    </div>
+					</div>
+					{# <h6>Adresse: {{infosReservation.adresse_arrivee}}</h6> #}
+			    </div>
+
+			    <div class="card-panel col s12 l12">
+					<h4>Coordonnées</h4>
+					<div class="input-field col s12 l6 offset-l6 pull-l6">
+						<i class="material-icons prefix">person</i>
+			          	<input name="civilite" type="text" value="{{infosReservation.civilite}}" readonly="true">
+			          	<label for="civilite">Civilité</label>
+			        </div>
+
+					<div class="input-field col s12 l6">
+						<i class="material-icons prefix">person</i>
+			          	<input name="nom" type="text" value="{{infosReservation.nom}}" readonly="true">
+			          	<label for="nom">Nom</label>
+			        </div>
+			        <div class="input-field col s12 l6">
+						<i class="material-icons prefix">person</i>
+			          	<input name="prenom" type="text" value="{{infosReservation.prenom}}" readonly="true">
+			          	<label for="prenom">Prénom</label>
+			        </div>
+			        <div class="input-field col s12 l6">
+						<i class="material-icons prefix">email</i>
+			          	<input name="email" type="text" value="{{infosReservation.email}}" readonly="true">
+			          	<label for="email" >Email</label>
+			        </div>
+			        <div class="input-field col s12 l6">
+						<i class="material-icons prefix">phone</i>
+			          	<input name="tel" type="text" value="{{infosReservation.tel}}" readonly="true">
+			          	<label for="tel">Téléphone</label>
+			        </div>
+
+			        <input name="duree" type="hidden" value="{{infosReservation.duree}}" readonly="true">
+			    </div>
+
+			    <div class="card-panel col s12 l12 center">
+			    	<h5>Le prix pour cette course sera de: {# {{'%.2f'|format(prix)}} € #}
+			    		{% if prestation.type == "evenement" %} {{'%.2f'|format(prix)}} € {% endif %}
+			    		{% if prestation.type == "decouverte" %} {{'%.2f'|format(prestation.prix * infosReservation.nb_passagers)}} € {% endif %}			    
+			    	</h5>
+			    </div>
+
+			    <div class="right">
+				    <a href="{{path('reservation_reserver')}}" class="btn btn-primary">Modifier</a>
+					<button name="envoi" type="submit" class="btn btn-primary">Envoyer</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	
+{% endblock %}
+
+
+
+
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('#envoi').click(function(){
+				$.ajax({
+		            url: "{{path('vtc_email')}}",
+		            type:"POST",
+		            dataType:"text",
+		            data: {},
+		          
+		            success: function (data) {
+
+		 
+		            }
+		        });
+			});
+				
+			
+		});
+
+	</script>
+{% endblock %}

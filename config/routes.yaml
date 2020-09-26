@@ -1,0 +1,229 @@
+# SECURITY -----------------------------------------------------
+security_registration:
+   path: /inscription
+   controller: App\Controller\SecurityController::registration
+   schemes:    [https]
+
+# SERVICE -------------------------------------------------------
+service_services:
+   path: /services
+   controller: App\Controller\ServiceController::index
+   schemes:    [https]
+
+service_transfert:
+   path: /service/transfert
+   controller: App\Controller\ServiceController::transfert
+   schemes:    [https]
+
+service_transport:
+   path: /service/transport
+   controller: App\Controller\ServiceController::transport
+   schemes:    [https]
+
+service_decouverte:
+   path: /service/decouverte
+   controller: App\Controller\ServiceController::decouverte
+   schemes:    [https]
+
+service_excursion:
+   path: /service/excursion
+   controller: App\Controller\ServiceController::excursion
+   schemes:    [https]
+
+service_mariage:
+   path: /service/mariage
+   controller: App\Controller\ServiceController::mariage
+   schemes:    [https]
+
+service_evenement:
+   path: /service/evenement
+   controller: App\Controller\ServiceController::evenement
+   schemes:    [https]
+
+# RESERVATION -----------------------------------------------------
+reservation_reserver:
+   path: /reservation
+   controller: App\Controller\ReservationController::index
+   schemes:    [https]
+
+reservation_transfert:
+   path: /reservation/transfert
+   controller: App\Controller\ReservationController::transfert
+   schemes:    [https]
+
+reservation_infos_transfert:
+   path: /reservation/informations/transfert
+   controller: App\Controller\ReservationController::infos_transfert
+
+reservation_transfert_email:
+   path: /reservation/transfert/email
+   controller: App\Controller\ReservationController::reservation_transfert_email
+
+reservation_transport:
+   path: /reservation/transport
+   controller: App\Controller\ReservationController::transport
+   schemes:    [https]
+
+reservation_evenement:
+   path: /reservation/evenement/{id}
+   controller: App\Controller\ReservationController::evenement
+
+reservation_infos_evenement:
+   path: /reservation/informations/evenement/{id}
+   controller: App\Controller\ReservationController::infos_evenement
+
+reservation_evenement_email:
+   path: /reservation/evenement/{id}/email
+   controller: App\Controller\ReservationController::reservation_evenement_email
+
+reservation_excursion:
+   path: /reservation/excursion/{id}
+   controller: App\Controller\ReservationController::excursion
+   schemes:    [https]
+
+reservation_aventure:
+   path: /reservation/aventure/{idAventure}/mission/{idMission}
+   controller: App\Controller\ReservationController::aventure
+   schemes:    [https]
+
+reservation_infos_transport:
+   path: /reservation/informations/transport
+   controller: App\Controller\ReservationController::infos_transport
+   schemes:    [https]
+
+reservation_infos_excursion:
+   path: /reservation/informations/excursion/{id}
+   controller: App\Controller\ReservationController::infos_excursion
+   schemes:    [https]
+
+reservation_infos_aventure:
+   path: /reservation/informations/aventure/{idAventure}/mission/{idMission}
+   controller: App\Controller\ReservationController::infos_aventure
+   schemes:    [https]
+
+reservation_presta_infos:
+   path: /reservation/informations/{prestation}/{id}
+   controller: App\Controller\ReservationController::presta_infos
+   schemes:    [https]
+
+reservation_confirmer:
+   path: /reservation/confirmer
+   controller: App\Controller\ReservationController::confirmer
+   schemes:    [https]
+
+reservation_getReservationsToday:
+   path: /reservation/getReservationsToday
+   controller: App\Controller\ReservationController::getReservationsToday
+   schemes:    [https]
+
+# EVENEMENT ----------------------------------------------------
+evenement_show:
+   path: /evenement/{id}
+   controller: App\Controller\EvenementController::show
+   schemes:    [https]
+
+evenement_all:
+   path: /evenements
+   controller: App\Controller\EvenementController::all
+   schemes:    [https]
+
+# DECOUVERTE ---------------------------------------------------
+# decouverte_show:
+#    path: /decouverte/{id}
+#    controller: App\Controller\DecouverteController::show
+
+# MISSION ---------------------------------------------------
+mission_show:
+   path: /aventure/{idAventure}/mission/{idMission}
+   controller: App\Controller\MissionController::mission_show
+   schemes:    [https]
+
+missions_show:
+   path: /aventure/{idAventure}/missions
+   controller: App\Controller\MissionController::missions_show
+   schemes:    [https]
+
+# EXCURSION -------------------------------------------------------
+excursion_show:
+   path: /excursion/{id}
+   controller: App\Controller\ExcursionController::show
+   schemes:    [https]
+
+# VTC ---------------------------------------------------------------
+vtc_accueil:
+   path: /
+   controller: App\Controller\HelloController::home
+   schemes:    [https]
+
+# vtc_accueil_presta:
+#    path: /{prestation}/{id}
+#    controller: App\Controller\HelloController::presta_home
+
+vtc_contact:
+   path: /contact
+   controller: App\Controller\HelloController::contact
+   schemes:    [https]
+
+vtc_email_contact:
+   path: /contact/email
+   controller: App\Controller\HelloController::contact_email
+
+vtc_email:
+   path: /email
+   controller: App\Controller\HelloController::email
+   schemes:    [https]
+
+vtc_apropos:
+   path: /apropos
+   controller: App\Controller\HelloController::apropos
+   schemes:    [https]
+
+vtc_flotte:
+   path: /flotte
+   controller: App\Controller\HelloController::flotte
+   schemes:    [https]
+
+vtc_mentions_legales:
+   path: /metions legales
+   controller: App\Controller\HelloController::mentions_legales
+   schemes:    [https]
+
+vtc_cgv_cgu:
+   path: /cgv cgu
+   controller: App\Controller\HelloController::cgv_cgu
+   schemes:    [https]
+
+vtc_profile:
+   path: /profile
+   controller: App\Controller\HelloController::profile
+   schemes:    [https]
+
+# TARIF -------------------------------------------------------------
+tarif_tarifs:
+   path: /tarifs
+   controller: App\Controller\HelloController::tarifs
+   schemes:    [https]
+
+tarif_metropole:
+   path: /tarif/metropole
+   controller: App\Controller\HelloController::tarif_metropole
+   schemes:    [https]
+
+tarif_departemental:
+   path: /tarif/departemental
+   controller: App\Controller\HelloController::tarif_departemental
+   schemes:    [https]
+
+tarif_regional:
+   path: /tarif/regional
+   controller: App\Controller\HelloController::tarif_regional
+   schemes:    [https]
+
+tarif_sur_mesure:
+   path: /tarif/sur_mesure
+   controller: App\Controller\HelloController::tarif_sur_mesure
+   schemes:    [https]
+
+# admin_administration:
+#    path: /admin
+#    controller: App\Controller\AdminController::admin

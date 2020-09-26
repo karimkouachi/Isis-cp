@@ -1,0 +1,275 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style=" z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>TRANSFERT</b></h3>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  ">UN VOYAGE PAISIBLE ET AGRÉABLE</h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/transfert.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					QUELQUE SOIT LA DESTINATION, PROFITEZ D’<b>UN VOYAGE PAISIBLE</b> GRÂCE AU CONFORT DE NOS VÉHICULES. TOUT EST MIS EN ŒUVRE AFIN DE PASSER <b>UN AGRÉABLE MOMENT</b> PENDANT VOTRE VOYAGE.
+				</p>
+			</div>
+		</div>
+
+		<div class="row ">
+
+			<div class="container hide-on-small-only">
+
+				<div class="col l12 s12 divider"></div>
+
+				<ul id="tabs-swipe-demo" class="tabs" style="height:140px;">
+					<li id="li1" class="tab col s3 l4" style="height:140px;">
+						<a href="#test-swipe-1" style="height:140px;">
+							<h5><b>CONFORT</b></h5>
+							<p style="font-size:1em; line-height: normal;">DÉTENTE ET RELAXATION</p>
+						</a>
+					</li>
+				    <li id="li2" class="tab col s3 l4" style="height:140px;">
+				    	<a href="#test-swipe-2" style="height:140px;">
+				    		<h5><b>DISPONIBILITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">DE JOUR COMME DE NUIT,<br> À TOUT MOMENT</p>
+				    	</a>
+				    </li>
+				    <li id="li3" class="tab col s3 l4" style="height:140px;">
+				    	<a href="#test-swipe-3" style="height:140px;">
+				    		<h5><b>DISCRÉTION<br>ET SÉCURITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">ACCOMPAGNEMENT<br> SÉCURISÉ POUR LES FEMMES</p>
+				    	</a>
+				    </li>
+				</ul>
+
+				<div style="margin-bottom:25px;" class="col l12 s12 divider"></div>
+
+				<div id="test-swipe-1" class="col s12 swipe">
+					<h4 class="center  "><b>DÉTENTE ET RELAXATION</b></h4>
+					<p class="center  ">
+						VÉHICULES FINITION HAUT-DE-GAMME, INTÉRIEUR CUIR, CLIMATISATION MULTIZONE, INTERNET À BORD, TABLETTE, CAFÉ, PRESSE DU JOUR… INSTALLEZ-VOUS ET PROFITEZ PLEINEMENT DE NOS SERVICES PENDANT LE VOYAGE.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICES PREMIUM À BORD</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>VÉHICULES TOUTES OPTIONS</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>CONDUITE SOUPLE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="test-swipe-2" class="col s12 swipe">
+					<h4 class="center  "><b>DE JOUR COMME DE NUIT, À TOUT MOMENT</b></h4>
+					<p class="center  ">
+						VOUS POUVEZ COMPTER SUR NOTRE DISPONIBILITÉ, QUE CE SOIT SUR RÉSERVATION À L’AVANCE OU BIEN EN URGENCE, NOUS TROUVONS LES SOLUTIONS LES MIEUX ADAPTÉES À VOS BESOINS.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>UNE SOLUTION À TOUS VOS BESOINS</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>DISPONIBLE À TOUT MOMENT</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>PROFESSIONNALISME</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="test-swipe-3" class="col s12 swipe">
+
+						<h4 class="center  "><b>ACCOMPAGNEMENT SÉCURISÉ POUR LES FEMMES</b></h4>
+						<p class="center  ">
+							POUR LEUR SÉCURITÉ LA NUIT, NOS CHAUFFEURS RACCOMPAGNENT LES FEMMES JUSQU'À LEUR PORTE DE RÉSIDENCE ET ATTENDENT QU’ELLES SOIENT SÉCURISÉES. PAR AILLEURS, POUR UNE DISCRÉTION MAXIMALE, LES VITRES ARRIÈRES DES VÉHICULES SONT TEINTÉES À LA VALEUR LA PLUS HAUTE.
+						</p>
+						<div>
+							<ul class="center  ">
+								<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>RACCOMPAGNEMENT DES FEMMES POUR LEUR SECURITÉ</li>
+								<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>DISCRÉTION MAXIMALE DANS LE VEHICULE</li>
+								<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>RESPECT ET ATTENTION PARTICULIÈRE</li>
+							</ul>
+						</div>
+					
+				</div>
+				
+			</div>
+
+			<div class="container hide-on-med-and-up">
+				<div style="margin-bottom:25px" class="col l12 s12 divider"></div>
+				
+				<a id="tab1" class="col l4 s12 center tabsTransfert " href="#confort">				
+					<h5><b>CONFORT</b></h5>
+					<p class="indigo-text darken-1 tabsTransfert" style="font-size:1em;">DÉTENTE ET RELAXATION</p>										
+				</a>
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab2" class="col l4 s12 center tabsTransfert " href="#disponibilite">					
+					<h5><b>DISPONIBILITÉ</b></h5>
+					<p class="indigo-text darken-1 tabsTransfert" style="font-size:1em;">DE JOUR COMME DE NUIT,<br> À TOUT MOMENT</p>					
+				</a>	
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab3" class="col l4 s12 center tabsTransfert " href="#securite">					
+					<h5><b>DISCRÉTION ET SÉCURITÉ</b></h5>
+					<p class="indigo-text darken-1 tabsTransfert" style="font-size:1em;">ACCOMPAGNEMENT<br> SÉCURISÉ POUR LES FEMMES</p>					
+				</a>
+				
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<div id="confort" class="container col s12 swipe" style="display:block;">
+					<h4 class="center  "><b>DÉTENTE ET RELAXATION</b></h4>
+					<p class="center  ">
+						VÉHICULES FINITION HAUT-DE-GAMME, INTÉRIEUR CUIR, CLIMATISATION MULTIZONE, INTERNET À BORD, TABLETTE, CAFÉ, PRESSE DU JOUR… INSTALLEZ-VOUS ET PROFITEZ PLEINEMENT DE NOS SERVICES PENDANT LE VOYAGE.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>SERVICES PREMIUM À BORD</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>VÉHICULES TOUTES OPTIONS</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>CONDUITE SOUPLE</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="disponibilite" class="container col s12 swipe" style="display:none;">
+					<h4 class="center  "><b>DE JOUR COMME DE NUIT, À TOUT MOMENT</b></h4>
+					<p class="center  ">
+						VOUS POUVEZ COMPTER SUR NOTRE DISPONIBILITÉ, QUE CE SOIT SUR RÉSERVATION À L’AVANCE OU BIEN EN URGENCE, NOUS TROUVONS LES SOLUTIONS LES MIEUX ADAPTÉES À VOS BESOINS.
+					</p>
+					<div>
+						<ul class="center  ">
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>UNE SOLUTION À TOUS VOS BESOINS</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>DISPONIBLE À TOUT MOMENT</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>PROFESSIONNALISME</li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="securite" class="container col s12 swipe" style="display:none;">
+					<h4 class="center  "><b>ACCOMPAGNEMENT SÉCURISÉ POUR LES FEMMES</b></h4>
+					<p class="center  ">
+						POUR LEUR SÉCURITÉ LA NUIT, NOS CHAUFFEURS RACCOMPAGNENT LES FEMMES JUSQU'À LEUR PORTE DE RÉSIDENCE ET ATTENDENT QU’ELLES SOIENT SÉCURISÉES. PAR AILLEURS, POUR UNE DISCRÉTION MAXIMALE, LES VITRES ARRIÈRES DES VÉHICULES SONT TEINTÉES À LA VALEUR LA PLUS HAUTE.
+					</p>
+					<div >
+						<ul class="center  ">
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>RACCOMPAGNEMENT DES FEMMES POUR LEUR SECURITÉ</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>DISCRÉTION MAXIMALE DANS LE VEHICULE</li>
+							<li><i class="material-icons" style="vertical-align: -6px;">chevron_right</i>RESPECT ET ATTENTION PARTICULIÈRE</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="row" style="margin-top:80px;">		
+			<div class="grid col l6 s12">
+				
+	                <img class="responsive-img" width="100%" height="340px" src="{{asset('img/service/transfert1.jpg')}}" alt="img11"/>
+
+	    	</div>
+	    	<div class="grid col l6 s12">
+				
+	                <img class="responsive-img" width="100%" height="340px" src="{{asset('img/service/transfert2.jpg')}}" alt="img11"/>
+
+	    	</div>	
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="container">
+					{% if app.user %}
+						<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+							<a class="btn col l12 s12 btnAffichage modal-trigger" href="#modalResaTransfert" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+								Réservez
+							</a>
+						</div>
+
+						<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+							<a class="btn col l12 s12 btnAffichage modal-trigger" href="#modalResaTransfert" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+								Réservez
+							</a>
+						</div>	
+					{% else %}
+						<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+							<a class="btn col l12 s12 btnAffichage" href="{{path('security_login')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+								Réservez
+							</a>
+						</div>
+
+						<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+							<a class="btn col l12 s12 btnAffichage" href="{{path('security_login')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+								Réservez
+							</a>
+						</div>	
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+
+	
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('#li1').click(function(e){
+				$('#test-swipe-1').hide().fadeIn(1000);
+			});
+			$('#li2').click(function(e){
+				$('#test-swipe-2').hide().fadeIn(1000);
+			});
+			$('#li3').click(function(e){
+				$('#test-swipe-3').hide().fadeIn(1000);
+			});
+			
+			$('.scrollspy').scrollSpy();
+
+			$('#tab1').click(function(){
+				$('#securite').css('display', 'none');
+				$('#disponibilite').css('display', 'none');
+				$('.tabsTransfert').removeClass('active');
+				$('#tab1').addClass('active');
+				$('#tab1 p').addClass('active');
+				$('#confort').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab2').click(function(){
+				$('#confort').css('display', 'none');
+				$('#securite').css('display', 'none');
+				$('.tabsTransfert').removeClass('active');
+				$('#tab2').addClass('active');
+				$('#tab2 p').addClass('active');
+				$('#disponibilite').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab3').click(function(){
+				$('#disponibilite').css('display', 'none');
+				$('#confort').css('display', 'none');
+				$('.tabsTransfert').removeClass('active');
+				$('#tab3').addClass('active');
+				$('#tab3 p').addClass('active');
+				$('#securite').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('.tabs').tabs({
+				/*swipeable : true,
+      responsiveThreshold : Infinity*/
+            });
+		});
+	</script>
+{% endblock %}

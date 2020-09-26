@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}ISIS{% endblock %}</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Marck+Script&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.7.3/themes/base/jquery-ui.css">
+        <link rel="icon" type="image/png" href="{{asset('img/ISISlogo3.png')}}"/>
+        
+        {% block stylesheets %}{% endblock %}
+
+        <style type="text/css">
+
+        .datepicker-date-display{
+            background-color: #00002B !important;
+        }
+
+        .is-selected{
+            background-color: #00002B !important;
+        }
+
+        .datepicker-cancel{
+            color: #00002B !important;
+        }
+
+        .datepicker-done{
+            color: #00002B !important;
+        }
+
+        .datepicker-day-button:focus {
+            background-color: rgba(0,0,43,0.25);
+        }
+
+        .month-prev:focus {
+            background-color: #00002B;
+        }
+
+        .month-next:focus {
+            background-color: #00002B;
+        }
+
+        .timepicker-digital-display{
+            background-color: #00002B !important;
+        }
+
+        .timepicker-canvas line{
+            stroke: #00002B !important;
+        }
+
+        .timepicker-canvas-bg{
+            fill: #00002B !important;
+        }
+
+        .timepicker-canvas-bearing{
+            fill: #00002B !important;
+        }
+
+        .timepicker-close{
+            color: #00002B !important;
+        }
+
+        .timepicker-tick.active, .timepicker-tick:hover {
+            background-color: rgba(0,0,43,0.25);
+        }
+
+        #tab1:hover{
+            cursor: pointer;
+        }
+        #tab2:hover{
+            cursor: pointer;
+        }
+        #tab3:hover{
+            cursor: pointer;
+        }
+
+        .tabsTransfert:link {
+          color: black;
+        }
+
+        /* visited link */
+        .tabsTransfert:visited {
+          color: black;
+        }
+
+        /* mouse over link */
+        .tabsTransfert:hover {
+          color: black;
+        }
+
+        /* selected link */
+        .tabsTransfert:active {
+          color: black;
+        }
+
+        .grid {
+        position: relative;
+        margin: 0 auto;
+        padding: 1em 0 4em;
+        max-width: 1000px;
+        list-style: none;
+        text-align: center;
+    }
+
+    /* Common style */
+    .grid figure {
+        position: relative;
+        float: left;
+        overflow: hidden;
+        margin: 10px 1%;
+        width: 100%;
+        height: 270px;
+
+        background: #00002B;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .grid figure img {
+        position: relative;
+        display: block;
+        height: 100%;
+        width: 100%;
+        opacity: 0.9;
+        filter: brightness(90%)
+    }
+
+    .grid figure figcaption {
+        padding: 2em;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.25em;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .grid figure figcaption::before,
+    .grid figure figcaption::after {
+        pointer-events: none;
+    }
+
+    .grid figure figcaption,
+    .grid figure figcaption > a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Anchor will cover the whole item by default */
+    /* For some effects it will show as a button */
+    .grid figure figcaption > a {
+        z-index: 1000;
+        text-indent: 200%;
+        white-space: nowrap;
+        font-size: 0;
+        opacity: 0;
+    }
+
+    .grid figure h5 {
+        word-spacing: -0.15em;
+        font-weight: 300;
+    }
+
+    .grid figure h5 span {
+        font-weight: 800;
+    }
+
+    .grid figure h5,
+    .grid figure p {
+        margin: 0;
+    }
+
+    .grid figure p {
+        letter-spacing: 1px;
+        font-size: 68.5%;
+    }
+
+
+
+    figure.effect-marley figcaption {
+        text-align: right;
+    }
+
+    figure.effect-marley h5,
+    figure.effect-marley p,
+    figure.effect-marley span {
+        position: absolute;
+        right: 30px;
+        left: 30px;
+        padding: 10px 0;
+    }
+
+
+    figure.effect-marley p {
+        bottom: 30px;
+        line-height: 1.5;
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+    }
+
+    figure.effect-marley span {
+        bottom: 5px;
+        line-height: 1.5;
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+    }
+
+    figure.effect-marley h5 {
+        top: 30px;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0,20px,0);
+        transform: translate3d(0,20px,0);
+    }
+
+    figure.effect-marley:hover h5 {
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+
+    figure.effect-marley h5::after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: #fff;
+        content: '';
+        -webkit-transform: translate3d(0,40px,0);
+        transform: translate3d(0,40px,0);
+    }
+
+    figure.effect-marley h5::after,
+    figure.effect-marley p,
+    figure.effect-marley span {
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+    }
+
+    figure.effect-marley:hover h5::after,
+    figure.effect-marley:hover p,
+    figure.effect-marley:hover span {
+        opacity: 1;
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+
+
+    @media screen and (max-width: 50em) {
+    .content {
+        padding: 0 10px;
+        text-align: center;
+    }
+    .grid figure {
+        display: inline-block;
+        float: none;
+        margin: 10px auto;
+        width: 100%;
+    }
+}
+*, *:after, *:before { -webkit-box-sizing: border-box; box-sizing: border-box; }
+.clearfix:before, .clearfix:after { display: table; content: ''; }
+.clearfix:after { clear: both; }
+
+
+
+
+.content {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.content > h5 {
+    clear: both;
+    margin: 0;
+    padding: 4em 1% 0;
+    color: #484B54;
+    font-weight: 800;
+    font-size: 1.5em;
+}
+
+.content > h5:first-child {
+    padding-top: 0em;
+}
+
+/* Header */
+.codrops-header {
+    margin: 0 auto;
+    padding: 4em 1em;
+    text-align: center;
+}
+
+.codrops-header h1 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 4em;
+    line-height: 1.3;
+}
+
+.codrops-header h1 span {
+    display: block;
+    padding: 0 0 0.6em 0.1em;
+    color: #74777b;
+    font-weight: 300;
+    font-size: 45%;
+}
+
+/* Demo links */
+.codrops-demos {
+    clear: both;
+    padding: 1em 0 0;
+    text-align: center;
+}
+
+.content + .codrops-demos {
+    padding-top: 5em;
+}
+
+.codrops-demos a {
+    display: inline-block;
+    margin: 0 5px;
+    padding: 1em 1.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.codrops-demos a:hover,
+.codrops-demos a:focus,
+.codrops-demos a.current-demo {
+    background: #3c414a;
+    color: #fff;
+}
+
+/* To Navigation Style */
+.codrops-top {
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-size: 0.69em;
+    line-height: 2.2;
+}
+
+.codrops-top a {
+    display: inline-block;
+    padding: 1em 2em;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.codrops-top span.right {
+    float: right;
+}
+
+.codrops-top span.right a {
+    display: block;
+    float: left;
+}
+
+.codrops-icon:before {
+    margin: 0 4px;
+    text-transform: none;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'codropsicons';
+    line-height: 1;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+.codrops-icon-drop:before {
+    content: "\e001";
+}
+
+.codrops-icon-prev:before {
+    content: "\e004";
+}
+
+/* Related demos */
+.related {
+    clear: both;
+    padding: 6em 1em;
+    font-size: 120%;
+}
+
+.related > a {
+    display: inline-block;
+    margin: 20px 10px;
+    padding: 25px;
+    border: 1px solid #4f7f90;
+    text-align: center;
+}
+
+.related a:hover {
+    border-color: #39545e;
+}
+
+.related a img {
+    max-width: 100%;
+    opacity: 0.8;
+}
+
+.related a:hover img,
+.related a:active img {
+    opacity: 1;
+}
+
+.related a h5 {
+    margin: 0;
+    padding: 0.5em 0 0.3em;
+    max-width: 300px;
+    text-align: left;
+}
+
+
+
+@media screen and (max-width: 25em) {
+    .codrops-header {
+        font-size: 75%;
+    }
+    .codrops-icon span {
+        display: none;
+    }
+}
+
+
+          @font-face{
+            src: url( "{{ asset('fonts/bradhitc.ttf') }}" );
+            font-family: bradhitc;
+          }
+
+          @font-face{
+            src: url( "{{ asset('fonts/calibri.ttf') }}" );
+
+            font-family: calibri;
+          }
+
+          body{
+            font-family: "calibri";
+            letter-spacing: 2px;
+          }
+
+          .MarckScript{
+            font-family: Marck Script;
+            font-size: 1.2em;
+          }
+
+          p{
+            font-size: 1.2em;
+          }
+
+          li{
+            font-size: 1.2em;
+          }
+
+          /* label color */
+           .input-field label {
+             color: #00002B;
+           }
+
+          /* label focus color */
+           .input-field input:focus + label {
+             color: lightgrey !important;
+           }
+
+           /* label underline focus color */
+           .input-field input:focus {
+             border-bottom: 1px solid lightgrey !important;
+             box-shadow: 0 1px 0 0 lightgrey !important;
+           }
+
+           /* icon prefix focus color */
+           .input-field .prefix.active {
+             color: lightgrey;
+           }
+
+           .bouton{
+            background-color: #00002B !important;
+            font-size: 16px !important;
+           }
+
+           .bouton:hover{
+            background-color: #00004d !important;
+           }
+
+          .autocomplete-results {
+            position: absolute;
+            background-color: #fff;
+            z-index: 100;
+            border-radius: 0px 0px 3px 3px;
+            margin-left: 45px; 
+            padding-left: 5px; 
+            padding-right: 5px; 
+            box-shadow: -2px 3px 18px 0px rgba(0, 0, 0, 0.75);
+        }
+
+        nav ul li a:hover{
+          background-color: transparent;
+          color: grey !important;
+        }
+
+        a:focus {
+          outline: none;
+        }
+
+        .dropdown-content a{
+          color: black !important;
+        }
+
+        .btnAffichage:hover{
+            background-color: #00004d !important;
+        }
+
+        li.indicator{
+            background-color: #00002B !important;
+        }
+
+        .tabs .tab a {
+            color: #00002B;
+        }
+
+        .tabs .tab a:hover {
+            color: lightgrey !important;
+        }
+
+        .tabs .tab .active{
+            background-color: #00002B !important;
+            color: white !important;
+        }
+
+        .tabsTransfert.active{
+            background-color: #00002B !important;
+            color: white !important;
+        }
+
+        .tabsTransfert{
+            color: #00002B !important;
+        }
+
+        .tabs .tab .active:hover{
+            color: white !important;
+        }
+
+        #contact-side {
+          position: fixed;
+          top: 40%;
+          right: 0;
+          display: block;
+          background-color: #00002B;
+          width: 60px;
+          height: 60px;
+          z-index: 99;
+        }
+
+        .swipe{
+            color: #00002B;
+        }
+
+        </style>
+    </head>
+    <body>
+
+      {% if app.user %}
+        <div id="modalResaTransfert" class="modal">
+          <div class="modal-content">
+            <div class="row">
+                <h4 class="center">DEMANDE DE RÉSERVATION</h4>
+            </div>
+            <div class="row">
+                <p class="center">Pour une réservation de transfert, veuillez nous contacter directement par téléphone au</p>
+            </div>
+            <h4 class="center"><b>07.49.01.69.96</b></h4>
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="row">
+        <div class="container">
+          <div style="text-align:center;">
+            <a href="{{path('vtc_accueil')}}">
+              <img src="{{asset('img/NEWLOGO5.png')}}" style="height:200px;width:200px;" class="card-img-top" alt="...">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {% block header %}
+        <div class="row" style="margin-bottom:0;">
+            {% include 'navbar.html.twig' %}
+        </div>
+      {% endblock %}         
+
+      {% block body %}
+        <nav id="contact-side">
+            <ul>
+                <li>
+                    <a href="{{path('vtc_contact')}}">
+                        <i class="material-icons prefix" style="font-size:30px;">email</i>
+                    </a> 
+                </li>
+            </ul>                 
+        </nav>
+      {% endblock %}
+
+      {% block footer %}
+
+        <div class="parallax-container hide-on-med-and-up" style="height: 400px;">
+              <div class="parallax"><img style="filter: brightness(60%);" src="{{asset('img/footer.jpg')}}"></div> 
+        </div>
+
+        <div class="col s12 hide-on-med-and-up">
+          <footer style="background-color: #00002B"class="page-footer">
+              <div class="container">
+                <div class="row">
+
+                  <div class="col l3 s12">
+                    <ul>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_accueil')}}">Accueil</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_apropos')}}">À propos</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('evenement_all')}}">Actualités</a></li>
+                      
+                    </ul>
+                  </div>
+                  <div class="col l3 s12">
+                    <ul>
+                      <li><a class="grey-text text-lighten-3" href="{{path('service_services')}}">Services</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_contact')}}">Contact</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_mentions_legales')}}">Mentions légales</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_cgv_cgu')}}">CGV/CGU</a></li>
+                    </ul>
+                  </div>
+                  <div class="col l3 s12">
+                    <p>NOUS SUIVRE</p>
+                    <a href="https://www.facebook.com/IsisChauffeurPrive/?modal=admin_todo_tour">
+                        <i style="font-size: 2em;" class="fab fa-facebook-square"></i>  
+                    </a>
+                    <a href="https://www.linkedin.com/in/isis-chauffeur-privé-711aa51a2">
+                        <i style="font-size: 2em;" class="fab fa-linkedin"></i>
+                    </a>  
+                  </div>
+
+                  <div class="col l3 s12">
+                        <p>
+                            <img src="{{asset('img/cb.jpg')}}" style="height:80px;width:80px;{#  transform:scale(2.25); #}" class="card-img-top" alt="..."> 
+                        </p>              
+                    </div> 
+                  
+                </div>
+
+              </div>
+              <div class="footer-copyright" style="background-color: #00002B !important">
+               
+              </div>
+            </footer>
+        </div>
+
+        <div class="parallax-container hide-on-small-only" style="height: 400px; width:82%; margin: auto; margin-top:100px;">
+            <div class="parallax">
+                <img style="filter: brightness(60%);" src="{{asset('img/footer.jpg')}}">
+            </div> 
+
+            <div class="row">
+                <h4 class="white-text center" style="margin-top:80px;margin-bottom:50px;">NOS PARTENAIRES</h4>
+                <div class="container">
+                    <div class="col l4 center">
+                        <img src="{{asset('img/cic.png')}}" style="height:150px;width:150px;{#  transform:scale(2.25); #}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="col l4 center">
+                        <img src="{{asset('img/groupama.png')}}" style="height:150px;width:150px;{#  transform:scale(2.25); #}" class="card-img-top" alt="...">
+                    </div>
+				<div class="col l4 center">
+                        <img src="{{asset('img/LOGO6.jpg')}}" style="height:150px;width:150px;{#  transform:scale(2.25); #}" class="card-img-top" alt="...">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col s12 hide-on-small-only" style="width:82%; margin: auto;">
+          <footer style="background-color: #00002B" class="page-footer">
+              <div class="container">
+                <div class="row">
+
+                  <div class="col l3 s12">
+                    <ul>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_accueil')}}">Accueil</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_apropos')}}">À propos</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('evenement_all')}}">Actualités</a></li>
+                      
+                    </ul>
+                  </div>
+                  <div class="col l3 s12">
+                    <ul>
+                      <li><a class="grey-text text-lighten-3" href="{{path('service_services')}}">Services</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_contact')}}">Contact</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_mentions_legales')}}">Mentions légales</a></li>
+                      <li><a class="grey-text text-lighten-3" href="{{path('vtc_cgv_cgu')}}">CGV/CGU</a></li>
+                    </ul>
+                  </div>
+                  <div class="col l3 s12">
+                    <p>NOUS SUIVRE</p>
+                    <a href="https://www.facebook.com/IsisChauffeurPrive/?modal=admin_todo_tour">
+                        <i style="font-size: 2em;" class="fab fa-facebook-square"></i>  
+                    </a>
+                    <a href="https://www.linkedin.com/in/isis-chauffeur-privé-711aa51a2">
+                        <i style="font-size: 2em;" class="fab fa-linkedin"></i>
+                    </a>  
+                  </div>
+
+                  <div class="col l3 s12">
+                        <p>
+                            <img src="{{asset('img/cb.jpg')}}" style="height:80px;width:80px;{#  transform:scale(2.25); #}" class="card-img-top" alt="..."> 
+                        </p>              
+                    </div> 
+                  
+                </div>
+
+              </div>
+              <div class="footer-copyright" style="background-color: #00002B !important">
+                
+              </div>
+            </footer>
+        </div>
+
+      {% endblock %}
+        
+        {% block javascripts %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+          <script src="https://kit.fontawesome.com/fc432883bf.js" crossorigin="anonymous"></script>
+          
+          <script type="text/javascript">
+            $(document).ready(function(){
+                /*$('body').hide().fadeIn(1500).delay(1500);*/
+                $('.sidenav').sidenav();
+                $('.collapsible').collapsible();
+
+                $('.dropdown-trigger').dropdown({
+                    hover: true,
+                    coverTrigger: false,
+                    inDuration: 550,
+                    outDuration: 650
+                });
+
+                $('.modal').modal({
+                    dismissible: false,
+                    onCloseEnd: function(){
+                        $('body').css({
+                            overflow: 'visible'
+                        });
+                    }
+                });
+
+                $('.parallax').parallax();
+
+            });
+          </script>
+        {% endblock %}
+        
+    </body>
+</html>

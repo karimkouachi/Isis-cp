@@ -1,0 +1,103 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>TRANSFERT SECTEUR MONTAIGU</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/tarif/montaigu.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					VOICI LES TARIFS INDICATIFS DE CENTRE-VILLE À CENTRE-VILLE.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<h5 class="center">De la Roche-sur-Yon</h5>
+				<table class="striped centered responsive-table">
+			        <thead>
+			          <tr>
+			              <th>Vers</th>
+			              <th>Tarifs *</th>
+			          </tr>
+			        </thead>
+
+			        <tbody>
+			          <tr>
+			            <td>L'Hebergement</td>
+			            <td>59 €</td>
+			          </tr>
+			          <tr>
+			            <td>Montaigu</td>
+			            <td>79 €</td>
+			          </tr>
+			          <tr>
+			            <td>Rocheservière</td>
+			            <td>79 €</td>
+			          </tr>
+			        </tbody>
+			    </table>
+			</div>	
+		</div>
+
+		<div class="row"></div>
+
+		<div class="row">
+			<div class="container">
+				<h5 class="center">De Nantes</h5>
+				<table class="striped centered responsive-table">
+			        <thead>
+			          <tr>
+			              <th>Vers</th>
+			              <th>Tarifs *</th>
+			          </tr>
+			        </thead>
+
+			        <tbody>
+			          <tr>
+			            <td>L'Hebergement</td>
+			            <td>79 €</td>
+			          </tr>
+			          <tr>
+			            <td>Montaigu</td>
+			            <td>79 €</td>
+			          </tr>
+			          <tr>
+			            <td>Rocheservière</td>
+			            <td>69 €</td>
+			          </tr>
+			        </tbody>
+			    </table>
+			    <p style="margin-bottom:50px;"></p>
+			    <cite>* Tarifs valables dans les deux sens.</cite><br>
+			    <cite>* Une majoration est appliquée pendant les périodes de nuit, jours fériés et weekend.</cite>
+			</div>	
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('.materialboxed').materialbox();
+		});
+	</script>
+{% endblock %}

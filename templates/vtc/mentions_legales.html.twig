@@ -1,0 +1,99 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>MENTIONS LÉGALES</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url('img/chauffeur.jpg') no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<div class="row">
+					<p>
+						Nom commercial : ISIS Chauffeur Privé
+					</p>
+					<p>
+						Siret : 887.921.120.00010
+					</p>
+					<p>
+						APE : 4932Z – Transport de voyageurs par taxis
+					</p>
+					<p>
+						Siège Social : 32 rue des fenaisons, 85600 Montaigu-Vendée
+					</p>
+					<p>
+						Forme juridique : EI
+					</p>
+					<p>
+						Capital investi : 35.000 euros
+					</p>
+					<p>
+						Représentant légal : Djamel Kouachi
+					</p>
+					<p>
+						Registre des exploitants de voiture de tourisme avec chauffeur : EVTC085200005 
+					</p>
+					<p>
+						Assurance RCPro : GROUPAMA N°056960030001
+					</p>
+					<p>
+						Numéro TVA intracommunautaire : FR 06 887921120
+					</p>
+				</div>
+
+				<div class="row">
+					<p>
+						ISIS Chauffeur Privé
+					</p>
+					<p>
+						32 rue des fenaisons, 85600 Montaigu-Vendée
+					</p>
+					<p>
+						Téléphone : 07.49.01.69.96
+					</p>
+					<p>
+						Mail : contact@isis-cp.fr
+					</p>
+				</div>
+
+				<div class="row">
+					<h5>CONCEPTION SITE ET DEVELOPPEMENT WEB</h5>
+					<p>
+						Responsable Informatique : Karim Kouachi.
+					</p>
+					<p>
+						2 rue Gabriel Gaudy, 44000 Nantes
+					</p>
+				</div>
+
+				<div class="row">
+					<h5>INFORMATIQUE ET LIBERTÉS</h5>
+					<p>
+						Conformément à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant (art. 34 de la loi "Informatique et Libertés"). Pour l'exercer, adressez vous à ISIS Chauffeur Privé – 32 rue des fenaisons, 85600 Montaigu-Vendée.
+					</p>
+				</div>
+			</div>
+		</div>		
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

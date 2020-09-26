@@ -1,0 +1,143 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>TRANSFERT NANTES DÉPARTEMENT</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/tarif/departement.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					VOICI LES TARIFS INDICATIFS AU DÉPART OU À DESTINATION DE NANTES CENTRE.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<h5 class="center">Au départ ou à destination de NANTES</h5>
+				<table class="striped centered responsive-table">
+			        <thead>
+			          <tr>
+			              <th>Vers</th>
+			              <th>Tarifs *</th>
+			          </tr>
+			        </thead>
+
+			        <tbody>
+			          <tr>
+			            <td>Ancenis</td>
+			            <td>95 €</td>
+			          </tr>
+			          <tr>
+			            <td>Aigrefeuille-sur-Maine</td>
+			            <td>49 €</td>
+			          </tr>
+			          <tr>
+			            <td>Châteaubriand</td>
+			            <td>145 €</td>
+			          </tr>
+			          <tr>
+			            <td>Clisson</td>
+			            <td>79 €</td>
+			          </tr>
+			          <tr>
+			            <td>Derval</td>
+			            <td>109 €</td>
+			          </tr>
+			          <tr>
+			            <td>Geneston</td>
+			            <td>49 €</td>
+			          </tr>
+			          <tr>
+			            <td>Guérande</td>
+			            <td>169 €</td>
+			          </tr>
+			          <tr>
+			            <td>La Baule</td>
+			            <td>145 €</td>
+			          </tr>
+			          <tr>
+			            <td>La Chapelle-Basse-Mer</td>
+			            <td>49 €</td>
+			          </tr>
+			          <tr>
+			            <td>La Chapelle-Heulin</td>
+			            <td>49 €</td>
+			          </tr>
+			          <tr>
+			            <td>Le Croisic</td>
+			            <td>179 €</td>
+			          </tr>
+			          <tr>
+			            <td>Machecoul</td>
+			            <td>89 €</td>
+			          </tr>
+			          <tr>
+			            <td>Nort-sur-Erdre</td>
+			            <td>69 €</td>
+			          </tr>
+			          <tr>
+			            <td>Pornic</td>
+			            <td>89 €</td>
+			          </tr>
+			          <tr>
+			            <td>Redon</td>
+			            <td>149 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Brevin-les-Pins</td>
+			            <td>119 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Nazaire</td>
+			            <td>119 €</td>
+			          </tr>
+			          <tr>
+			            <td>Saint-Philbert-de-Grand-Lieu</td>
+			            <td>59 €</td>
+			          </tr>
+			          <tr>
+			            <td>Vallet</td>
+			            <td>59 €</td>
+			          </tr>
+			          <tr>
+			            <td>Varades</td>
+			            <td>109 €</td>
+			          </tr>
+			          <tr>
+			            <td>Vieillevigne</td>
+			            <td>69 €</td>
+			          </tr>
+			        </tbody>
+			    </table>
+			    <p style="margin-bottom:50px;"></p>
+			    <cite>* Tarifs valables dans les deux sens.</cite><br>
+			    <cite>* Majorations applicables pendant les périodes de nuit, jours fériés et weekend.</cite>
+			</div>	
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

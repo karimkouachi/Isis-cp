@@ -1,0 +1,231 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>MARIAGE</b></h3>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  ">MOMENTS INOUBLIABLES</h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/mariage.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					QUOI DE MIEUX QUE D’AVOIR SON CHAUFFEUR PRIVÉ POUR CE MOMENT UNIQUE ? PROFITEZ DU PLUS BEAU JOUR DE VOTRE VIE, NOS CHAUFFEURS S’OCCUPENT DE VOS DÉPLACEMENTS. NOUS SOMMES PRESENTS JUSQU’À LA FIN DE L’ÉVÈNEMENT AFIN DE CONDUIRE VOS CONVIVES EN TOUTE SÉCURITÉ.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container hide-on-small-only">
+				<div class="col l12 s12 divider"></div>
+
+				<ul id="tabs-swipe-demo" class="tabs" style="height:140px;">
+					<li id="li1" class="tab col s3 l4">
+				    	<a href="#test-swipe-1" style="height:140px;">
+				    		<h5><b>CONFORT</b></h5>
+							<p style="font-size:1em; line-height: normal;">UN MOMENT<br>DE DÉTENTE</p>
+				    	</a>
+				    </li>
+					<li id="li2" class="tab col s3 l4">
+						<a href="#test-swipe-2" style="height:140px;">
+							<h5><b>PONCTUALITÉ</b></h5>
+							<p style="font-size:1em; line-height: normal;">MISSION<br>PLANIFIÉE</p>
+						</a>
+					</li>
+				    <li id="li3" class="tab col s3 l4">
+				    	<a href="#test-swipe-3" style="height:140px;">
+				    		<h5><b>PERSONNALISATION</b></h5>
+							<p style="font-size:1em; line-height: normal;">UNE PRESTATION<br>SUR-MESURE</p>
+				    	</a>
+				    </li>			    
+				</ul>
+
+				<div style="margin-bottom:25px;" class="col l12 s12 divider"></div>
+
+				<div id="test-swipe-1" class="col s12 swipe">
+					<h4 class=" center  "><b>UN MOMENT DE DÉTENTE</b></h4>
+					<p class=" center  ">
+						DÉTENDEZ-VOUS LE TEMPS DU VOYAGE À BORD D’UN VÉHICULE AU CONFORT HAUT DE GAMME. VOTRE CHAUFFEUR A MIS À VOTRE DISPOSITION DES RAFRAÎCHISSEMENTS ET AUTRES SERVICES, PROFITEZ-EN LE TEMPS QU’IL VOUS MÈNE À DESTINATION EN TOUTE SÉCURITÉ.
+					</p>
+				</div>
+
+				<div id="test-swipe-2" class="col s12 swipe">
+					<h4 class=" center  "><b>MISSION PLANIFIÉE</b></h4>
+					<p class=" center  ">
+						NOUS CONVENONS ENSEMBLE D’UN PROGRAMME PLANIFIÉ. PUIS, FAITES CONFIANCE À NOS CHAUFFEURS, LA PONCTUALITÉ ET LE RESPECT DU PLANNING FONT PARTIE DE LEURS PRIORITÉS.
+					</p>
+				</div>
+
+				<div id="test-swipe-3" class="col s12 swipe">
+					<h4 class=" center  "><b>UNE PRESTATION SUR-MESURE</b></h4>
+					<p class=" center  ">
+						PUISQUE CHAQUE MARIAGE EST UNIQUE, NOS OFFRES SONT CONSTRUITES EN FONCTION DE VOS BESOINS ET DE VOS ENVIES. NOS CHAUFFEURS SE METTENT ENTIÈREMENT À VOTRE DISPOSITION.
+					</p>					
+				</div>
+			</div>
+
+			<div class="container hide-on-med-and-up">
+				<div style="margin-bottom:25px" class="col l12 s12 divider"></div>
+				
+				<a id="tab1" class="col l4 s12 center tabsTransfert" href="#confort">					
+					<h5><b>CONFORT</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">UN MOMENT<br>DE DÉTENTE</p>					
+				</a>
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab2" class="col l4 s12 center tabsTransfert" href="#ponctualite">				
+					<h5><b>PONCTUALITÉ</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">MISSION<br>PLANIFIÉE</p>										
+				</a>
+
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<a id="tab3" class="col l4 s12 center tabsTransfert" href="#personnaliser">					
+					<h5><b>PERSONNALISATION</b></h5>
+					<p class=" tabsTransfert" style="font-size:1em;">UNE PRESTATION<br>SUR-MESURE</p>					
+				</a>					
+
+				{# <ul id="tabs-swipe-demo" style="height:100px;" class="tabs">
+					<li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="active black-text" href="#test-swipe-3"><p><b>CONFORT</b></p>DETENTE ET RELAXATION</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-2"><p><b>DISPONIBILITE</b></p>DE JOUR COMME DE NUIT,<br> A TOUT MOMENT</a></li>
+				    <li class="tab col l4 s12"><a style="height:100px;line-height: normal;" class="black-text" href="#test-swipe-1"><p><b>DISCRETION ET SECURITE</b></p>ACCOMPAGNEMENT<br> POUR LES FEMMES</a></li>
+				</ul> #}
+				
+				<div style="margin-top:25px; margin-bottom: 25px;" class="col l12 s12 divider"></div>
+
+				<div id="confort" class="container col s12 swipe" style="display:none;">
+					<h4 class=" center  "><b>UN MOMENT DE DÉTENTE</b></h4>
+					<p class=" center  ">
+						DÉTENDEZ-VOUS LE TEMPS DU VOYAGE À BORD D’UN VÉHICULE AU CONFORT HAUT DE GAMME. VOTRE CHAUFFEUR A MIS À VOTRE DISPOSITION DES RAFRAÎCHISSEMENTS ET AUTRES SERVICES, PROFITEZ-EN LE TEMPS QU’IL VOUS MÈNE À DESTINATION EN TOUTE SÉCURITÉ.
+					</p>
+				</div>
+
+				<div id="ponctualite" class="container col s12 swipe" style="display:block;">
+					<h4 class=" center  "><b>MISSION PLANIFIÉE</b></h4>
+					<p class=" center  ">
+						NOUS CONVENONS ENSEMBLE D’UN PROGRAMME PLANIFIÉ. PUIS, FAITES CONFIANCE À NOS CHAUFFEURS, LA PONCTUALITÉ ET LE RESPECT DU PLANNING FONT PARTIE DE LEURS PRIORITÉS.
+					</p>
+				</div>
+
+				<div id="personnaliser" class="container col s12 swipe" style="display:none;">
+					<h4 class=" center  "><b>UNE PRESTATION SUR-MESURE</b></h4>
+					<p class=" center  ">
+						PUISQUE CHAQUE MARIAGE EST UNIQUE, NOS OFFRES SONT CONSTRUITES EN FONCTION DE VOS BESOINS ET DE VOS ENVIES. NOS CHAUFFEURS SE METTENT ENTIÈREMENT À VOTRE DISPOSITION.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" style="margin-top:80px;">
+		<div class="container">
+			<div class="grid col l6 s12">
+				
+	                <img class="responsive-img" width="100%" height="340px" src="{{asset('img/mariage_deux.jpg')}}" alt="img11"/>
+	                
+	                    {# <h5>Evènement</h5>
+	                    <p></p>
+	                    <a href="{{path('service_evenements')}}">View more</a> #}
+	                           
+	            
+	    	</div>
+	    	<div class="grid col l6 s12">
+				
+	                <img class="responsive-img" width="100%" height="340px" src="{{asset('img/mariage_un.jpg')}}" alt="img11"/>
+	                
+	                    {# <h5>Evènement</h5>
+	                    <p></p>
+	                    <a href="{{path('service_evenements')}}">View more</a> #}
+	                      
+	            
+	    	</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					POUR UNE RÉSERVATION DANS LE CADRE D'UN MARIAGE, FAITES VOTRE DEMANDE DIRECTEMENT EN NOUS CONTACTANT.
+				</p>
+
+				<div class="btn-service col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+					<a class="btn col l12 s12 btnAffichage" href="{{path('vtc_contact')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+						Contactez nous
+					</a>
+				</div>
+
+				<div class="btn-service col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+					<a class="btn col l12 s12 btnAffichage" href="{{path('vtc_contact')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+						Contactez nous
+					</a>
+				</div>	
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+			$('#li1').click(function(e){
+				$('#test-swipe-1').hide().fadeIn(1000);
+			});
+			$('#li2').click(function(e){
+				$('#test-swipe-2').hide().fadeIn(1000);
+			});
+			$('#li3').click(function(e){
+				$('#test-swipe-3').hide().fadeIn(1000);
+			});
+
+			$('#tab1').click(function(){
+				$('#ponctualite').css('display', 'none');
+				$('#personnaliser').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab1').addClass('active');
+				$('#tab1 p').addClass('active');
+				$('#confort').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab2').click(function(){
+				$('#confort').css('display', 'none');
+				$('#personnaliser').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab2').addClass('active');
+				$('#tab2 p').addClass('active');
+				$('#ponctualite').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('#tab3').click(function(){
+				$('#confort').css('display', 'none');
+				$('#ponctualite').css('display', 'none');
+
+				$('.tabsTransfert').removeClass('active');
+				$('#tab3').addClass('active');
+				$('#tab3 p').addClass('active');
+				$('#personnaliser').css('display', 'block').hide().fadeIn(1000);
+			});
+
+			$('.tabs').tabs({
+				/*swipeable : true,
+      responsiveThreshold : Infinity*/
+            });
+		});
+	</script>
+{% endblock %}

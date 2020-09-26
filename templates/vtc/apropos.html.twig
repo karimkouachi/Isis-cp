@@ -1,0 +1,71 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 class="white-text  "><b>À PROPOS DE ISIS</b></h3>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  ">L'EXCELENCE PERPÉTUELLE</h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url('img/apropos.jpg') no-repeat; background-position: 100% 75%; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container MarckScript">
+		<div class="row">
+			<div class="container">
+				<h5 class="center  "><b>L'origine</b></h5>
+
+				<p class="center  ">
+					Après avoir vécu plusieurs années au Japon, j’ai pu découvrir et appréçier le haut niveau de service proposé par les Japonais, notamment dans les taxis.
+				</p>
+				
+
+				<p class="center  ">
+					Passionné par la conduite depuis l’enfance, je voulais déjà être chauffeur, j’ai par ailleurs participé aux compétitions de « Rallye Jeunes Peugeot ».
+				</p>
+
+				<p class="center  ">
+					Issu d’une formation commerciale, j’ai pu évoluer dans différents domaines professionnels, tels que l’industrie aérospatiale/militaire, dans le management commercial, ou en tant que trader dans la finance.
+				</p>
+
+				<p class="center  ">
+					L’envie de proposer un service de haut niveau à l’image de mon expérience à l’international, associée à ma passion de conduire et à mon sens commercial plaçant le client au centre de toute chose, m’amène à créer<br>« Isis – Chauffeur Privé ».
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<h5 class="center  "><b>Actuellement</b></h5>
+				
+				<p class="center  ">
+						Isis se positionne aujourd’hui comme un acteur pouvant répondre aussi bien aux grandes entreprises, qu’aux grands hôtels, aux agences évènementielles, et bien d’autres partenaires. Isis proposera toujours un service de très haute qualité, tout en étant le plus compétitif.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<h6 class="center  "><i><b>- Djamel Kouachi -</b></i></h6>
+				<p class="center  ">Fondateur</p>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

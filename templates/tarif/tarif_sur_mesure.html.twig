@@ -1,0 +1,88 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+	
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>TRANSPORT SUR MESURE</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/tarif/transport.jpg')}}) no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<p class="center">
+					LES TARIFS DES MISES À DISPOSITION SONT AFFICHÉS DANS LE TABLEAU SUIVANT.
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<table class="striped centered responsive-table">
+			        <thead>
+			          <tr>
+			              <th>Heure</th>
+			              <th>KM</th>
+			              <th>Tarifs *</th>
+			          </tr>
+			        </thead>
+
+			        <tbody>
+			          <tr>
+			            <td>1</td>
+			            <td>40</td>
+			            <td>89 €</td>
+			          </tr>
+			          <tr>
+			            <td>2</td>
+			            <td>75</td>
+			            <td>169 €</td>
+			          </tr>
+			          <tr>
+			            <td>4</td>
+			            <td>140</td>
+			            <td>299 €</td>
+			          </tr>
+			          <tr>
+			            <td>8</td>
+			            <td>250</td>
+			            <td>499 €</td>
+			          </tr>
+			          <tr>
+			            <td>12</td>
+			            <td>400</td>
+			            <td>699 €</td>
+			          </tr>
+			          <tr>
+			            <td>24</td>
+			            <td>700</td>
+			            <td>1299 €</td>
+			          </tr>
+			        </tbody>
+			    </table>
+			    <p style="margin-bottom:50px;"></p>
+			    <cite>* Une majoration est appliquée pendant les périodes de nuit, jours fériés et weekend.</cite>
+			</div>	
+		</div>
+
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

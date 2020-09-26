@@ -1,0 +1,128 @@
+easy_admin:
+  user:
+        display_name: true
+        display_avatar: false
+        name_property_path: 'prenom'
+  entities:
+    # List the entity class name you want to manage
+    Service:
+      class: App\Entity\Service
+    
+    Utilisateur:
+      class: App\Entity\Utilisateur
+      templates:
+        # Twig namespace template syntax
+        list: 'easyadmin/list/custom_list.html.twig'
+      list:
+        fields:
+          - 'id'
+          - 'nom'
+          - 'prenom'
+          - 'email'
+          - 'roles'
+          - 'etat'
+
+      form:
+        fields:
+          - nom
+          - prenom
+          - email
+          - roles
+          - etat
+
+    Evenement:
+      class: App\Entity\Evenement
+      templates:
+        new: 'easyadmin/new/evenement_new.html.twig'
+        edit: 'easyadmin/edit/evenement_edit.html.twig'
+      list:
+        fields:
+          - 'id'
+          - 'nom'
+          - 'genre'
+          - 'adresse'
+          - 'latitude'
+          - 'longitude'
+          - 'date_debut'
+          - { property: 'image', type: 'image', base_path: '%app.path.evenement_images%' }
+      form:
+        fields:
+          - nom
+          - { property: 'genre', type: 'choice', type_options: { choices: {'Concert':'Concert','Divers':'Divers','Spectacle':'Spectacle','Sport':'Sport'} }}
+          - adresse
+          - latitude
+          - longitude
+          - date_debut
+          - { property: 'imageFile', type: 'file', base_path: '%app.path.evenement_images%' }
+      show:
+        fields:
+            - { property: 'image', type: 'image', base_path: '%app.path.evenement_images%' }
+
+    Decouverte:
+      class: App\Entity\Decouverte
+      templates:
+        new: 'easyadmin/new/decouverte_new.html.twig'
+      list:
+        fields:
+          - 'id'
+          - 'nom'
+          - 'description'
+          - { property: 'image', type: 'image', base_path: '%app.path.decouverte_images%' }
+      form:
+        fields:
+          - nom
+          - description
+          - { property: 'imageFile', type: 'file', base_path: '%app.path.decouverte_images%' }
+      show:
+        fields:
+            - { property: 'image', type: 'image', base_path: '%app.path.decouverte_images%' }
+
+    Mission:
+      class: App\Entity\Mission
+      controller: App\Controller\MissionController
+      templates:
+        new: 'easyadmin/new/mission_new.html.twig'
+        edit: 'easyadmin/edit/mission_edit.html.twig'
+      list:
+        fields:
+          - 'id'
+          - 'nom'
+          - 'description'
+          - 'adresse'
+          - 'latitude'
+          - 'longitude'
+          - 'prix'
+          - 'decouverte'
+          - { property: 'image', type: 'image', base_path: '%app.path.mission_images%' }
+      form:
+        fields:
+          - nom
+          - description
+          - adresse
+          - latitude
+          - longitude
+          - prix
+          - { property: 'decouverte', type: 'choice'}
+          - { property: 'imageFile', type: 'file', base_path: '%app.path.mission_images%' }
+      show:
+        fields:
+            - { property: 'image', type: 'image', base_path: '%app.path.mission_images%' }
+
+    Excursion:
+      class: App\Entity\Excursion
+      list:
+        fields:
+          - 'id'
+          - 'nom'
+          - 'description'
+          - 'prix'
+          - { property: 'image', type: 'image', base_path: '%app.path.excursion_images%' }
+      form:
+        fields:
+          - nom
+          - description
+          - prix
+          - { property: 'imageFile', type: 'file', base_path: '%app.path.excursion_images%' }
+      show:
+        fields:
+            - { property: 'image', type: 'image', base_path: '%app.path.excursion_images%' }

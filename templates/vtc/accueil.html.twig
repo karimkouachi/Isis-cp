@@ -1,0 +1,328 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	{% if reservation is defined %}
+		{% if reservation %}
+			<div id="modalReservation" class="modal">
+			    <div class="modal-content">
+			      <h4>Demande de réservation</h4>
+			      <p>Merci pour votre réservation, vous allez etre recontacté par votre chauffeur...</p>
+			    </div>
+			    <div class="modal-footer">
+			      <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+			    </div>
+		  	</div>
+	  	{% endif %}
+	{% endif %}
+
+	{% if contact is defined %}
+		{% if contact %}
+			<div id="modalContact" class="modal">
+			    <div class="modal-content">
+			      <h4>Contact</h4>
+			      <p>Votre demande à bien été transmise, nous vous recontactons dans les plus brefs délais.</p>
+			    </div>
+			    <div class="modal-footer">
+			      <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+			    </div>
+		  	</div>
+	  	{% endif %}
+	{% endif %}
+
+	{% if etat is defined %}
+		{% if etat == false %}
+			<div id="modalEtat" class="modal">
+			    <div class="modal-content">
+			      <h4>Information</h4>
+			      <p>Vous avez été banni !</p>
+			    </div>
+			    <div class="modal-footer">
+			      <a href="#" class="modal-close waves-effect waves-green btn-flat">Ok</a>
+			    </div>
+		  	</div>
+	  	{% endif %}
+	{% endif %}
+
+  
+
+	<div class="row">
+		<div class="col l10 offset-l1 s12 m10 offset-m1" style="padding:0;">
+
+			<div class="slider valign-wrapper" style="display: flex; justify-content: center;">
+
+			    <ul class="slides">
+					<li>
+				        <img style="filter: brightness(60%);" class="imgSlide" src="{{asset('img/voiture1.jpg')}}"> <!-- random image -->
+				        <div class="caption center-align">
+				          
+				          	<div class="divider white" style="width:15%; margin: auto"></div>
+				          	<h3><b>ISIS</b></h3>
+				          	<h3 style="margin-bottom:29.200px;">PROFESSIONNEL ET DISPONIBLE<br>POUR VOUS SATISFAIRE</h3>
+				          	<div class="divider white" style="width:15%; margin: auto"></div>
+				          
+				        </div>
+				    </li>
+				    <li>
+				        <img style="filter: brightness(60%);" class="imgSlide" src="{{asset('img/caroussel2.jpg')}}"> <!-- random image -->
+				        <div class="caption center-align">
+				        	<div class="divider white" style="width:15%; margin: auto"></div>
+				        	<h3><b>ISIS</b></h3>
+				          	<h3 style="margin-bottom:29.200px;">UN RÉSEAU DE PARTENAIRES<br>DANS TOUTE LA RÉGION</h3>
+				          	<div class="divider white" style="width:15%; margin: auto"></div>
+				        </div>
+				    </li>
+				    <li>
+				        <img style="filter: brightness(60%);" class="imgSlide" src="{{asset('img/voiture2.jpg')}}"> <!-- random image -->
+				        <div class="caption center-align">
+				        	<div class="divider white" style="width:15%; margin: auto"></div>
+				        	<h3><b>ISIS</b></h3>
+				          	<h3 style="margin-bottom:29.200px;">VÉHICULES HAUT DE GAMME<br>POUR UN SERVICE D'EXCELENCE</h3>
+				          	<div class="divider white" style="width:15%; margin: auto"></div>
+				        </div>
+				    </li>
+				    
+			    </ul>
+			</div>
+		</div>
+	</div>
+	
+	
+
+
+    <div class="section white">
+		<div class="row" style="margin-bottom:80px;">
+			<div class="container">
+
+
+				<h4 class="center  ">SERVICES</h4>
+
+				<div class="row">
+					<p class="col l4 offset-l4 s12 center  ">NOS OFFRES S'ADAPTENT À TOUTES VOS EXIGENCES</p>
+				</div>
+
+				<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/transfert.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Transfert</h5>
+		                    <p></p>
+		                    <a href="{{path('service_transfert')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/transport.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Transport<br>sur<br>mesure</h5>
+		                    <p></p>
+		                    <a href="{{path('service_transport')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/decouverte/montgolfiere.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Pack<br>aventure</h5>
+		                    <p></p>
+		                    <a href="{{path('service_decouverte')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	
+	        	<div class="btn-service col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+					<a class="btn col l12 s12 btnAffichage" href="{{path('service_services')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+						<span>TOUS NOS SERVICES</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+					</a>
+				</div>	
+
+				<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+					<a class="btn col l12 s12 btnAffichage" href="{{path('service_services')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+						<span>TOUS NOS SERVICES</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+					</a>
+				</div>	
+
+				
+			</div>
+		</div>
+
+		<div class="row" style="margin-bottom:80px;">
+			<div class="container">
+
+
+				<h4 class="center  ">TARIFS</h4>
+
+				<div class="row">
+					<p class="col l4 offset-l4 s12 center  ">UNE OFFRE COMPLÈTE DE SERVICES SUR-MESURE POUR LES CLIENTS LES PLUS EXIGEANTS</p>
+				</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/tarif/metropole.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Nantes<br>Métropole</h5>
+		                    <p></p>
+		                    <a href="{{path('tarif_metropole')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/tarif/departement.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Nantes<br>Département</h5>
+		                    <p></p>
+		                    <a href="{{path('tarif_departemental')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	<div class="grid col l4 s12">
+					<figure class="effect-marley">
+		                <img height="220px" src="{{asset('img/tarif/region.jpg')}}" alt="img11"/>
+		                <figcaption>
+		                    <h5>Nantes<br>Région</h5>
+		                    <p></p>
+		                    <a href="{{path('tarif_regional')}}">View more</a>
+		                </figcaption>           
+		            </figure>
+	        	</div>
+
+	        	
+	        	<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+					<a class="btn col l12 s12 btnAffichage" href="{{path('tarif_tarifs')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+						<span>TOUS NOS TARIFS</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+					</a>
+				</div>	
+
+				<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+					<a class="btn col l12 s12 btnAffichage" href="{{path('tarif_tarifs')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+						<span>TOUS NOS TARIFS</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+					</a>
+				</div>	
+			</div>
+		</div>
+
+
+
+		{% if evenements | length > 0 %}	
+			<div class="row">
+				<div class="container">
+
+					<h4 class="center  ">ACTUALITÉS</h4>
+
+					<div class="row">
+						<p class="col l4 offset-l4 s12 center  ">TOUS LES ÉVÈNEMENTS À VENIR DANS LA RÉGION</p>
+					</div>
+
+					<div style="display: flex; justify-content: center; flex-wrap: wrap;">
+					{% for evenement in evenements %}
+
+						<div class="grid col l4 s12">
+							<figure class="effect-marley">
+				                <img height="220px" src="{{asset('img/evenement/'~evenement.image)}}" alt="img11"/>
+				                <figcaption>
+				                    <h5>{{evenement.nom}}</h5>
+				                    <p>{{evenement.genre}}</p>
+				                    <span>{{evenement.dateDebut|date("d/m/Y")}}</span>
+				                    <a href="{{path('evenement_show', {id : evenement.id} )}}">View more</a>
+				                </figcaption>           
+				            </figure>
+			        	</div>
+
+						
+
+					{% endfor %}
+
+					<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+						<a class="btn col l12 s12 btnAffichage" href="{{path('evenement_all')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+							<span>TOUTE L'ACTUALITÉ</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+						</a>
+					</div>	
+
+					<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+						<a class="btn col l12 s12 btnAffichage" href="{{path('evenement_all')}}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+							<span>TOUTE L'ACTUALITÉ</span><i style="vertical-align: top;font-size: 30px" class="material-icons">keyboard_arrow_down</i>
+						</a>
+					</div>	
+
+					
+
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+		
+
+	{% block javascripts %}
+		{{parent()}}
+		<script type="text/javascript">
+			$("figure").mouseleave(
+			    function() {
+			      $(this).removeClass("hover");
+			    }
+			  );
+
+			$(document).ready(function(){
+				
+				if({{reservation}} == true){
+					const elem = document.getElementById('modalReservation');
+					const instance = M.Modal.init(elem, {
+						dismissible: false,
+						onCloseEnd: function(){
+							$('body').css({
+					    		overflow: 'visible'
+							});
+						}
+					});
+					instance.open();
+				}
+
+				if({{contact}} == true){
+					const elem = document.getElementById('modalContact');
+					const instance = M.Modal.init(elem, {
+						dismissible: false,
+						onCloseEnd: function(){
+							$('body').css({
+					    		overflow: 'visible'
+							});
+						}
+					});
+					instance.open();
+				}
+
+				if({{etat}} == false){
+					const elem = document.getElementById('modalEtat');
+					const instance = M.Modal.init(elem, {
+						dismissible: false,
+						onCloseEnd: function(){
+							$('body').css({
+					    		overflow: 'visible'
+							});
+						}
+					});
+					instance.open();
+				}
+
+				$('.slider').slider({
+					height: 520,
+					indicators: false,
+					transition: 20000
+				});
+
+				$('.slider').slider('start');
+
+				
+			});
+		</script>
+	{% endblock %}
+
+{% endblock %}

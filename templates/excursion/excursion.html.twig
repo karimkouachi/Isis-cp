@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	{{parent()}}
+
+	<div class="row">
+		<div style="position:relative;padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white  "></div>
+					<h3 style="margin-bottom: 29.200px;" class="white-text  "><b>{{excursion.nom | upper}}</b></h3>
+				<div class="divider white  "></div>
+			</div>
+
+			<div style="background: url({{asset('img/excursion/'~excursion.image)}}) no-repeat center center; background-size: cover; height:300px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="row" style="margin-top:100px;">
+		<div class="container">
+
+			<div class="row">
+				<div class="container">
+					<p class="center">
+						{{excursion.description}}
+					</p>
+					<p class="center">Prix: {{excursion.prix}} €</p>
+
+					<div class="col l12 s12 hide-on-small-only" style="padding-left:14px;padding-right:7px;margin-top:11.250px;">
+						<a href="{{path('reservation_excursion', {id : excursion.id})}}" {# data-target="modal" #} class="btn col l12 s12 btnAffichage {# modal-trigger #}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+							Réserver
+						</a>
+					</div>
+
+					<div class="col l12 s12 hide-on-med-and-up" style="margin-top:11.250px;">
+						<a href="{{path('reservation_excursion', {id : excursion.id})}}" {# data-target="modal" #} class="btn col l12 s12 btnAffichage {# modal-trigger #}" style="height:60px;line-height:60px;background-color:#00002B; font-size:1.5em;">
+							Réserver
+						</a>
+					</div>	
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+		});
+	</script>
+{% endblock %}

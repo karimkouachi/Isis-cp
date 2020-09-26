@@ -1,0 +1,115 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<div class="row" style="margin-bottom:80px;">
+		<div style="position:relative; padding:0;" class="col l10 offset-l1 s12 m10 offset-m1">
+
+			<div style="z-index:9; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);" class="center">
+				<div class="divider white"></div>
+					<h3 class="white-text"><b>CONTACT</b></h3>
+				<div class="divider white"></div>
+			</div>
+
+			<div style="background: url('img/contact.jpg') no-repeat center center; background-size: cover; height:400px; width:100%; filter: brightness(60%);"></div>
+	    </div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="container">
+				<form method="post" action="{{path('vtc_email_contact')}}">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <div class="input-field col s12 l4">
+					<i class="material-icons prefix">person</i>
+					<select id="civilite" name="civilite" required="true">
+				      <option value="" disabled selected>Choisissez votre civilité</option>
+				      	<option value="Madame">Madame</option>
+				      	<option value="Monsieur">Monsieur</option>
+				    </select>
+				    <label for="civilite">Civilité</label>								    
+				</div>
+
+				<div class="input-field col s12 l4">
+					<i class="material-icons prefix">person</i>
+		          	<input id="nom" name="nom" type="text" class="" required="true">
+		          	<label for="nom">Nom</label>
+		        </div>
+
+		        <div class="input-field col s12 l4">
+					<i class="material-icons prefix">person</i>
+		          	<input id="prenom" name="prenom" type="text" class="" required="true">
+		          	<label for="prenom">Prénom</label>
+		        </div>
+
+                <div class="input-field col s12 l4">
+                	<i class="material-icons prefix">email</i>
+                    <input id="email" name="email" type="email" value="{{ last_username }}" class="" required>
+                    {# <input type="text" value="{{ last_username }}" name="username" id="inputUsername" required autofocus> #}
+                    <label for="email" class="">Email</label>
+                </div>
+
+                <div class="input-field col s12 l4">
+					<i class="material-icons prefix">phone</i>
+		          	<input id="tel" name="tel" type="tel" pattern="[0][0-9]{9}" title="Le numéro doit comporter dix chiffres en commencant par 0" class="" required="true">
+		          	<label for="tel">Téléphone</label>
+		          	<div style="margin-left:45px" class="">
+        				<span class="">
+				        	<span class="form-error-message red-text">* Ce numéro de téléphone sera utilisé pour vous joindre</span>
+				    	</span>
+			    	</div>						          	
+		        </div>
+
+                <div class="input-field col s12 l12">
+                	<i class="material-icons prefix">edit</i>
+		            <textarea id="message" name="message" class="materialize-textarea" data-length="800"></textarea>
+		            <label for="message">Message</label>
+		        </div>
+
+                {# <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                > #}
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                #}
+
+                <button class="bouton right btn btn-lg btn-primary" type="submit">
+                    Envoyer
+                    <i class="material-icons right">send</i>
+                </button>
+
+                {# {% if not app.user %}
+                    <a class="btn btn-lg btn-primary" href="{{path('security_registration')}}">
+                        Inscription
+                    </a>  
+                {% endif %} #}
+            </form>
+			</div>
+		</div>
+
+		
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('body').hide().fadeIn(1500).delay(1500);
+
+			$('textarea#message').characterCounter();
+			$('select').formSelect();
+		});
+	</script>
+{% endblock %}

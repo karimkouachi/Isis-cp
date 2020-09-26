@@ -1,0 +1,23 @@
+{% extends '@EasyAdmin/default/list.html.twig' %}
+
+{# {% set path = path('easyadmin', {
+       'entity': app.request.query.get('entity'),
+       'action': app.request.query.get('action'),
+       'menuIndex': app.request.query.get('menuIndex'),
+       'submenuIndex': app.request.query.get('submenuIndex'),
+       'sortField': app.request.query.get('sortField'),
+       'sortDirection': app.request.query.get('sortDirection'),
+       'page': app.request.query.get('page'),
+   }) %} #}
+
+{% set action_href = '#' %}
+{% set action = {
+       'target': '#',
+       'icon' : '#' 
+   }
+%}
+
+{% block item_actions %}
+	{# <a class="text-danger" title="" href="#" target="">Bannir</a> #}
+{% endblock item_actions %}
+	

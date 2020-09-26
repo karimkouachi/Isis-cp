@@ -1,0 +1,20 @@
+vich_uploader:
+    db_driver: orm
+    mappings:
+        evenement_images:
+            uri_prefix:         '%app.path.evenement_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.evenement_images%'
+        decouverte_images:
+            uri_prefix:         '%app.path.decouverte_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.decouverte_images%'
+        mission_images:
+            uri_prefix:         '%app.path.mission_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.mission_images%'
+        excursion_images:
+            uri_prefix:         '%app.path.excursion_images%'
+            upload_destination: '%kernel.project_dir%/public/%app.path.excursion_images%'
+
+    #mappings:
+    #    products:
+    #        uri_prefix: /images/products
+    #        upload_destination: '%kernel.project_dir%/public/images/products'
